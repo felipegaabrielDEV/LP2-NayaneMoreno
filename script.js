@@ -122,6 +122,38 @@
         });
     }
 
+    /* ---------- Números do topo: contagem regressiva ----------
+       Cada número começa em data-inicio e desce até data-contar. Roda quando
+       o número aparece na tela e de novo ao passar o mouse (só com mouse).
+       Para contar de 0 para cima, troque data-inicio por "0" no HTML. */
+    const contadores = document.querySelectorAll("[data-contar]");
+    const contar = el => {
+        if (reduzMovimento || el.dataset.rodando) return;
+        const fim = Number(el.dataset.contar);
+        const inicio = Number(el.dataset.inicio ?? 0);
+        const duracao = 1100;
+        let t0 = null;
+        el.dataset.rodando = "1";
+        const passo = t => {
+            t0 ??= t;
+            const p = Math.min((t - t0) / duracao, 1);
+            const suave = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(inicio + (fim - inicio) * suave);
+            if (p < 1) requestAnimationFrame(passo);
+            else { el.textContent = fim; delete el.dataset.rodando; }
+        };
+        requestAnimationFrame(passo);
+    };
+    if ("IntersectionObserver" in window) {
+        const obsNum = new IntersectionObserver(entradas => {
+            entradas.forEach(en => { if (en.isIntersecting) { contar(en.target); obsNum.unobserve(en.target); } });
+        }, { threshold: .6 });
+        contadores.forEach(el => obsNum.observe(el));
+    }
+    if (window.matchMedia("(hover: hover)").matches) {
+        contadores.forEach(el => el.closest("li").addEventListener("mouseenter", () => contar(el)));
+    }
+
     const ano = document.querySelector("[data-ano]");
     if (ano) ano.textContent = new Date().getFullYear();
 })();
