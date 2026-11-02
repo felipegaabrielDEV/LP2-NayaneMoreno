@@ -1,0 +1,129 @@
+# 🦷 Dra. Nayane Moreno — Landing Page | Ortodontia em Aracaju
+
+> 🚧 **Prévia 1.** Estrutura, identidade visual e textos da primeira versão. Os pontos que dependem da cliente aparecem na página como marcadores amarelos **PENDENTE** (o botão "Prévia" no canto inferior esquerdo esconde ou mostra os marcadores). A página está com `noindex, nofollow` até a aprovação final.
+
+Landing page da **Dra. Nayane Moreno**, Cirurgiã-Dentista (CRO-SE 2301) em Aracaju/SE, focada em **Ortodontia**: captar pessoas interessadas em colocar aparelho e levá-las a agendar a avaliação pelo WhatsApp.
+
+---
+
+## 📋 Sobre o projeto
+
+- **Posicionamento:** "Dra. Nayane Moreno — Ortodontia em Aracaju".
+- **Tratamentos:** aparelho metálico, aparelho de porcelana e alinhador transparente.
+- **Formas de atendimento:** convênio (SulAmérica e Amil) e particular.
+- **Conversão:** todos os botões levam ao WhatsApp, com mensagem pronta por origem.
+- **Referências internas:** a estrutura e a engenharia seguem as LPs da Nutri Anna Waleska e da VALLENCI Salas; identidade, textos e imagens são próprios.
+
+---
+
+## ✨ Seções
+
+| Seção | Destaques |
+|---|---|
+| **Menu** | Fixo, com nome e CRO sempre visíveis; menu de tela cheia no celular (fecha com `Esc` ou ao tocar num link) |
+| **Topo** | Título, foto em moldura de arco, cartão com CRO, três números de destaque e faixa com quatro diferenciais |
+| **Para quem é** | Seis situações que o visitante reconhece (dentes tortos, espaço, mordida etc.), com desenhos próprios |
+| **Aparelhos** | Três cartões (metálico, porcelana, alinhador) com ilustração em SVG, características e botão próprio |
+| **Convênios e particular** | Lado a lado: planos atendidos e atendimento particular |
+| **Como funciona** | Cinco etapas, do WhatsApp ao acompanhamento, e citação da Dra. Nayane |
+| **Sobre** | Formação, trajetória e história pessoal ligada à ortodontia, com cartões de credenciais |
+| **Consultório** | Galeria com as fotos do consultório (setas, deslize e teclado), horário e endereço |
+| **Avaliações do Google** | Bloco reservado; só vai ao ar depois da liberação |
+| **Perguntas frequentes** | Oito perguntas em acordeão acessível |
+| **Chamada final e rodapé** | Contato, localização, horário e identificação profissional |
+
+---
+
+## 🎨 Identidade visual (proposta)
+
+A Dra. Nayane não tem manual de marca. A paleta saiu das fotos: o verde-menta das paredes do consultório e o rosa do blazer.
+
+| Cor | Hex | Uso |
+|---|---|---|
+| Verde-profundo | `#0F3D3A` | Títulos, faixas e fundos escuros |
+| Menta | `#E6F2EF` | Fundos claros |
+| Creme | `#FBF8F4` | Fundo da página |
+| Areia | `#F4ECE4` | Fundo da seção Sobre |
+| Rosa | `#EED5CE` | Detalhes e acentos |
+| Rosa-escuro | `#A9473E` | Botões de agendamento |
+
+Tipografia (Google Fonts): **Fraunces** nos títulos e **Plus Jakarta Sans** nos textos. Visual: estrutura moderna e objetiva do Modelo 2 com as cores suaves do Modelo 4 (a validar com a cliente).
+
+---
+
+## 🛠️ Tecnologias e estrutura
+
+HTML, CSS e JavaScript puros, sem framework nem build, prontos para o GitHub Pages.
+
+```
+├── index.html          # Estrutura e conteúdo de todas as seções
+├── styles.css          # Identidade, layout responsivo e animações (tokens no :root)
+├── script.js           # Menu, WhatsApp, FAQ, galeria, revelar ao rolar e botão da prévia
+└── assets/
+    ├── marca/          # Favicon provisório
+    ├── profissional/   # Fotos da Dra. Nayane (WebP)
+    └── consultorio/    # Fotos do consultório (WebP)
+```
+
+**Onde mexer:**
+- Número do WhatsApp: `<meta name="whatsapp-number">` no `<head>` (só dígitos, com 55 e DDD).
+- Mensagem de cada botão: objeto `mensagens` em `script.js`, pela origem (`data-wa-origin`).
+- Cores e fontes: tokens no início de `styles.css`.
+
+---
+
+## 📱 Responsividade, acessibilidade e performance
+
+- Testado em `320` · `375` · `390` · `430` · `768` · `1024` · `1366` · `1920` px, sem rolagem horizontal.
+- Foco visível, link "Pular para o conteúdo", FAQ com `aria-expanded`, áreas de toque de 44 px ou mais.
+- Animações desligadas com `prefers-reduced-motion`.
+- Imagens em WebP com dimensões declaradas e `loading="lazy"` fora do topo; foto do topo com `preload`.
+
+---
+
+## 🚀 Como rodar localmente
+
+```bash
+python3 -m http.server 8000
+```
+
+Depois acesse `http://localhost:8000`.
+
+---
+
+## 🗺️ Próximas etapas (prévia 2)
+
+- Formulário curto antes do WhatsApp.
+- Links da Tintim por origem (UTM), Google Tag Manager com Modo de Consentimento e aviso de cookies.
+- Política de privacidade, página 404, imagem de compartilhamento 1200 × 630 e dados para o Google (`Dentist`).
+- Mapa do Google no bloco do consultório.
+
+---
+
+## ✅ Pendências de conteúdo
+
+**Travam o lançamento**
+- [ ] Endereço completo do consultório (rua, número, bairro e CEP) e se as fotos são do consultório atual
+- [ ] Número oficial do WhatsApp
+- [ ] Confirmação dos três tipos de aparelho (metálico, porcelana, alinhador) e da marca do alinhador
+- [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia, autorização para citar os nomes e logotipos oficiais
+- [ ] Aprovação do texto "Sobre" e da citação da Dra. Nayane
+- [ ] Foto do diploma e dos certificados (graduação 2011 e pós em Ortodontia 2014–2017)
+
+**Melhoram o site**
+- [ ] Intervalo das manutenções e como termina o tratamento (contenção e retornos)
+- [ ] Idade mínima para a ortodontia e faixa média de duração do tratamento
+- [ ] Link do perfil no Google e liberação das avaliações (norma do CFO)
+- [ ] Antes e depois e depoimentos: autorização escrita de cada paciente e conferência da norma do CFO/CRO-SE
+- [ ] Logotipo e cores da marca, se existirem
+- [ ] Domínio e acesso ao Google Tag Manager
+
+---
+
+## 👤 Autor
+
+Desenvolvido por **[Felipe Gabriel](https://github.com/felipegaabrieldev)**.
+
+## 📄 Licença
+
+Este repositório documenta um projeto de cliente real. O código pode ser usado como referência de portfólio; imagens, marca, textos e identidade visual pertencem à **Dra. Nayane Moreno** e não devem ser reutilizados sem autorização.
