@@ -1,0 +1,8 @@
+# Rascunhos internos (briefing, números, conversas): nunca no repositório público
+interno/
+
+# Capturas de tela das revisões
+capturas/
+
+.DS_Store
+Thumbs.db
