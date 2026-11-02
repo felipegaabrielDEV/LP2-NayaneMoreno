@@ -122,10 +122,10 @@
         });
     }
 
-    /* ---------- Números do topo: contagem regressiva ----------
-       Cada número começa em data-inicio e desce até data-contar. Roda quando
+    /* ---------- Números do topo: contagem ----------
+       Cada número vai de data-inicio (hoje 0) até data-contar. Roda quando
        o número aparece na tela e de novo ao passar o mouse (só com mouse).
-       Para contar de 0 para cima, troque data-inicio por "0" no HTML. */
+       Para mudar o ponto de partida, troque data-inicio no HTML. */
     const contadores = document.querySelectorAll("[data-contar]");
     const contar = el => {
         if (reduzMovimento || el.dataset.rodando) return;
