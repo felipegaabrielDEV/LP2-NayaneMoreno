@@ -151,7 +151,7 @@
         contadores.forEach(el => obsNum.observe(el));
     }
     if (window.matchMedia("(hover: hover)").matches) {
-        contadores.forEach(el => el.closest("li").addEventListener("mouseenter", () => contar(el)));
+        contadores.forEach(el => el.closest("aside, li").addEventListener("mouseenter", () => contar(el)));
     }
 
     const ano = document.querySelector("[data-ano]");

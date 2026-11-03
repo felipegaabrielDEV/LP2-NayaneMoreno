@@ -112,23 +112,34 @@ body.menu-aberto { overflow: hidden; }
 .hero h1 { font-size: clamp(2.3rem, 7.6vw, 4.1rem); }
 .hero h1 em { display: block; }
 .lead { font-size: 1.06rem; max-width: 560px; }
-.hero-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin: 26px 0 30px; }
+.hero-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin: 26px 0 8px; }
 .hero-acoes .botao { width: 100%; }
-.numeros { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
-.numeros li { display: grid; padding-left: 14px; border-left: 3px solid var(--rosa); }
-.numeros li:last-child { grid-column: 1 / -1; }
-.numeros strong { font-family: var(--fonte-titulo); font-size: 1.5rem; font-weight: 600; color: var(--verde); line-height: 1.15; font-variant-numeric: tabular-nums; }
-.numeros li { transition: transform .3s var(--ease), border-color .3s var(--ease); }
-@media (hover: hover) { .numeros li:hover { transform: translateY(-3px); border-color: var(--rosa-forte); } }
-.numeros span { font-size: .85rem; }
-.hero-foto { position: relative; width: min(100%, 440px); margin-inline: auto; }
-.hero-moldura { border-radius: 240px 240px var(--raio) var(--raio); overflow: hidden; background: #e9e9e9; box-shadow: var(--sombra); aspect-ratio: 4 / 5; }
-.hero-moldura img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-.cartao-credencial { position: absolute; left: -6px; bottom: 26px; display: grid; padding: 12px 18px; border-radius: var(--raio-p); background: #fffffff2; box-shadow: var(--sombra-p); }
-.cartao-credencial strong { font-family: var(--fonte-titulo); color: var(--verde); font-size: 1.02rem; }
-.cartao-credencial span { font-size: .78rem; }
-.cartao-flutuante { position: absolute; right: -6px; top: 22%; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: var(--raio-p); background: var(--verde); color: #fff; font-size: .78rem; font-weight: 600; line-height: 1.3; box-shadow: var(--sombra-p); }
-.cartao-flutuante svg { width: 26px; height: 26px; padding: 5px; border-radius: 50%; background: var(--rosa-forte); }
+/* Foto do topo no estilo da LP da Nutri Anna: arco largo, cartão do nome à
+   esquerda e dois números empilhados à direita, sobre a foto. */
+.hero-foto { position: relative; width: min(100%, 470px); margin-inline: auto; }
+.hero-moldura { border-radius: 999px 999px 28px 28px; overflow: hidden; aspect-ratio: 4 / 5;
+    background: #F4EDE7; box-shadow: 0 30px 70px -30px #0F3D3A55; }
+.hero-moldura img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; animation: respirar 9s ease-in-out infinite; }
+@keyframes respirar { 50% { transform: scale(1.025); } }
+.cartao-credencial { position: absolute; left: -10px; top: 47%; display: grid; padding: 14px 20px; border-radius: 16px; background: #ffffffe8; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 18px 40px -18px #0F3D3A40; }
+.cartao-credencial strong { font-family: var(--fonte-titulo); color: var(--verde); font-size: 1.12rem; line-height: 1.2; }
+.cartao-credencial span { font-size: .8rem; }
+.hero-numeros { position: absolute; right: -10px; bottom: 30px; display: grid; gap: 8px; }
+.hero-numeros aside { display: grid; min-width: 168px; padding: 12px 18px; border-radius: 16px; background: #fffffff2; box-shadow: 0 18px 40px -18px #0F3D3A40; transition: transform .3s var(--ease); }
+.hero-numeros strong { font-size: 1.6rem; font-weight: 700; color: var(--verde); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.hero-numeros small { margin-top: 4px; font-size: .64rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--texto); }
+@media (hover: hover) { .hero-numeros aside:hover { transform: translateY(-3px); } }
+/* Celular: o cartão do nome fica no ombro e os números lado a lado, na base da foto. */
+@media (max-width: 599px) {
+    .hero-foto { margin-bottom: 34px; }
+    .cartao-credencial { top: 40%; left: -8px; padding: 10px 14px; }
+    .cartao-credencial strong { font-size: 1rem; }
+    .cartao-credencial span { font-size: .72rem; }
+    .hero-numeros { left: 10px; right: 10px; bottom: -30px; grid-template-columns: 1fr 1fr; }
+    .hero-numeros aside { min-width: 0; padding: 10px 14px; }
+    .hero-numeros strong { font-size: 1.4rem; }
+    .hero-numeros small { font-size: .58rem; letter-spacing: .06em; }
+}
 
 .faixa { list-style: none; margin: 40px 0 0; padding: 22px; display: grid; gap: 18px; border-radius: var(--raio) var(--raio) 0 0; background: var(--verde); color: #fff; position: relative; z-index: 2; }
 .faixa li { display: flex; align-items: center; gap: 14px; }
@@ -292,8 +303,6 @@ body.sem-pendencias #avaliacoes { display: none; }
 @media (min-width: 600px) {
     :root { --gutter: 28px; }
     .hero-acoes .botao { width: auto; }
-    .numeros { grid-template-columns: repeat(3, auto); justify-content: start; gap: 18px 30px; }
-    .numeros li:last-child { grid-column: auto; }
     .faixa { grid-template-columns: 1fr 1fr; padding: 26px 28px; }
     .situacoes { grid-template-columns: 1fr 1fr; }
     .etapas { grid-template-columns: 1fr 1fr; }
@@ -318,9 +327,11 @@ body.sem-pendencias #avaliacoes { display: none; }
     .topo-linha .botao { margin-left: 6px; }
     .hero { padding-top: 56px; }
     .hero-grade { grid-template-columns: 1.1fr .9fr; gap: 60px; }
-    .hero-foto { margin-right: 20px; }
-    .cartao-credencial { left: -40px; }
-    .cartao-flutuante { right: -30px; }
+    .hero-foto { width: min(100%, 500px); margin-right: 40px; }
+    .cartao-credencial { left: -70px; top: 26%; }
+    .hero-numeros { right: -50px; }
+    .hero-numeros aside { min-width: 200px; padding: 14px 20px; }
+    .hero-numeros strong { font-size: 1.8rem; }
     .faixa { grid-template-columns: repeat(4, 1fr); margin-top: 56px; padding: 28px 30px; }
     .faixa li + li { border-left: 1px solid #ffffff22; padding-left: 20px; }
     .secao { padding: 104px 0; }
@@ -336,4 +347,5 @@ body.sem-pendencias #avaliacoes { display: none; }
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     .js .revelar { opacity: 1; transform: none; }
+    .hero-moldura img { animation: none; }
 }
