@@ -34,12 +34,25 @@ Landing page da **Dra. Nayane Moreno**, Cirurgiã-Dentista (CRO-SE 2301) em Arac
 
 ---
 
-## 🎨 Identidade visual (proposta)
+## 🎨 Identidade visual
 
-A Dra. Nayane não tem manual de marca. A paleta saiu das fotos: o verde-menta das paredes do consultório e o rosa do blazer.
+Segue o **Manual de Identidade Visual** da marca (nov/2026). As cores foram conferidas nos pixels da logomarca enviada.
 
 | Cor | Hex | Uso |
 |---|---|---|
+| Verde da marca | `#16AD8E` | Logo, destaques, ícones e detalhes |
+| Cinza da marca | `#8C8C8C` | "MORENO", fio do aparelho e textos de apoio |
+| Verde dos botões | `#0F7A64` | Botões (contraste AA com texto branco) |
+| Verde escuro | `#0F3F36` | Faixa do topo, seção "Como funciona" e chamada final |
+| Verde claro | `#E8F6F1` | Fundos de detalhe |
+| Fundo suave | `#F7F9F8` | Seções alternadas com o branco |
+| Texto | `#303B39` | Títulos e textos |
+
+Tipografia: **Montserrat** em todo o site, com o contraste de pesos da logo (forte em "NAYANE", leve em "MORENO"): títulos em 600 e o trecho em destaque em 300, no verde da marca.
+
+Detalhe próprio do site: o **fio do aparelho com o bráquete verde**, tirado da logo, passa sobre a foto do topo. Logomarca em `assets/marca/` (ícone, versão completa e favicon, com fundo transparente).
+
+---|---|---|
 | Verde-profundo | `#0F3D3A` | Títulos, faixas e fundos escuros |
 | Menta | `#E6F2EF` | Fundos claros |
 | Creme | `#FBF8F4` | Fundo da página |
@@ -60,7 +73,7 @@ HTML, CSS e JavaScript puros, sem framework nem build, prontos para o GitHub Pag
 ├── styles.css          # Identidade, layout responsivo e animações (tokens no :root)
 ├── script.js           # Menu, WhatsApp, FAQ, galeria, revelar ao rolar e botão da prévia
 └── assets/
-    ├── marca/          # Favicon provisório
+    ├── marca/          # Logomarca (ícone, completa e favicon)
     ├── profissional/   # Fotos da Dra. Nayane (WebP)
     └── consultorio/    # Fotos do consultório (WebP)
 ```
