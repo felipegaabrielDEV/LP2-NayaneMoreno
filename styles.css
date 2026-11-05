@@ -228,7 +228,13 @@ body.menu-aberto { overflow: hidden; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .passos { position: relative; list-style: none; margin: 0 auto; padding: 0; max-width: 1080px; display: grid; gap: 14px; }
 /* a linha do tempo */
-.passos::before { content: ""; position: absolute; left: 27px; top: 24px; bottom: 24px; width: 2px; background: linear-gradient(#16AD8E00, #16AD8E8C 8%, #16AD8E8C 92%, #16AD8E00); transform: scaleY(0); transform-origin: top; transition: transform 1.6s var(--ease); }
+.passos::before { content: ""; position: absolute; left: 27px; top: 24px; bottom: 24px; width: 2px; background: linear-gradient(#16AD8E00, #16AD8E8C 8%, #16AD8E8C 92%, #16AD8E00); box-shadow: 0 0 10px #16AD8E59; transform: scaleY(0); transform-origin: top; transition: transform 1.6s var(--ease); }
+/* pontos luminosos na linha: início, fim e, no celular, entre uma etapa e outra */
+.passos::after, .passo::after { content: ""; position: absolute; z-index: 1; width: 11px; height: 11px; margin-left: -5.5px; border: 2px solid #fff; border-radius: 50%; background: var(--marca); box-shadow: 0 0 10px #16AD8EBF; pointer-events: none; }
+.passos::after { left: 28px; bottom: 16px; opacity: 0; transition: opacity .5s var(--ease) 1.4s; }
+.passos.visivel::after, html:not(.js) .passos::after { opacity: 1; }
+.passo::after { left: 28px; top: -13px; }
+.passo:first-child::after { top: 14px; }
 .js .passos.revelar { opacity: 1; transform: none; }
 .passos.visivel::before, html:not(.js) .passos::before { transform: scaleY(1); }
 .passo { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; }
@@ -250,8 +256,9 @@ body.menu-aberto { overflow: hidden; }
     .passo:hover .passo-icone { box-shadow: 0 0 0 6px #16AD8E40, 0 0 26px #16AD8E80, 0 10px 22px -10px #0F3F3699; }
 }
 /* entrada: o círculo "acende" e o cartão desliza do lado dele */
-.js .passo.revelar { transform: translateX(22px); }
-.js .passo .passo-icone { transform: scale(.6); opacity: 0; transition: transform .5s var(--ease) .15s, opacity .5s var(--ease) .15s, box-shadow .35s var(--ease); }
+.passo:nth-child(2) { --d: .12s; } .passo:nth-child(3) { --d: .24s; } .passo:nth-child(4) { --d: .36s; } .passo:nth-child(5) { --d: .48s; }
+.js .passo.revelar { transform: translateX(22px); transition-delay: var(--d, 0s); }
+.js .passo .passo-icone { transform: scale(.6); opacity: 0; transition: transform .5s var(--ease) calc(var(--d, 0s) + .15s), opacity .5s var(--ease) calc(var(--d, 0s) + .15s), box-shadow .35s var(--ease); }
 .js .passo.visivel .passo-icone { transform: scale(1); opacity: 1; }
 /* Citação em cartão claro com aspas grandes */
 @media (max-width: 599px) {
@@ -460,6 +467,9 @@ body.sem-pendencias #avaliacoes { display: none; }
     /* computador: etapas alternando os lados da linha, com leve sobreposição */
     .passos { gap: 0; }
     .passos::before { left: 50%; margin-left: -1px; }
+    .passos::after { left: 50%; }
+    .passo::after { display: none; }
+    .passo:first-child::after { display: block; left: 50%; top: 14px; }
     .passo { grid-template-columns: 1fr 96px 1fr; gap: 0; }
     .passo + .passo { margin-top: -38px; }
     .passo-icone { grid-column: 2; width: 66px; height: 66px; }
