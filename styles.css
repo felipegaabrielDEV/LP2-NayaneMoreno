@@ -262,6 +262,11 @@ body.menu-aberto { overflow: hidden; }
 .galeria-pontos span { width: 8px; height: 8px; border-radius: 99px; background: var(--menta-2); transition: width .3s var(--ease), background .3s; }
 .galeria-pontos span.ativo { width: 24px; background: var(--verde-2); }
 
+.consultorio-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.mapa { margin-top: -40px; margin-bottom: 56px; }
+.mapa iframe { display: block; width: 100%; height: 340px; border: 0; border-radius: var(--raio); box-shadow: var(--sombra-p); background: var(--fundo); }
+@media (min-width: 1024px) { .mapa { margin-top: -56px; } .mapa iframe { height: 380px; } }
+
 /* Avaliações (condicionado) */
 .avaliacoes { display: grid; gap: 12px; padding: 26px; border: 2px dashed #E1C766; border-radius: var(--raio); background: #FFFCEF; }
 .avaliacoes h2 { font-size: 1.5rem; margin: 0; }
