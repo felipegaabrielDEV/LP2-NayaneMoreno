@@ -239,8 +239,8 @@ body.menu-aberto { overflow: hidden; }
 .passos.visivel::before, html:not(.js) .passos::before { transform: scaleY(1); }
 .passo { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; }
 .passo-icone { grid-column: 1; grid-row: 1; position: relative; z-index: 1; justify-self: center; display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%;
-    border: 3px solid #fff; color: #fff; background: radial-gradient(circle at 35% 30%, #16AD8E55, var(--verde) 70%);
-    box-shadow: 0 0 0 5px #16AD8E26, 0 0 18px #16AD8E40, 0 10px 22px -10px #0F3F3699; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+    border: 3px solid #fff; color: #fff; background: var(--verde);
+    box-shadow: 0 8px 18px -10px #0F3F3699; transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease); }
 .passo-icone svg { width: 22px; height: 22px; }
 .passo-cartao { grid-column: 2; grid-row: 1; position: relative; display: flex; align-items: center; gap: 16px; padding: 18px; border: 1px solid #16AD8E40; border-radius: 20px; color: #fff;
     background: linear-gradient(145deg, transparent 35%, #00000033 100%), var(--verde);
@@ -253,7 +253,7 @@ body.menu-aberto { overflow: hidden; }
 .passo p { margin: 0; color: #DCE8E5; font-size: .9rem; line-height: 1.55; }
 @media (hover: hover) {
     .passo:hover .passo-cartao { transform: translateY(-4px); border-color: #16AD8E99; box-shadow: 0 0 0 1px #16AD8E40, 0 0 26px #16AD8E59, 0 22px 40px -20px #0F3F36CC, inset 0 1px 0 #FFFFFF1F; }
-    .passo:hover .passo-icone { box-shadow: 0 0 0 6px #16AD8E40, 0 0 26px #16AD8E80, 0 10px 22px -10px #0F3F3699; }
+    .passo:hover .passo-icone { border-color: var(--marca); box-shadow: 0 10px 20px -10px #0F3F36B3; }
 }
 /* entrada: o círculo "acende" e o cartão desliza do lado dele */
 .passo:nth-child(2) { --d: .12s; } .passo:nth-child(3) { --d: .24s; } .passo:nth-child(4) { --d: .36s; } .passo:nth-child(5) { --d: .48s; }
