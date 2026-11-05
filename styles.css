@@ -259,15 +259,17 @@ body.menu-aberto { overflow: hidden; }
    qualquer imagem. A da direita dá um leve "empurrão" quando a galeria aparece,
    indicando que há mais fotos. */
 .galeria-janela { position: relative; }
-.galeria-seta { position: absolute; z-index: 2; top: 50%; width: 48px; height: 48px; display: grid; place-items: center; border: 0; border-radius: 50%; background: #fffffff2; color: var(--botao); box-shadow: 0 10px 24px -8px #0F3F3666, 0 0 0 1px #0F3F3614; cursor: pointer; transform: translateY(-50%); transition: background .25s, color .25s, transform .25s var(--ease), opacity .25s; }
+.galeria-seta { position: absolute; z-index: 2; top: 50%; width: 48px; height: 48px; display: grid; place-items: center; border: 0; border-radius: 50%; background: #fffffff2; color: var(--botao); box-shadow: 0 10px 24px -8px #0F3F3666, 0 0 0 1px #0F3F3614; cursor: pointer; transform: translateY(-50%); transition: background .25s, color .25s, transform .25s var(--ease), box-shadow .25s, opacity .25s; }
 .galeria-seta svg { width: 22px; height: 22px; stroke-width: 2.5; }
 .galeria-ant { left: 14px; }
 .galeria-ant svg { transform: rotate(180deg); }
 .galeria-prox { right: 14px; }
 .galeria-seta:active { transform: translateY(-50%) scale(.92); }
+/* Ao passar o mouse (ou focar pelo teclado), a seta sai do branco para o verde dos botões. */
 @media (hover: hover) {
-    .galeria-seta:hover { background: var(--botao); color: #fff; transform: translateY(-50%) scale(1.08); }
+    .galeria-seta:hover { background: var(--botao); color: #fff; transform: translateY(-50%) scale(1.08); box-shadow: 0 12px 28px -8px #0F7A6499; }
 }
+.galeria-seta:focus-visible { background: var(--botao); color: #fff; }
 .galeria.visivel .galeria-prox { animation: cutucar 1.4s var(--ease) .6s 2; }
 @keyframes cutucar { 0%, 100% { transform: translateY(-50%); } 40% { transform: translateY(-50%) translateX(6px); } }
 .galeria-controles { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 16px; }
