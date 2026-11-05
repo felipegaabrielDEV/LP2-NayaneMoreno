@@ -285,7 +285,7 @@ body.menu-aberto { overflow: hidden; }
 .local { position: relative; isolation: isolate; overflow: hidden; padding: 34px 20px 26px; border: 1px solid #0F3F361A; border-radius: 28px; color: var(--tinta);
     background: linear-gradient(135deg, #FFFFFF 0%, #F3F7F5 55%, #EAF2EF 100%); box-shadow: 0 30px 70px -34px #0F3F3659; }
 /* Cantos em verde-escuro (superior esquerdo e inferior direito) */
-.local::before, .local::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; background: linear-gradient(135deg, #0F3F36, #0F5A4C);
+.local::before, .local::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; background: var(--verde);
     box-shadow: 0 0 0 2px #16AD8E66, 0 0 26px #16AD8E59; }
 .local::before { width: 440px; height: 170px; left: -250px; top: -112px; transform: rotate(-12deg); }
 .local::after { width: 500px; height: 190px; right: -270px; bottom: -128px; transform: rotate(-12deg); }
@@ -305,15 +305,15 @@ body.menu-aberto { overflow: hidden; }
 @keyframes braquete-pulsar { 0%, 100% { opacity: .45; } 50% { opacity: .75; } }
 .local.visivel .braquete-halo { animation: braquete-pulsar 3.2s ease-in-out 2.2s infinite; }
 .local h2 { position: relative; max-width: 820px; margin-bottom: 24px; font-size: clamp(1.5rem, 4.6vw, 2.35rem); }
-.local h2 em { color: #0E9A7E; font-weight: 600; }
+.local h2 em { color: var(--verde-2); font-weight: 600; }
 /* Cartões escuros */
 .local-cartoes { display: grid; gap: 16px; }
 .local-cartao { display: flex; align-items: center; gap: 18px; padding: 20px; border: 1px solid #16AD8E40; border-radius: 22px; color: #fff;
-    background: linear-gradient(145deg, #17493F 0%, #0F3F36 55%, #0B2F29 100%);
+    background: linear-gradient(145deg, transparent 35%, #00000033 100%), var(--verde);
     box-shadow: 0 0 0 1px #16AD8E1F, 0 16px 34px -18px #0F3F36CC, inset 0 1px 0 #FFFFFF14;
     transition: transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease); }
 .local-icone { flex: none; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; border: 1px solid #16AD8E59;
-    background: radial-gradient(circle at 35% 30%, #16AD8E40, #0B2F29 70%); box-shadow: 0 0 16px #16AD8E40; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+    background: radial-gradient(circle at 35% 30%, #16AD8E40, var(--verde) 70%); box-shadow: 0 0 16px #16AD8E40; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
 .local-icone svg { width: 30px; height: 30px; color: var(--marca); }
 .local-texto { padding-left: 18px; border-left: 1px solid #FFFFFF26; }
 .local-cartao h3 { margin: 0 0 6px; color: #fff; font-size: 1.05rem; font-weight: 700; }
@@ -325,10 +325,10 @@ body.menu-aberto { overflow: hidden; }
     .local-cartao:hover .local-icone { transform: scale(1.07); box-shadow: 0 0 22px #16AD8E80; }
 }
 .local-cartao:focus-visible { border-color: #16AD8E; box-shadow: 0 0 0 3px #16AD8E66; }
-.local-nota { position: relative; margin: 18px 4px 20px; color: #1F5A4F; font-size: .88rem; font-style: italic; }
+.local-nota { position: relative; margin: 18px 4px 20px; color: var(--verde-texto); font-size: .88rem; font-style: italic; }
 /* Botão em pílula com gradiente e brilho que passa ao passar o mouse */
 .local-botao { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 16px; min-height: 60px; padding: 14px 24px; border: 1px solid #16AD8E66; border-radius: 999px; color: #fff;
-    background: linear-gradient(90deg, #0F3F36 0%, #0F5A4C 55%, #0F7A64 100%);
+    background: linear-gradient(90deg, var(--verde) 0%, var(--botao) 100%);
     box-shadow: 0 0 0 1px #16AD8E1F, 0 14px 30px -14px #0F7A64B3, inset 0 1px 0 #FFFFFF1A;
     font-size: .9rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
 .local-botao svg { width: 22px; height: 22px; color: var(--marca); transition: transform .3s var(--ease); }
