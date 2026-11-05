@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261105-04">
+    <link rel="stylesheet" href="styles.css?v=20261105-05">
 </head>
 <body>
 
@@ -50,6 +50,7 @@
     <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></g></symbol>
     <symbol id="i-insta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-navegar" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 11 21 3l-8 18-2-8-8-2Z"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></symbol>
     <!-- Ícones das situações: desenhos simples de dentes, só ilustração. -->
@@ -328,10 +329,7 @@
                     <li><svg aria-hidden="true"><use href="#i-clock"/></svg><div><strong>Horário</strong><span>Segunda a sexta, das 8h às 12h e das 14h às 17h</span></div></li>
                     <li><svg aria-hidden="true"><use href="#i-whatsapp"/></svg><div><strong>Agendamento</strong><span>WhatsApp (79) 99945-2813</span></div></li>
                 </ul>
-                <div class="consultorio-acoes">
-                    <a class="botao" href="#" data-wa data-wa-origin="consultorio"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar avaliação pelo WhatsApp</a>
-                    <a class="link-seta" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Senador+Rolemberg%2C+562%2C+S%C3%A3o+Jos%C3%A9%2C+Aracaju+-+SE%2C+49015-120" target="_blank" rel="noopener">Como chegar <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-                </div>
+                <a class="botao" href="#" data-wa data-wa-origin="consultorio"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar avaliação pelo WhatsApp</a>
             </div>
             <!-- Fotos na ordem do Drive (01 a 05). As setas ficam sobre a foto, nas laterais. -->
             <div class="galeria revelar" aria-roledescription="carrossel" aria-label="Fotos do consultório">
@@ -354,10 +352,37 @@
         </div>
     </section>
 
-    <!-- Mapa: carrega só quando chega perto da tela (loading="lazy"), sem atrasar o topo. -->
-    <div class="container mapa">
-        <iframe title="Mapa do consultório da Dra. Nayane Moreno" src="https://www.google.com/maps?q=Rua+Senador+Rolemberg%2C+562%2C+S%C3%A3o+Jos%C3%A9%2C+Aracaju+-+SE%2C+49015-120&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-    </div>
+    <!-- Localização: painel escuro com dois cartões e o botão do Google Maps.
+         Inspirado no bloco de endereço da referência, nas cores da marca. -->
+    <section class="local-secao" aria-labelledby="local-titulo">
+        <div class="container">
+            <div class="local revelar">
+                <h2 id="local-titulo">Estamos no bairro <em>São José</em>, em Aracaju</h2>
+                <div class="local-cartoes">
+                    <a class="local-cartao" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Senador+Rolemberg%2C+562%2C+S%C3%A3o+Jos%C3%A9%2C+Aracaju+-+SE%2C+49015-120" target="_blank" rel="noopener">
+                        <svg class="local-icone" aria-hidden="true"><use href="#i-pin"/></svg>
+                        <div>
+                            <h3>Endereço</h3>
+                            <p>Rua Senador Rolemberg, 562<br>São José<br>Aracaju/SE, CEP 49015-120</p>
+                        </div>
+                    </a>
+                    <a class="local-cartao" href="#" data-wa data-wa-origin="horario">
+                        <svg class="local-icone" aria-hidden="true"><use href="#i-clock"/></svg>
+                        <div>
+                            <h3>Atendimento</h3>
+                            <ul class="local-horarios">
+                                <li>Seg - Sex: <strong>08:00 às 12:00</strong></li>
+                                <li>Seg - Sex: <strong>14:00 às 17:00</strong></li>
+                                <li class="local-fechado">Sábados e domingos: fechado</li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+                <p class="local-nota">* Consultas com agendamento prévio pelo WhatsApp (79) 99945-2813.</p>
+                <a class="local-botao" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Senador+Rolemberg%2C+562%2C+S%C3%A3o+Jos%C3%A9%2C+Aracaju+-+SE%2C+49015-120" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-navegar"/></svg>Abrir no Google Maps</a>
+            </div>
+        </div>
+    </section>
 
     <!-- =========================== AVALIAÇÕES (condicionado) =========================== -->
     <section class="secao-curta" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
@@ -463,6 +488,6 @@
 <!-- Só na prévia: mostra ou esconde os marcadores de pendência para apresentar à cliente. -->
 <button class="previa-alternar" type="button" aria-pressed="true">Prévia · <span>ocultar pendências</span></button>
 
-<script src="script.js?v=20261105-04" defer></script>
+<script src="script.js?v=20261105-05" defer></script>
 </body>
 </html>

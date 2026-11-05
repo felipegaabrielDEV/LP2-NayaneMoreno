@@ -23,7 +23,8 @@
         aparelho_alinhador: "Olá! Vim pelo site e tenho interesse no alinhador transparente. Quero agendar uma avaliação com a Dra. Nayane Moreno.",
         convenios: "Olá! Vim pelo site e quero confirmar se o meu plano cobre ortodontia com a Dra. Nayane Moreno.",
         particular: "Olá! Vim pelo site e quero saber sobre o tratamento ortodôntico particular com a Dra. Nayane Moreno.",
-        faq: "Olá! Vim pelo site e tenho uma dúvida sobre ortodontia."
+        faq: "Olá! Vim pelo site e tenho uma dúvida sobre ortodontia.",
+        horario: "Olá! Vim pelo site e quero saber os horários disponíveis para uma avaliação de ortodontia com a Dra. Nayane Moreno."
     };
     const linkWhats = origem => {
         const texto = encodeURIComponent(mensagens[origem] || base);
