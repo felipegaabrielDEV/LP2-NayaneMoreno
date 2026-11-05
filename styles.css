@@ -289,12 +289,21 @@ body.menu-aberto { overflow: hidden; }
     box-shadow: 0 0 0 2px #16AD8E66, 0 0 26px #16AD8E59; }
 .local::before { width: 440px; height: 170px; left: -250px; top: -112px; transform: rotate(-12deg); }
 .local::after { width: 500px; height: 190px; right: -270px; bottom: -128px; transform: rotate(-12deg); }
-/* Fio do aparelho com o bráquete */
-.local-fio { position: absolute; z-index: -1; right: -6px; top: 4px; width: min(62%, 420px); height: auto; overflow: visible; }
-.local-fio path { fill: none; stroke: #9DB4AE; stroke-width: 1.6; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s var(--ease) .2s; }
-.local-braquete { fill: #CFE6DF; stroke: #16AD8E; stroke-width: 1.2; opacity: 0; transition: opacity .6s var(--ease) 1.4s; filter: drop-shadow(0 0 5px #16AD8E99); }
-.local.visivel .local-fio path, html:not(.js) .local-fio path { stroke-dashoffset: 0; }
+/* Fio ortodôntico: halo turquesa embaixo, fio metálico e um reflexo branco por cima.
+   Os três "se desenham" juntos quando o bloco aparece; o bráquete acende no final. */
+.local-fio { position: absolute; z-index: -1; right: -4px; top: -2px; width: min(60%, 600px); height: auto; overflow: visible; pointer-events: none; }
+.fio-linhas path { fill: none; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.8s var(--ease) .2s; }
+.fio-halo { stroke: #16AD8E; stroke-width: 12; opacity: .14; }
+.fio-base { stroke: url(#fio-metal); stroke-width: 5; }
+.fio-reflexo { stroke: #FFFFFF; stroke-width: 1.4; opacity: .95; }
+.local-braquete { opacity: 0; transition: opacity .7s var(--ease) 1.5s; }
+.braquete-halo { fill: #16AD8E; opacity: .55; }
+.braquete-ligadura { fill: #16AD8E26; stroke: #16AD8E; stroke-width: 2.4; }
+.local.visivel .fio-linhas path, html:not(.js) .fio-linhas path { stroke-dashoffset: 0; }
 .local.visivel .local-braquete, html:not(.js) .local-braquete { opacity: 1; }
+/* Um brilho suave e contínuo no bráquete, como um reflexo de luz */
+@keyframes braquete-pulsar { 0%, 100% { opacity: .45; } 50% { opacity: .75; } }
+.local.visivel .braquete-halo { animation: braquete-pulsar 3.2s ease-in-out 2.2s infinite; }
 .local h2 { position: relative; max-width: 820px; margin-bottom: 24px; font-size: clamp(1.5rem, 4.6vw, 2.35rem); }
 .local h2 em { color: #0E9A7E; font-weight: 600; }
 /* Cartões escuros */
@@ -344,7 +353,7 @@ body.menu-aberto { overflow: hidden; }
     .local-cartao { flex-direction: column; align-items: flex-start; gap: 14px; padding: 20px 18px; }
     .local-texto { padding: 14px 0 0; border-left: 0; border-top: 1px solid #FFFFFF26; width: 100%; }
     .local-botao { gap: 12px; font-size: .8rem; letter-spacing: .06em; }
-    .local-fio { width: 74%; top: -4px; }
+    .local-fio { width: 86%; top: -8px; opacity: .8; }
 }
 @media (min-width: 768px) { .local { padding: 44px 40px 34px; } .local-cartoes { grid-template-columns: 1fr 1fr; gap: 20px; } .local-cartao { padding: 24px 26px; } }
 
