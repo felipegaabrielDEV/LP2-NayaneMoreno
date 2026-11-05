@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261105-05">
+    <link rel="stylesheet" href="styles.css?v=20261105-06">
 </head>
 <body>
 
@@ -352,34 +352,40 @@
         </div>
     </section>
 
-    <!-- Localização: painel escuro com dois cartões e o botão do Google Maps.
-         Inspirado no bloco de endereço da referência, nas cores da marca. -->
+    <!-- Localização: painel claro com cantos em verde-escuro, o fio do aparelho da logo
+         no canto superior e dois cartões escuros com brilho verde.
+         Efeitos: o fio "se desenha" quando o bloco aparece, os cartões sobem em sequência,
+         e cartões e botão ganham brilho no hover. -->
     <section class="local-secao" aria-labelledby="local-titulo">
         <div class="container">
             <div class="local revelar">
+                <svg class="local-fio" viewBox="0 0 420 120" aria-hidden="true">
+                    <path pathLength="1" d="M0 118 C 120 70, 250 40, 330 58 S 400 40, 420 6"/>
+                    <g class="local-braquete"><rect x="318" y="46" width="9" height="20" rx="2"/><rect x="333" y="47" width="9" height="20" rx="2"/><rect x="321" y="53" width="18" height="5" rx="1.5"/></g>
+                </svg>
                 <h2 id="local-titulo">Estamos no bairro <em>São José</em>, em Aracaju</h2>
                 <div class="local-cartoes">
                     <a class="local-cartao" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Senador+Rolemberg%2C+562%2C+S%C3%A3o+Jos%C3%A9%2C+Aracaju+-+SE%2C+49015-120" target="_blank" rel="noopener">
-                        <svg class="local-icone" aria-hidden="true"><use href="#i-pin"/></svg>
-                        <div>
+                        <span class="local-icone"><svg aria-hidden="true"><use href="#i-pin"/></svg></span>
+                        <div class="local-texto">
                             <h3>Endereço</h3>
                             <p>Rua Senador Rolemberg, 562<br>São José<br>Aracaju/SE, CEP 49015-120</p>
                         </div>
                     </a>
                     <a class="local-cartao" href="#" data-wa data-wa-origin="horario">
-                        <svg class="local-icone" aria-hidden="true"><use href="#i-clock"/></svg>
-                        <div>
+                        <span class="local-icone"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>
+                        <div class="local-texto">
                             <h3>Atendimento</h3>
                             <ul class="local-horarios">
-                                <li>Seg - Sex: <strong>08:00 às 12:00</strong></li>
-                                <li>Seg - Sex: <strong>14:00 às 17:00</strong></li>
+                                <li>Seg - Sex: 08:00 às 12:00</li>
+                                <li>Seg - Sex: 14:00 às 17:00</li>
                                 <li class="local-fechado">Sábados e domingos: fechado</li>
                             </ul>
                         </div>
                     </a>
                 </div>
                 <p class="local-nota">* Consultas com agendamento prévio pelo WhatsApp (79) 99945-2813.</p>
-                <a class="local-botao" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Senador+Rolemberg%2C+562%2C+S%C3%A3o+Jos%C3%A9%2C+Aracaju+-+SE%2C+49015-120" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-navegar"/></svg>Abrir no Google Maps</a>
+                <a class="local-botao" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Senador+Rolemberg%2C+562%2C+S%C3%A3o+Jos%C3%A9%2C+Aracaju+-+SE%2C+49015-120" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-navegar"/></svg><span class="local-botao-divisor" aria-hidden="true"></span>Abrir no Google Maps</a>
             </div>
         </div>
     </section>
@@ -488,6 +494,6 @@
 <!-- Só na prévia: mostra ou esconde os marcadores de pendência para apresentar à cliente. -->
 <button class="previa-alternar" type="button" aria-pressed="true">Prévia · <span>ocultar pendências</span></button>
 
-<script src="script.js?v=20261105-05" defer></script>
+<script src="script.js?v=20261105-06" defer></script>
 </body>
 </html>
