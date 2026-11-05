@@ -240,8 +240,9 @@ body.menu-aberto { overflow: hidden; }
 .passo { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; }
 .passo-icone { grid-column: 1; grid-row: 1; position: relative; z-index: 1; justify-self: center; display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%;
     border: 3px solid #fff; color: #fff; background: var(--verde);
-    box-shadow: 0 8px 18px -10px #0F3F3699; transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease); }
+    box-shadow: 0 8px 18px -10px #0F3F3699; transition: transform .35s var(--ease), scale .35s var(--ease), background .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease); }
 .passo-icone svg { width: 22px; height: 22px; }
+@keyframes icone-pulo { 0% { transform: none; } 35% { transform: translateY(-3px) rotate(-10deg) scale(1.08); } 65% { transform: translateY(1px) rotate(6deg); } 100% { transform: none; } }
 .passo-cartao { grid-column: 2; grid-row: 1; position: relative; display: flex; align-items: center; gap: 16px; padding: 18px; border: 1px solid #16AD8E40; border-radius: 20px; color: #fff;
     background: linear-gradient(145deg, transparent 35%, #00000033 100%), var(--verde);
     box-shadow: 0 0 0 1px #16AD8E1F, 0 16px 34px -18px #0F3F36CC, inset 0 1px 0 #FFFFFF14; transition: transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease); }
@@ -253,12 +254,15 @@ body.menu-aberto { overflow: hidden; }
 .passo p { margin: 0; color: #DCE8E5; font-size: .9rem; line-height: 1.55; }
 @media (hover: hover) {
     .passo:hover .passo-cartao { transform: translateY(-4px); border-color: #16AD8E99; box-shadow: 0 0 0 1px #16AD8E40, 0 0 26px #16AD8E59, 0 22px 40px -20px #0F3F36CC, inset 0 1px 0 #FFFFFF1F; }
-    .passo:hover .passo-icone { border-color: var(--marca); box-shadow: 0 10px 20px -10px #0F3F36B3; }
+    /* Hover no ícone: o círculo cresce, fica no verde dos botões com borda verde da marca,
+       e o ícone dá um pulinho. "scale" separado não briga com o deslocamento lateral do círculo. */
+    .passo:hover .passo-icone { scale: 1.1; background: var(--botao); border-color: var(--marca); box-shadow: 0 12px 22px -10px #0F3F36B3; }
+    .passo:hover .passo-icone svg { animation: icone-pulo .55s var(--ease); }
 }
 /* entrada: o círculo "acende" e o cartão desliza do lado dele */
 .passo:nth-child(2) { --d: .12s; } .passo:nth-child(3) { --d: .24s; } .passo:nth-child(4) { --d: .36s; } .passo:nth-child(5) { --d: .48s; }
 .js .passo.revelar { transform: translateX(22px); transition-delay: var(--d, 0s); }
-.js .passo .passo-icone { transform: scale(.6); opacity: 0; transition: transform .5s var(--ease) calc(var(--d, 0s) + .15s), opacity .5s var(--ease) calc(var(--d, 0s) + .15s), box-shadow .35s var(--ease); }
+.js .passo .passo-icone { transform: scale(.6); opacity: 0; transition: transform .5s var(--ease) calc(var(--d, 0s) + .15s), opacity .5s var(--ease) calc(var(--d, 0s) + .15s), scale .35s var(--ease), background .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease); }
 .js .passo.visivel .passo-icone { transform: scale(1); opacity: 1; }
 /* Citação em cartão claro com aspas grandes */
 @media (max-width: 599px) {
