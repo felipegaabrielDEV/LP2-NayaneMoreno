@@ -77,39 +77,33 @@
         });
     });
 
-    /* ---------- Galeria do consultório ----------
-       Foto principal com troca suave, setas, miniaturas, teclado (← →) e
-       deslizar no celular. A ordem segue o HTML (fotos 01 a 05 do Drive). */
-    const palco = document.querySelector(".galeria-palco");
-    if (palco) {
-        const slides = [...palco.querySelectorAll(".galeria-slide")];
-        const minis = [...document.querySelectorAll(".galeria-mini")];
-        const contador = palco.querySelector(".galeria-contador");
-        const texto = palco.querySelector(".galeria-texto");
-        const total = String(slides.length).padStart(2, "0");
-        let atual = 0;
-        const mostrar = i => {
-            atual = (i + slides.length) % slides.length;
-            slides.forEach((s, k) => { s.classList.toggle("ativo", k === atual); s.setAttribute("aria-hidden", String(k !== atual)); });
-            minis.forEach((m, k) => { m.classList.toggle("ativo", k === atual); if (k === atual) m.setAttribute("aria-current", "true"); else m.removeAttribute("aria-current"); });
-            contador.textContent = `${String(atual + 1).padStart(2, "0")} / ${total}`;
-            texto.textContent = slides[atual].dataset.legenda;
+    /* ---------- Galeria do consultório ---------- */
+    const trilho = document.querySelector(".galeria-trilho");
+    if (trilho) {
+        const fotos = [...trilho.children];
+        const pontos = document.querySelector(".galeria-pontos");
+        fotos.forEach(() => pontos.appendChild(document.createElement("span")));
+        const atual = () => Math.round(trilho.scrollLeft / (fotos[0].offsetWidth + 12));
+        const contador = document.querySelector(".galeria-contador");
+        const marcar = () => {
+            const i = Math.min(atual(), fotos.length - 1);
+            [...pontos.children].forEach((p, k) => p.classList.toggle("ativo", k === i));
+            if (contador) contador.textContent = `${i + 1} / ${fotos.length}`;
         };
-        palco.querySelector(".galeria-ant").addEventListener("click", () => mostrar(atual - 1));
-        palco.querySelector(".galeria-prox").addEventListener("click", () => mostrar(atual + 1));
-        minis.forEach((m, k) => m.addEventListener("click", () => mostrar(k)));
-        palco.addEventListener("keydown", e => {
-            if (e.key === "ArrowRight") { e.preventDefault(); mostrar(atual + 1); }
-            if (e.key === "ArrowLeft") { e.preventDefault(); mostrar(atual - 1); }
+        const ir = i => {
+            const alvo = Math.max(0, Math.min(fotos.length - 1, i));
+            trilho.scrollTo({ left: fotos[alvo].offsetLeft - trilho.offsetLeft, behavior: reduzMovimento ? "auto" : "smooth" });
+        };
+        document.querySelectorAll(".galeria-seta").forEach(b => b.addEventListener("click", () => {
+            const prox = atual() + Number(b.dataset.dir);
+            ir(prox >= fotos.length ? 0 : prox < 0 ? fotos.length - 1 : prox);
+        }));
+        trilho.addEventListener("scroll", () => requestAnimationFrame(marcar), { passive: true });
+        trilho.addEventListener("keydown", e => {
+            if (e.key === "ArrowRight") { e.preventDefault(); ir(atual() + 1); }
+            if (e.key === "ArrowLeft") { e.preventDefault(); ir(atual() - 1); }
         });
-        let x0 = null;
-        palco.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
-        palco.addEventListener("touchend", e => {
-            if (x0 === null) return;
-            const dx = e.changedTouches[0].clientX - x0;
-            if (Math.abs(dx) > 40) mostrar(atual + (dx < 0 ? 1 : -1));
-            x0 = null;
-        });
+        marcar();
     }
 
     /* ---------- Revelar ao rolar ---------- */
