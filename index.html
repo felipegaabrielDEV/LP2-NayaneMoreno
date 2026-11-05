@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261105-10">
+    <link rel="stylesheet" href="styles.css?v=20261105-12">
 </head>
 <body>
 
@@ -51,6 +51,9 @@
     <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></g></symbol>
     <symbol id="i-insta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></g></symbol>
     <symbol id="i-navegar" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 11 21 3l-8 18-2-8-8-2Z"/></symbol>
+    <symbol id="i-prancheta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 4.5V3h6v1.5M8.5 10h7M8.5 13.5h7M8.5 17h4"/></g></symbol>
+    <symbol id="i-aparelho" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="6.5" height="8" rx="1.8"/><rect x="14" y="8" width="6.5" height="8" rx="1.8"/><path d="M1.5 12h21"/></g></symbol>
+    <symbol id="i-chat-pontos" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3.5c4.7 0 8.5 3.3 8.5 7.5S16.7 18.5 12 18.5c-1 0-2-.1-2.9-.4L4.5 20l1.2-3.6C4.3 15 3.5 13.1 3.5 11c0-4.2 3.8-7.5 8.5-7.5Z"/></g><g fill="currentColor"><circle cx="8.3" cy="11" r="1.1"/><circle cx="12" cy="11" r="1.1"/><circle cx="15.7" cy="11" r="1.1"/></g></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></symbol>
     <!-- Ícones das situações: desenhos simples de dentes, só ilustração. -->
@@ -267,27 +270,47 @@
         </div>
     </section>
 
-    <!-- =========================== COMO FUNCIONA =========================== -->
-    <section class="secao secao-escura" id="como-funciona" aria-labelledby="como-titulo">
+    <!-- =========================== COMO FUNCIONA ===========================
+         Linha do tempo: etapas alternando esquerda/direita (no celular, todas à direita
+         da linha). A linha "cresce" quando a seção aparece e cada etapa entra do seu lado. -->
+    <section class="secao secao-passos" id="como-funciona" aria-labelledby="como-titulo">
         <div class="container">
-            <header class="cabeca">
-                <span class="rotulo rotulo-claro">Passo a passo</span>
+            <header class="cabeca centro">
+                <span class="rotulo">Passo a passo</span>
                 <h2 id="como-titulo">Como funciona o seu <em>tratamento ortodôntico</em></h2>
                 <p>Do primeiro contato ao fim do tratamento, você sabe o que vem a seguir.</p>
             </header>
-            <ol class="etapas">
-                <li class="revelar"><span class="etapa-num">01</span><h3>Contato pelo WhatsApp</h3><p>Você tira as primeiras dúvidas, confirma o convênio e agenda a avaliação.</p></li>
-                <li class="revelar"><span class="etapa-num">02</span><h3>Avaliação</h3><p>Exame clínico, fotos de dentro e de fora da boca e radiografias, para entender o seu caso.</p></li>
-                <li class="revelar"><span class="etapa-num">03</span><h3>Planejamento</h3><p>A Dra. Nayane explica o que encontrou, apresenta as opções de aparelho e tira as suas dúvidas.</p></li>
-                <li class="revelar"><span class="etapa-num">04</span><h3>Instalação e manutenções</h3><p>O aparelho é instalado e acompanhado em consultas periódicas. <span class="pend">PENDENTE: intervalo das manutenções</span></p></li>
-                <li class="revelar"><span class="etapa-num">05</span><h3>Acompanhamento</h3><p>Dúvidas pelo WhatsApp ao longo de todo o tratamento. <span class="pend">PENDENTE: como é o fim do tratamento (contenção e retornos)</span></p></li>
+            <ol class="passos revelar">
+                <li class="passo revelar">
+                    <div class="passo-cartao"><span class="passo-num" aria-hidden="true">01</span><div class="passo-texto"><h3><span class="sr">Etapa 1: </span>Contato pelo WhatsApp</h3><p>Você tira as primeiras dúvidas, confirma o convênio e agenda a avaliação.</p></div></div>
+                    <span class="passo-icone" aria-hidden="true"><svg><use href="#i-whatsapp"/></svg></span>
+                </li>
+                <li class="passo revelar">
+                    <div class="passo-cartao"><span class="passo-num" aria-hidden="true">02</span><div class="passo-texto"><h3><span class="sr">Etapa 2: </span>Avaliação</h3><p>Exame clínico, fotos de dentro e de fora da boca e radiografias, para entender o seu caso.</p></div></div>
+                    <span class="passo-icone" aria-hidden="true"><svg><use href="#i-search"/></svg></span>
+                </li>
+                <li class="passo revelar">
+                    <div class="passo-cartao"><span class="passo-num" aria-hidden="true">03</span><div class="passo-texto"><h3><span class="sr">Etapa 3: </span>Planejamento</h3><p>A Dra. Nayane explica o que encontrou, apresenta as opções de aparelho e tira as suas dúvidas.</p></div></div>
+                    <span class="passo-icone" aria-hidden="true"><svg><use href="#i-prancheta"/></svg></span>
+                </li>
+                <li class="passo revelar">
+                    <div class="passo-cartao"><span class="passo-num" aria-hidden="true">04</span><div class="passo-texto"><h3><span class="sr">Etapa 4: </span>Instalação e manutenções</h3><p>O aparelho é instalado e acompanhado em consultas periódicas. <span class="pend">PENDENTE: intervalo das manutenções</span></p></div></div>
+                    <span class="passo-icone" aria-hidden="true"><svg><use href="#i-aparelho"/></svg></span>
+                </li>
+                <li class="passo revelar">
+                    <div class="passo-cartao"><span class="passo-num" aria-hidden="true">05</span><div class="passo-texto"><h3><span class="sr">Etapa 5: </span>Acompanhamento</h3><p>Dúvidas pelo WhatsApp ao longo de todo o tratamento. <span class="pend">PENDENTE: como é o fim do tratamento (contenção e retornos)</span></p></div></div>
+                    <span class="passo-icone" aria-hidden="true"><svg><use href="#i-chat-pontos"/></svg></span>
+                </li>
             </ol>
             <figure class="citacao revelar">
-                <blockquote><p>“Eu avalio e somente indico tratamento em casos que realmente o paciente necessite.”</p></blockquote>
-                <figcaption>Dra. Nayane Moreno <span class="pend">PENDENTE: aprovar a citação</span></figcaption>
+                <span class="citacao-aspas" aria-hidden="true">“</span>
+                <div class="citacao-texto">
+                    <blockquote><p>“Eu avalio e somente indico tratamento em casos que realmente o paciente necessite.”</p></blockquote>
+                    <figcaption>Dra. Nayane Moreno <span class="pend">PENDENTE: aprovar a citação</span></figcaption>
+                </div>
             </figure>
             <div class="nota-centro">
-                <a class="botao botao-claro" href="#" data-wa data-wa-origin="como_funciona"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar avaliação pelo WhatsApp</a>
+                <a class="botao" href="#" data-wa data-wa-origin="como_funciona"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar avaliação pelo WhatsApp</a>
             </div>
         </div>
     </section>
@@ -549,6 +572,6 @@
 <!-- Só na prévia: mostra ou esconde os marcadores de pendência para apresentar à cliente. -->
 <button class="previa-alternar" type="button" aria-pressed="true">Prévia · <span>ocultar pendências</span></button>
 
-<script src="script.js?v=20261105-10" defer></script>
+<script src="script.js?v=20261105-12" defer></script>
 </body>
 </html>

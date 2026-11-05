@@ -219,15 +219,52 @@ body.menu-aberto { overflow: hidden; }
 .convenio-claro .convenio-selo { background: var(--menta); color: var(--verde-2); }
 
 /* Como funciona */
-.etapas { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: etapa; }
-.etapas li { padding: 22px; border-radius: var(--raio); background: #ffffff0d; border: 1px solid #ffffff1f; }
-.etapas h3 { font-size: 1.2rem; margin-bottom: 6px; }
-.etapas p { margin: 0; font-size: .94rem; }
-.etapa-num { display: inline-block; margin-bottom: 12px; font-size: 1.6rem; font-weight: 300; color: var(--marca); }
-.citacao { margin: 36px auto 0; max-width: 760px; padding: 26px; border-left: 4px solid var(--marca); border-radius: 0 var(--raio) var(--raio) 0; background: #ffffff0f; }
+/* Como funciona: seção clara com linha do tempo central. Cartões em verde-escuro
+   (mesmo acabamento dos cartões da localização), ícones em círculos com anel branco. */
+.secao-passos { position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(180deg, #FFFFFF, var(--fundo)); }
+.secao-passos::before, .secao-passos::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; }
+.secao-passos::before { width: 560px; height: 380px; left: -300px; top: -200px; background: linear-gradient(160deg, #D7EFE8, #E8F6F100 72%); transform: rotate(-12deg); }
+.secao-passos::after { width: 620px; height: 400px; right: -330px; bottom: -230px; background: linear-gradient(340deg, #D7EFE8, #E8F6F100 72%); transform: rotate(-12deg); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.passos { position: relative; list-style: none; margin: 0 auto; padding: 0; max-width: 1080px; display: grid; gap: 14px; }
+/* a linha do tempo */
+.passos::before { content: ""; position: absolute; left: 27px; top: 24px; bottom: 24px; width: 2px; background: linear-gradient(#16AD8E00, #16AD8E8C 8%, #16AD8E8C 92%, #16AD8E00); transform: scaleY(0); transform-origin: top; transition: transform 1.6s var(--ease); }
+.js .passos.revelar { opacity: 1; transform: none; }
+.passos.visivel::before, html:not(.js) .passos::before { transform: scaleY(1); }
+.passo { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; }
+.passo-icone { grid-column: 1; grid-row: 1; position: relative; z-index: 1; justify-self: center; display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%;
+    border: 3px solid #fff; color: #fff; background: radial-gradient(circle at 35% 30%, #16AD8E55, var(--verde) 70%);
+    box-shadow: 0 0 0 5px #16AD8E26, 0 0 18px #16AD8E40, 0 10px 22px -10px #0F3F3699; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.passo-icone svg { width: 22px; height: 22px; }
+.passo-cartao { grid-column: 2; grid-row: 1; position: relative; display: flex; align-items: center; gap: 16px; padding: 18px; border: 1px solid #16AD8E40; border-radius: 20px; color: #fff;
+    background: linear-gradient(145deg, transparent 35%, #00000033 100%), var(--verde);
+    box-shadow: 0 0 0 1px #16AD8E1F, 0 16px 34px -18px #0F3F36CC, inset 0 1px 0 #FFFFFF14; transition: transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease); }
+/* traço que liga o cartão ao círculo */
+.passo-cartao::before { content: ""; position: absolute; top: 50%; left: -14px; width: 14px; height: 2px; background: #16AD8E8C; }
+.passo-num { flex: none; min-width: 44px; font-size: 2rem; font-weight: 300; line-height: 1; color: var(--marca); font-variant-numeric: tabular-nums; }
+.passo-texto { padding-left: 16px; border-left: 1px solid #FFFFFF26; }
+.passo h3 { margin: 0 0 4px; color: #fff; font-size: 1.05rem; font-weight: 600; }
+.passo p { margin: 0; color: #DCE8E5; font-size: .9rem; line-height: 1.55; }
+@media (hover: hover) {
+    .passo:hover .passo-cartao { transform: translateY(-4px); border-color: #16AD8E99; box-shadow: 0 0 0 1px #16AD8E40, 0 0 26px #16AD8E59, 0 22px 40px -20px #0F3F36CC, inset 0 1px 0 #FFFFFF1F; }
+    .passo:hover .passo-icone { box-shadow: 0 0 0 6px #16AD8E40, 0 0 26px #16AD8E80, 0 10px 22px -10px #0F3F3699; }
+}
+/* entrada: o círculo "acende" e o cartão desliza do lado dele */
+.js .passo.revelar { transform: translateX(22px); }
+.js .passo .passo-icone { transform: scale(.6); opacity: 0; transition: transform .5s var(--ease) .15s, opacity .5s var(--ease) .15s, box-shadow .35s var(--ease); }
+.js .passo.visivel .passo-icone { transform: scale(1); opacity: 1; }
+/* Citação em cartão claro com aspas grandes */
+@media (max-width: 599px) {
+    .passo-cartao { flex-direction: column; align-items: flex-start; gap: 8px; padding: 18px 18px 20px; }
+    .passo-num { min-width: 0; font-size: 1.6rem; }
+    .passo-texto { padding: 10px 0 0; border-left: 0; border-top: 1px solid #FFFFFF26; width: 100%; }
+}
+.citacao { margin: 40px auto 0; max-width: 1080px; display: grid; grid-template-columns: 56px 1fr; align-items: center; gap: 16px; padding: 22px 20px; border: 1px solid #16AD8E33; border-radius: 22px;
+    background: linear-gradient(135deg, #F4FAF8, var(--menta)); box-shadow: var(--sombra-p); }
+.citacao-aspas { align-self: stretch; display: grid; place-items: center; padding-right: 16px; border-right: 1px solid #0F3F3626; color: var(--verde-2); font-size: 4rem; font-weight: 800; line-height: .6; padding-top: 18px; }
 .citacao blockquote { margin: 0; }
-.citacao p { margin: 0 0 10px; font-weight: 300; font-size: clamp(1.2rem, 3.6vw, 1.55rem); line-height: 1.35; color: #fff; }
-.citacao figcaption { font-size: .88rem; font-weight: 600; color: var(--marca); }
+.citacao p { margin: 0 0 8px; color: var(--tinta); font-size: clamp(1.05rem, 2.6vw, 1.4rem); font-weight: 500; line-height: 1.4; }
+.citacao figcaption { color: var(--verde-2); font-size: .92rem; font-weight: 600; }
 
 /* Sobre */
 .sobre { display: grid; gap: 40px; align-items: center; }
@@ -410,7 +447,6 @@ body.sem-pendencias #avaliacoes { display: none; }
     .hero-acoes .botao { width: auto; }
     .faixa { grid-template-columns: 1fr 1fr; padding: 26px 28px; }
     .situacoes { grid-template-columns: 1fr 1fr; }
-    .etapas { grid-template-columns: 1fr 1fr; }
     .credenciais { grid-template-columns: repeat(4, 1fr); }
     .sobre-texto .credenciais { grid-template-columns: 1fr 1fr; }
     .galeria-trilho figure { flex-basis: 78%; }
@@ -421,7 +457,28 @@ body.sem-pendencias #avaliacoes { display: none; }
     .aparelho-destaque { transform: translateY(-14px); }
     .convenios { grid-template-columns: 1.1fr .9fr; }
     .situacoes { grid-template-columns: repeat(3, 1fr); }
-    .etapas { grid-template-columns: repeat(5, 1fr); }
+    /* computador: etapas alternando os lados da linha, com leve sobreposição */
+    .passos { gap: 0; }
+    .passos::before { left: 50%; margin-left: -1px; }
+    .passo { grid-template-columns: 1fr 96px 1fr; gap: 0; }
+    .passo + .passo { margin-top: -38px; }
+    .passo-icone { grid-column: 2; width: 66px; height: 66px; }
+    .passo-icone svg { width: 28px; height: 28px; }
+    .passo:nth-child(odd) .passo-cartao { grid-column: 1; }
+    .passo:nth-child(even) .passo-cartao { grid-column: 3; }
+    .passo:nth-child(odd) .passo-cartao::before { left: auto; right: -22px; width: 22px; }
+    .passo:nth-child(even) .passo-cartao::before { left: -22px; width: 22px; }
+    .js .passo.revelar:nth-child(odd) { transform: translateX(-28px); }
+    .js .passo.revelar:nth-child(even) { transform: translateX(28px); }
+    .js .passo.revelar.visivel { transform: none; }
+    .js .passo.visivel:nth-child(odd) .passo-icone { transform: translateX(-8px); }
+    .js .passo.visivel:nth-child(even) .passo-icone { transform: translateX(8px); }
+    .passo-cartao { padding: 22px 26px; gap: 22px; }
+    .passo-num { min-width: 62px; font-size: 2.7rem; }
+    .passo-texto { padding-left: 22px; }
+    .passo h3 { font-size: 1.15rem; }
+    .citacao { grid-template-columns: 120px 1fr; padding: 26px 36px; gap: 30px; }
+    .citacao-aspas { font-size: 6rem; padding-right: 30px; }
     .duvidas { grid-template-columns: .8fr 1.2fr; gap: 60px; align-items: start; }
     .duvidas .cabeca { position: sticky; top: calc(var(--header-h) + 30px); }
 }
