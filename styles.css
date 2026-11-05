@@ -297,12 +297,12 @@ body.menu-aberto { overflow: hidden; }
 .fio-base { stroke: url(#fio-metal); stroke-width: 5; }
 .fio-reflexo { stroke: #FFFFFF; stroke-width: 1.4; opacity: .95; }
 .local-braquete { opacity: 0; transition: opacity .7s var(--ease) 1.5s; }
-.braquete-halo { fill: #16AD8E; opacity: .55; }
+.braquete-halo { fill: #16AD8E; opacity: .4; }
 .braquete-ligadura { fill: #16AD8E26; stroke: #16AD8E; stroke-width: 2.4; }
 .local.visivel .fio-linhas path, html:not(.js) .fio-linhas path { stroke-dashoffset: 0; }
 .local.visivel .local-braquete, html:not(.js) .local-braquete { opacity: 1; }
 /* Um brilho suave e contínuo no bráquete, como um reflexo de luz */
-@keyframes braquete-pulsar { 0%, 100% { opacity: .45; } 50% { opacity: .75; } }
+@keyframes braquete-pulsar { 0%, 100% { opacity: .32; } 50% { opacity: .55; } }
 .local.visivel .braquete-halo { animation: braquete-pulsar 3.2s ease-in-out 2.2s infinite; }
 .local h2 { position: relative; max-width: 820px; margin-bottom: 24px; font-size: clamp(1.5rem, 4.6vw, 2.35rem); }
 .local h2 em { color: var(--verde-2); font-weight: 600; }

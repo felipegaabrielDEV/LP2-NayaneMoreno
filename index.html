@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261105-08">
+    <link rel="stylesheet" href="styles.css?v=20261105-10">
 </head>
 <body>
 
@@ -378,6 +378,18 @@
                             <stop offset=".55" stop-color="#8E9D9A"/>
                             <stop offset="1" stop-color="#E6EDEC"/>
                         </linearGradient>
+                        <linearGradient id="cromo" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="#E4ECEB"/>
+                            <stop offset=".3" stop-color="#A7B6B3"/>
+                            <stop offset=".65" stop-color="#5F716D"/>
+                            <stop offset="1" stop-color="#8FA3A0"/>
+                        </linearGradient>
+                        <linearGradient id="cromo-face" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="#D9E3E1"/>
+                            <stop offset=".45" stop-color="#A3B3B0"/>
+                            <stop offset=".55" stop-color="#8A9C98"/>
+                            <stop offset="1" stop-color="#C3D0CD"/>
+                        </linearGradient>
                         <filter id="brilho-turquesa" x="-60%" y="-60%" width="220%" height="220%">
                             <feGaussianBlur stdDeviation="6"/>
                         </filter>
@@ -387,19 +399,23 @@
                         <path class="fio-base" pathLength="1" d="M0 200 C 170 40, 350 25, 510 100 S 790 160, 1000 -6"/>
                         <path class="fio-reflexo" pathLength="1" d="M0 198.5 C 170 38.5, 350 23.5, 510 98.5 S 790 158.5, 1000 -7.5"/>
                     </g>
-                    <g class="local-braquete" transform="translate(784 122) rotate(-20) scale(1.45)">
-                        <rect class="braquete-halo" x="-34" y="-30" width="68" height="60" rx="14" filter="url(#brilho-turquesa)"/>
-                        <!-- aletas (as "asas" de cima e de baixo) -->
-                        <rect x="-24" y="-27" width="18" height="16" rx="4" fill="url(#braquete-metal)" stroke="#7E8F8C" stroke-width="1"/>
-                        <rect x="6" y="-27" width="18" height="16" rx="4" fill="url(#braquete-metal)" stroke="#7E8F8C" stroke-width="1"/>
-                        <rect x="-24" y="11" width="18" height="16" rx="4" fill="url(#braquete-metal)" stroke="#7E8F8C" stroke-width="1"/>
-                        <rect x="6" y="11" width="18" height="16" rx="4" fill="url(#braquete-metal)" stroke="#7E8F8C" stroke-width="1"/>
-                        <!-- base e canaleta por onde passa o fio -->
-                        <rect x="-27" y="-13" width="54" height="26" rx="6" fill="url(#braquete-metal)" stroke="#7E8F8C" stroke-width="1"/>
-                        <rect x="-27" y="-4" width="54" height="8" rx="3" fill="#5E706C"/>
-                        <!-- ligadura turquesa -->
-                        <rect class="braquete-ligadura" x="-21" y="-21" width="42" height="42" rx="11"/>
-                        <rect x="-22" y="-11" width="20" height="3" rx="1.5" fill="#FFFFFF" opacity=".75"/>
+                    <!-- Bráquete cromado em "H", como no mockup: duas peças de metal, anel turquesa
+                         no centro e o trecho do fio em turquesa passando por ele. -->
+                    <g class="local-braquete" transform="translate(784.1 124.2) rotate(-19.3) scale(1.25)">
+                        <ellipse class="braquete-halo" cx="0" cy="0" rx="46" ry="36" filter="url(#brilho-turquesa)"/>
+                        <!-- peça da esquerda -->
+                        <rect x="-39" y="-28" width="34" height="52" rx="10" fill="url(#cromo)" stroke="#4A5C58" stroke-width="1.2"/>
+                        <rect x="-35" y="-24" width="26" height="44" rx="7" fill="url(#cromo-face)" stroke="#16AD8E" stroke-opacity=".55" stroke-width="1"/>
+                        <rect x="-33" y="-22" width="8" height="17" rx="3.5" fill="#FFFFFF" opacity=".55"/>
+                        <!-- peça da direita (um pouco mais baixa, como no mockup) -->
+                        <rect x="5" y="-24" width="34" height="52" rx="10" fill="url(#cromo)" stroke="#4A5C58" stroke-width="1.2"/>
+                        <rect x="9" y="-20" width="26" height="44" rx="7" fill="url(#cromo-face)" stroke="#16AD8E" stroke-opacity=".55" stroke-width="1"/>
+                        <rect x="11" y="-18" width="8" height="17" rx="3.5" fill="#FFFFFF" opacity=".55"/>
+                        <!-- trecho turquesa do fio e anel central -->
+                        <path d="M-44 0 H44" stroke="#16AD8E" stroke-width="4" stroke-linecap="round" opacity=".9"/>
+                        <path d="M-44 -1 H44" stroke="#B9F0E3" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>
+                        <ellipse cx="0" cy="0" rx="12" ry="8" fill="#16AD8E33" stroke="#0F9A7E" stroke-width="2.6"/>
+                        <ellipse cx="-1" cy="-2" rx="7" ry="3.5" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity=".8"/>
                     </g>
                 </svg>
                 <h2 id="local-titulo">Estamos no bairro <em>São José</em>, em Aracaju</h2>
@@ -533,6 +549,6 @@
 <!-- Só na prévia: mostra ou esconde os marcadores de pendência para apresentar à cliente. -->
 <button class="previa-alternar" type="button" aria-pressed="true">Prévia · <span>ocultar pendências</span></button>
 
-<script src="script.js?v=20261105-08" defer></script>
+<script src="script.js?v=20261105-10" defer></script>
 </body>
 </html>
