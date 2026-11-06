@@ -204,6 +204,31 @@ body.menu-aberto { overflow: hidden; }
 .aparelho-destaque .lista-check svg { background: #ffffff1a; color: var(--marca); }
 .aparelho-destaque .aparelho-arte { background: linear-gradient(180deg, #165A4D, #124C41); }
 
+/* Evolução do tratamento: cada vista é um quadro dividido ao meio (antes | momento atual).
+   Ao passar o mouse, a metade sob o mouse cresce. Sem autorização, a seção é ocultada no modo limpo. */
+.secao-caso { background: #fff; }
+body.sem-pendencias .previa-caso { display: none; }
+.casos { display: grid; gap: 18px; }
+.caso { padding: 14px; border: 1px solid var(--borda); border-radius: var(--raio); background: #fff; box-shadow: var(--sombra-p); }
+.caso h3 { margin: 6px 6px 12px; font-size: 1.1rem; }
+.caso > p { margin: 12px 6px 4px; font-size: .88rem; }
+.caso-par { display: flex; gap: 6px; height: 230px; }
+.caso-foto { position: relative; flex: 1; margin: 0; overflow: hidden; border-radius: 14px; background: var(--fundo-2); transition: flex .5s var(--ease); }
+.caso-foto img, .caso-vazio { width: 100%; height: 100%; object-fit: cover; }
+.caso-vazio { display: grid; place-items: center; color: #9DBDB4; background: repeating-linear-gradient(45deg, var(--fundo-2), var(--fundo-2) 10px, #E4EFEB 10px, #E4EFEB 20px); }
+.caso-vazio svg { width: 44px; height: 44px; }
+.caso-foto figcaption { position: absolute; left: 8px; bottom: 8px; padding: 4px 12px; border-radius: 999px; background: var(--verde); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.caso-foto:last-child figcaption { background: var(--botao); }
+@media (hover: hover) { .caso-par:hover .caso-foto { flex: .8; } .caso-par .caso-foto:hover { flex: 1.5; } }
+.depoimento { display: grid; gap: 22px; align-items: center; max-width: 1000px; margin: 44px auto 0; padding: 18px; border: 1px solid var(--borda); border-radius: 24px; background: linear-gradient(135deg, #F4FAF8, var(--menta)); box-shadow: var(--sombra-p); }
+.depoimento-video { aspect-ratio: 16 / 9; overflow: hidden; border-radius: 16px; background: var(--verde); }
+.depoimento-video video { width: 100%; height: 100%; object-fit: cover; }
+.depoimento-vazio { width: 100%; height: 100%; display: grid; place-items: center; background: radial-gradient(circle at 30% 20%, #16AD8E40, var(--verde) 70%); }
+.depoimento-play { display: grid; place-items: center; width: 68px; height: 68px; border-radius: 50%; background: #ffffffeb; color: var(--botao); box-shadow: 0 12px 28px -10px #0006; }
+.depoimento-play svg { width: 30px; height: 30px; margin-left: 3px; }
+.depoimento-texto h3 { font-size: 1.35rem; }
+@media (min-width: 768px) { .casos { grid-template-columns: repeat(3, 1fr); } .depoimento { grid-template-columns: 1.15fr 1fr; padding: 26px; gap: 36px; } .caso-par { height: 260px; } }
+
 /* Convênios */
 .convenios { display: grid; gap: 18px; max-width: 980px; margin-inline: auto; }
 .convenio { padding: 28px 24px; border-radius: var(--raio); background: var(--verde); color: #D7E8E4; display: flex; flex-direction: column; gap: 6px; }

@@ -128,7 +128,8 @@ Depois acesse `http://localhost:8000`.
 - [ ] Intervalo das manutenções e como termina o tratamento (contenção e retornos)
 - [ ] Idade mínima para a ortodontia e faixa média de duração do tratamento
 - [ ] Link do perfil no Google e liberação das avaliações (norma do CFO)
-- [ ] Antes e depois e depoimentos: autorização escrita de cada paciente e conferência da norma do CFO/CRO-SE
+- [ ] Seção "Evolução do tratamento" (caso em andamento) e vídeo da mãe: autorização escrita do paciente/responsável e da mãe, conferência da norma do CFO/CRO-SE, fotos em JPG leve (até 1 MB) e o arquivo do vídeo. A seção está montada com quadros vazios e some no modo "ocultar pendências"
+- [ ] Fotos de "depois" (o paciente ainda está com aparelho; hoje só há antes e momento atual)
 - [ ] Logotipo e cores da marca, se existirem
 - [ ] Domínio e acesso ao Google Tag Manager
 

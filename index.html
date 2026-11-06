@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261105-15">
+    <link rel="stylesheet" href="styles.css?v=20261106-02">
 </head>
 <body>
 
@@ -54,6 +54,8 @@
     <symbol id="i-prancheta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 4.5V3h6v1.5M8.5 10h7M8.5 13.5h7M8.5 17h4"/></g></symbol>
     <symbol id="i-aparelho" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="6.5" height="8" rx="1.8"/><rect x="14" y="8" width="6.5" height="8" rx="1.8"/><path d="M1.5 12h21"/></g></symbol>
     <symbol id="i-chat-pontos" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3.5c4.7 0 8.5 3.3 8.5 7.5S16.7 18.5 12 18.5c-1 0-2-.1-2.9-.4L4.5 20l1.2-3.6C4.3 15 3.5 13.1 3.5 11c0-4.2 3.8-7.5 8.5-7.5Z"/></g><g fill="currentColor"><circle cx="8.3" cy="11" r="1.1"/><circle cx="12" cy="11" r="1.1"/><circle cx="15.7" cy="11" r="1.1"/></g></symbol>
+    <symbol id="i-dente" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M7 4c-2.2 0-3.5 1.6-3.5 4 0 3 1.4 4.2 1.8 7 .3 2 .6 4 1.9 4s1.4-2.2 1.9-3.6c.3-.9.6-1.4 1.4-1.4s1.1.5 1.4 1.4c.5 1.4.6 3.6 1.9 3.6s1.6-2 1.9-4c.4-2.8 1.8-4 1.8-7 0-2.4-1.3-4-3.5-4-1.7 0-2.5.8-4 .8S8.7 4 7 4Z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5-11-6.5Z"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></symbol>
     <!-- Ícones das situações: desenhos simples de dentes, só ilustração. -->
@@ -233,6 +235,65 @@
                 </article>
             </div>
             <p class="nota-pequena">A indicação do aparelho, a duração e a frequência das consultas dependem da avaliação de cada caso.</p>
+        </div>
+    </section>
+
+    <!-- =========================== EVOLUÇÃO DO TRATAMENTO ===========================
+         Fotos reais só entram com autorização por escrito do paciente/responsável e conferência
+         da norma do CFO/CRO-SE. Enquanto isso, a seção mostra quadros vazios e fica OCULTA no
+         modo "ocultar pendências" (botão da prévia). Para ligar: troque cada .caso-vazio por
+         <img src="assets/casos/....webp" alt="...">, remova a classe `.previa-caso` e os .pend. -->
+    <section class="secao secao-caso previa-caso" id="evolucao" aria-labelledby="evolucao-titulo">
+        <div class="container">
+            <header class="cabeca centro">
+                <span class="rotulo">Evolução do tratamento</span>
+                <h2 id="evolucao-titulo">Um caso <em>em andamento</em></h2>
+                <p>Fotos de um paciente da Dra. Nayane, do início do tratamento até o momento atual. O tratamento ainda está em curso, e cada caso evolui de um jeito.</p>
+                <span class="pend">PENDENTE: autorização por escrito do paciente e do responsável, conferência da norma do CFO/CRO-SE e fotos em JPG leve (até 1 MB cada)</span>
+            </header>
+            <div class="casos">
+                <article class="caso revelar">
+                    <h3>Vista lateral</h3>
+                    <div class="caso-par">
+                        <figure class="caso-foto" data-foto="lateral-antes"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Antes</figcaption></figure>
+                        <figure class="caso-foto" data-foto="lateral-atual"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Momento atual</figcaption></figure>
+                    </div>
+                    <p>No início, dentes da frente projetados. Hoje, o caso segue em acompanhamento com o aparelho.</p>
+                </article>
+                <article class="caso revelar">
+                    <h3>Arcada de cima</h3>
+                    <div class="caso-par">
+                        <figure class="caso-foto" data-foto="superior-antes"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Antes</figcaption></figure>
+                        <figure class="caso-foto" data-foto="superior-atual"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Momento atual</figcaption></figure>
+                    </div>
+                    <p>No início, dentes da frente desalinhados. Hoje, o aparelho conduz os dentes pelo arco.</p>
+                </article>
+                <article class="caso revelar">
+                    <h3>Arcada de baixo</h3>
+                    <div class="caso-par">
+                        <figure class="caso-foto" data-foto="inferior-antes"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Antes</figcaption></figure>
+                        <figure class="caso-foto" data-foto="inferior-atual"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Momento atual</figcaption></figure>
+                    </div>
+                    <p>No início, dentes encavalados. Hoje, o aparelho conduz os dentes pelo arco.</p>
+                </article>
+            </div>
+            <p class="nota-pequena">Tratamento em andamento. Imagens de um único paciente, publicadas com autorização. O resultado varia de pessoa para pessoa e depende da avaliação clínica.</p>
+
+            <!-- Depoimento em vídeo: o arquivo entra em assets/ só com a autorização da mãe. -->
+            <div class="depoimento revelar">
+                <div class="depoimento-video">
+                    <div class="depoimento-vazio" aria-hidden="true"><span class="depoimento-play"><svg><use href="#i-play"/></svg></span></div>
+                </div>
+                <div class="depoimento-texto">
+                    <span class="rotulo">Depoimento</span>
+                    <h3>O relato da mãe de um paciente</h3>
+                    <p>A mãe conta como tem sido o acompanhamento do tratamento ortodôntico do filho.</p>
+                    <span class="pend">PENDENTE: autorização por escrito da mãe (vale também para a imagem do filho, que é menor) e confirmação do que ela diz no vídeo</span>
+                </div>
+            </div>
+            <div class="nota-centro">
+                <a class="botao" href="#" data-wa data-wa-origin="casos"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg>Agendar avaliação pelo WhatsApp</a>
+            </div>
         </div>
     </section>
 
@@ -572,6 +633,6 @@
 <!-- Só na prévia: mostra ou esconde os marcadores de pendência para apresentar à cliente. -->
 <button class="previa-alternar" type="button" aria-pressed="true">Prévia · <span>ocultar pendências</span></button>
 
-<script src="script.js?v=20261105-15" defer></script>
+<script src="script.js?v=20261106-02" defer></script>
 </body>
 </html>
