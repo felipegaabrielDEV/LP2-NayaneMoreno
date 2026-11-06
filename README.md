@@ -27,6 +27,7 @@ Landing page da **Dra. Nayane Moreno**, Cirurgiã-Dentista (CRO-SE 2301) em Arac
 | **Convênios e particular** | Lado a lado: planos atendidos e atendimento particular |
 | **Como funciona** | Cinco etapas, do WhatsApp ao acompanhamento, e citação da Dra. Nayane |
 | **Sobre** | Formação, trajetória e história pessoal ligada à ortodontia, com cartões de credenciais |
+| **Atendimento** | Três quadros para fotos da Dra. atendendo (grade no computador, carrossel no celular). Hoje com marcadores de pendência e escondida no modo "ocultar pendências" |
 | **Consultório** | Galeria com as fotos do consultório (setas, deslize e teclado), horário e endereço |
 | **Avaliações do Google** | Bloco reservado; só vai ao ar depois da liberação |
 | **Perguntas frequentes** | Oito perguntas em acordeão acessível |
@@ -118,7 +119,7 @@ Depois acesse `http://localhost:8000`.
 **Travam o lançamento**
 - [x] Endereço (Rua Senador Rolemberg, 562, São José, CEP 49015-120), WhatsApp (79) 99945-2813, Instagram e horário
 - [ ] Grafia da rua: o Google registra "Rollemberg" (com dois L); confirmar com a Dra. Nayane
-- [ ] Fotos de atendimento: autorização por escrito das pacientes que aparecem nas fotos
+- [ ] Fotos de atendimento (seção "Atendimento", 3 quadros): autorização por escrito das pacientes que aparecem nas fotos. Depois: salvar em `assets/atendimento/` (WebP 810x1080, ordem janela, exame, refletor) e trocar os quadros pelas imagens (passo a passo no comentário da seção em `index.html`)
 - [ ] Confirmação dos três tipos de aparelho (metálico, porcelana, alinhador) e da marca do alinhador
 - [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia, autorização para citar os nomes e logotipos oficiais
 - [ ] Aprovação do texto "Sobre" e da citação da Dra. Nayane

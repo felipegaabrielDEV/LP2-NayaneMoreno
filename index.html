@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261106-08">
+    <link rel="stylesheet" href="styles.css?v=20261106-10">
 </head>
 <body>
 
@@ -402,6 +402,29 @@
     </section>
 
     <!-- =========================== CONSULTÓRIO =========================== -->
+    <!-- =========================== ATENDIMENTO ===========================
+         Seção com 3 fotos da Dra. atendendo. As fotos NÃO estão no repositório (público):
+         dependem de autorização escrita das pacientes e da conferência da norma do CFO/CRO-SE.
+         Enquanto isso, ficam os espaços marcados. Para ativar: salve as imagens em assets/atendimento/
+         (atendimento-01.webp, -02 e -03, 810x1080), troque cada <figure class="atend-vazio"> por
+         <figure><img src="assets/atendimento/atendimento-0X.webp" width="810" height="1080" loading="lazy" alt="..."></figure>
+         e remova a classe previa-caso da seção. A ordem combinada é: janela, exame, refletor. -->
+    <section class="secao secao-clara previa-caso" id="atendimento" aria-labelledby="atend-titulo">
+        <div class="container">
+            <div class="cabecalho-secao">
+                <span class="rotulo">Atendimento</span>
+                <h2 id="atend-titulo">Uma avaliação feita <em>com calma e atenção</em></h2>
+                <p>Cada consulta começa pela escuta e pelo exame, no consultório da Dra. Nayane, em Aracaju.</p>
+            </div>
+            <div class="atend revelar">
+                <figure class="atend-vazio"><span>[PENDENTE: foto 1 do atendimento (janela)]</span></figure>
+                <figure class="atend-vazio"><span>[PENDENTE: foto 2 do atendimento (exame)]</span></figure>
+                <figure class="atend-vazio"><span>[PENDENTE: foto 3 do atendimento (refletor)]</span></figure>
+            </div>
+            <p class="atend-nota pend">[PENDENTE: autorização escrita das pacientes para publicar estas imagens]</p>
+        </div>
+    </section>
+
     <section class="secao" id="consultorio" aria-labelledby="consultorio-titulo">
         <div class="container consultorio">
             <div class="consultorio-texto">
@@ -634,6 +657,6 @@
 <button class="previa-alternar previa-fotos" type="button" aria-pressed="false">Fotos do caso · <span>mostrar</span></button>
 <button class="previa-alternar" type="button" aria-pressed="true">Prévia · <span>ocultar pendências</span></button>
 
-<script src="script.js?v=20261106-08" defer></script>
+<script src="script.js?v=20261106-10" defer></script>
 </body>
 </html>
