@@ -79,6 +79,7 @@ p { margin: 0 0 1em; }
 .pend { display: inline-block; margin: 6px 0; padding: 3px 10px; border: 1px dashed #B88A00; border-radius: 8px; background: #FFF4C2; color: #5E4700; font: 600 .74rem/1.45 var(--fonte-texto); letter-spacing: 0; text-transform: none; font-style: normal; }
 body.sem-pendencias .pend { display: none; }
 .previa-alternar { position: fixed; z-index: 850; left: 14px; bottom: 14px; padding: 9px 14px; border: 0; border-radius: 999px; background: #FFF4C2; color: #5E4700; font: 700 .75rem var(--fonte-texto); box-shadow: var(--sombra-p); cursor: pointer; }
+.previa-alternar.previa-fotos { bottom: 58px; background: #E8F6F1; color: #0F3F36; }
 
 /* ---------- Menu ---------- */
 .topo { position: sticky; top: 0; z-index: 900; background: #FFFFFFF0; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s, box-shadow .3s; }
