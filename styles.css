@@ -613,8 +613,8 @@ body.sem-pendencias #avaliacoes { display: none; }
 .faixa-wrap { --faixa-verde: var(--verde, #0F3F36); position: relative; isolation: isolate; width: 100%; margin: 40px 0 0; padding: 18px 0 0; }
 
 /* ---------- FIO TURQUESA ----------
-   O SVG tem 170 px de altura e o centro dos ícones fica em y = 85 (top = 96 - 85 = 11 px). */
-.faixa-fio { position: absolute; z-index: 2; top: 11px; left: 0; width: 100%; height: 170px; overflow: visible; pointer-events: none; }
+   O SVG tem 170 px de altura e o centro dos ícones fica em y = 85 (top = 76 - 85 = -9 px: 18 de respiro + 16 de margem + 42 de meio ícone). */
+.faixa-fio { position: absolute; z-index: 2; top: -9px; left: 0; width: 100%; height: 170px; overflow: visible; pointer-events: none; }
 .faixa-fio .fio-sombra { fill: none; stroke: #16AD8E; stroke-width: 12; stroke-linecap: round; opacity: .18; filter: url(#fio-brilho); }
 .faixa-fio .fio-linha { fill: none; stroke: url(#fio-gradiente); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: .95; vector-effect: non-scaling-stroke; }
 /* Luz que percorre o fio (só no hover). O caminho tem pathLength = 1000: o traço de 70 sai de antes do início e vai até o fim. */
@@ -627,8 +627,8 @@ body.sem-pendencias #avaliacoes { display: none; }
 /* ---------- CARTÕES ----------
    O vidro fosco fica no ::before (camada 1), para o fio passar por cima dele e por baixo dos ícones (camada 3).
    Por isso o li não pode criar contexto de empilhamento (nada de backdrop-filter, transform ou isolation nele). */
-.faixa li { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-width: 0; min-height: 276px; padding: 154px 24px 28px; text-align: center; }
-.faixa li::before { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 34px; pointer-events: none;
+.faixa li { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-width: 0; min-height: 214px; padding: 112px 20px 24px; text-align: center; }
+.faixa li::before { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 28px; pointer-events: none;
     background: linear-gradient(145deg, rgba(255,255,255,.91) 0%, rgba(255,255,255,.76) 48%, rgba(218,246,237,.77) 100%);
     border: 1px solid rgba(255,255,255,.95);
     box-shadow: 0 14px 30px rgba(15,63,54,.10), 0 4px 10px rgba(15,63,54,.05), inset 0 1px 1px rgba(255,255,255,.95);
@@ -638,7 +638,7 @@ body.sem-pendencias #avaliacoes { display: none; }
 .faixa li > div { position: relative; z-index: 3; transform: translateY(var(--sobe, 0)); transition: transform 350ms var(--ease); }
 
 /* ---------- CÍRCULO DOS ÍCONES ---------- */
-.faixa-icone { position: absolute; z-index: 3; top: 20px; left: 50%; display: flex; align-items: center; justify-content: center; width: 116px; height: 116px; color: #fff; transform: translateX(-50%) translateY(var(--sobe, 0)) scale(var(--zoom, 1)); transform-origin: center; border-radius: 50%;
+.faixa-icone { position: absolute; z-index: 3; top: 16px; left: 50%; display: flex; align-items: center; justify-content: center; width: 84px; height: 84px; color: #fff; transform: translateX(-50%) translateY(var(--sobe, 0)) scale(var(--zoom, 1)); transform-origin: center; border-radius: 50%;
     background: radial-gradient(circle at 32% 25%, rgba(35,112,94,.95) 0%, #0F5144 38%, #07382F 100%);
     border: 1px solid rgba(22,173,142,.38);
     box-shadow: 0 12px 24px rgba(15,63,54,.23), 0 4px 10px rgba(15,63,54,.14), inset 0 2px 5px rgba(255,255,255,.18), inset 0 -5px 12px rgba(0,0,0,.12);
@@ -646,14 +646,25 @@ body.sem-pendencias #avaliacoes { display: none; }
 /* Reflexo interno do círculo */
 .faixa-icone::before { content: ""; position: absolute; inset: 5px; border-radius: 50%; border: 1px solid rgba(255,255,255,.12); background: linear-gradient(145deg, rgba(255,255,255,.09), transparent 55%); pointer-events: none; }
 /* Arco turquesa externo */
-.faixa-icone::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 3px solid transparent; border-top-color: #16AD8E; border-right-color: rgba(22,173,142,.75); transform: rotate(-35deg); filter: drop-shadow(0 0 4px rgba(22,173,142,.5)); pointer-events: none; transition: filter 350ms var(--ease), border-color 350ms var(--ease); }
-.faixa-icone svg { position: relative; z-index: 1; display: block; width: 49px; height: 49px; filter: drop-shadow(0 1px 2px rgba(0,0,0,.12)); }
+.faixa-icone::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2.5px solid transparent; border-top-color: #16AD8E; border-right-color: rgba(22,173,142,.75); transform: rotate(-35deg); filter: drop-shadow(0 0 4px rgba(22,173,142,.5)); pointer-events: none; transition: filter 350ms var(--ease), border-color 350ms var(--ease); }
+.faixa-icone svg { position: relative; z-index: 1; display: block; width: 36px; height: 36px; filter: drop-shadow(0 1px 2px rgba(0,0,0,.12)); }
 
 /* ---------- TÍTULOS E DESCRIÇÕES ---------- */
-.faixa strong { display: block; max-width: 100%; margin: 0 0 8px; color: var(--faixa-verde); font-size: clamp(16px, 1.25vw, 21px); font-weight: 700; line-height: 1.3; letter-spacing: -.45px; text-wrap: balance; }
-.faixa small { display: block; max-width: 100%; color: #405B54; font-size: clamp(13px, .98vw, 16px); font-weight: 400; line-height: 1.55; letter-spacing: -.1px; text-wrap: pretty; }
+.faixa strong { display: block; max-width: 100%; margin: 0 0 6px; color: var(--faixa-verde); font-size: clamp(15px, 1.1vw, 18px); font-weight: 700; line-height: 1.3; letter-spacing: -.45px; text-wrap: balance; }
+.faixa small { display: block; max-width: 100%; color: #405B54; font-size: clamp(12.5px, .9vw, 14.5px); font-weight: 400; line-height: 1.55; letter-spacing: -.1px; text-wrap: pretty; }
 
-/* ---------- HOVER (computador com mouse) ---------- */
+/* ---------- MOVIMENTO CONTÍNUO (sem precisar do mouse) ----------
+   Luz que percorre o fio, arco turquesa girando devagar e ícones que "respiram", cada um um pouco depois do outro. */
+.faixa-fio .fio-luz { animation: fio-passeia 6s ease-in-out infinite; }
+.faixa-icone { scale: 1; animation: icone-respira 3.6s ease-in-out infinite; }
+.faixa-icone::after { animation: arco-girando 8s linear infinite; }
+.faixa li:nth-child(2) .faixa-icone { animation-delay: .45s; }
+.faixa li:nth-child(3) .faixa-icone { animation-delay: .9s; }
+.faixa li:nth-child(4) .faixa-icone { animation-delay: 1.35s; }
+@keyframes fio-passeia { 0% { stroke-dashoffset: 70; opacity: 0; } 8% { opacity: 1; } 68% { stroke-dashoffset: -1000; opacity: 1; } 74%, 100% { stroke-dashoffset: -1000; opacity: 0; } }
+@keyframes icone-respira { 0%, 100% { scale: 1; } 50% { scale: 1.05; } }
+
+/* ---------- HOVER (computador com mouse): reforça o movimento ---------- */
 @media (min-width: 1024px) {
     .faixa-wrap { margin-top: 56px; }
 }
@@ -662,25 +673,22 @@ body.sem-pendencias #avaliacoes { display: none; }
     .faixa li:hover { --sobe: -5px; --zoom: 1.06; }
     .faixa li:hover::before { background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(255,255,255,.88) 50%, rgba(213,246,235,.92)); border-color: rgba(22,173,142,.38); box-shadow: 0 23px 42px rgba(15,63,54,.16), 0 8px 18px rgba(15,63,54,.09), inset 0 1px 2px rgba(255,255,255,1); }
     .faixa li:hover .faixa-icone { box-shadow: 0 16px 30px rgba(15,63,54,.30), 0 0 22px rgba(22,173,142,.23), inset 0 2px 5px rgba(255,255,255,.22); }
-    /* Arco gira devagar */
-    .faixa li:hover .faixa-icone::after { animation: arco-girando 3s linear infinite; filter: drop-shadow(0 0 8px rgba(22,173,142,.8)); }
-    /* Luz percorre o fio enquanto um cartão estiver em foco */
-    .faixa-wrap:has(.faixa li:hover) .fio-luz { opacity: 1; animation: fio-percorre 2.4s linear infinite; }
+    /* O arco ganha mais brilho */
+    .faixa li:hover .faixa-icone::after { filter: drop-shadow(0 0 8px rgba(22,173,142,.8)); }
     .faixa li:focus-within::before { border-color: rgba(22,173,142,.65); }
 }
 @keyframes arco-girando { from { transform: rotate(-35deg); } to { transform: rotate(325deg); } }
-@keyframes fio-percorre { from { stroke-dashoffset: 70; } to { stroke-dashoffset: -1000; } }
 
 /* ---------- TABLET: 600 a 1023 px (2 cartões por linha, sem fio) ---------- */
 @media (min-width: 600px) and (max-width: 1023px) {
     .faixa-fio { display: none; }
     .faixa { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .faixa li { min-height: 250px; padding: 120px 24px 26px; }
+    .faixa li { min-height: 200px; padding: 104px 22px 22px; }
     .faixa li::before { border-radius: 28px; }
-    .faixa-icone { top: 16px; width: 88px; height: 88px; }
-    .faixa-icone svg { width: 40px; height: 40px; }
-    .faixa strong { margin-bottom: 7px; font-size: 18px; }
-    .faixa small { font-size: 14px; }
+    .faixa-icone { top: 14px; width: 76px; height: 76px; }
+    .faixa-icone svg { width: 34px; height: 34px; }
+    .faixa strong { margin-bottom: 6px; font-size: 16px; }
+    .faixa small { font-size: 13.5px; }
 }
 
 /* ---------- CELULAR: até 599 px (painel único, itens em lista) ---------- */
@@ -691,24 +699,24 @@ body.sem-pendencias #avaliacoes { display: none; }
         background: linear-gradient(145deg, rgba(255,255,255,.94), rgba(231,247,241,.90));
         box-shadow: 0 12px 30px rgba(15,63,54,.09), inset 0 1px 2px rgba(255,255,255,.95);
         -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
-    .faixa li { flex-direction: row; align-items: center; justify-content: flex-start; gap: 18px; width: 100%; min-height: 104px; padding: 16px 2px; text-align: left; }
+    .faixa li { flex-direction: row; align-items: center; justify-content: flex-start; gap: 16px; width: 100%; min-height: 88px; padding: 12px 2px; text-align: left; }
     .faixa li::before { display: none; }
     .faixa li > div { transform: none; }
     .faixa li + li { border-top: 1px solid rgba(22,173,142,.19); }
-    .faixa-icone { position: relative; top: auto; left: auto; flex: 0 0 68px; width: 68px; height: 68px; transform: none; }
-    .faixa-icone svg { width: 32px; height: 32px; }
-    .faixa-icone::after { inset: -4px; border-width: 2px; }
+    .faixa-icone { position: relative; top: auto; left: auto; flex: 0 0 58px; width: 58px; height: 58px; transform: none; }
+    .faixa-icone svg { width: 28px; height: 28px; }
+    .faixa-icone::after { inset: -3px; border-width: 2px; }
     .faixa li > div { flex: 1 1 auto; min-width: 0; }
-    .faixa strong { margin: 0 0 4px; font-size: 15px; line-height: 1.35; letter-spacing: -.25px; }
-    .faixa small { font-size: 13px; line-height: 1.45; overflow-wrap: break-word; }
+    .faixa strong { margin: 0 0 3px; font-size: 14.5px; line-height: 1.35; letter-spacing: -.25px; }
+    .faixa small { font-size: 12.5px; line-height: 1.4; overflow-wrap: break-word; }
 }
 
 /* ---------- CELULARES MUITO ESTREITOS (320 px) ---------- */
 @media (max-width: 360px) {
     .faixa { padding-right: 13px; padding-left: 13px; }
-    .faixa li { gap: 13px; min-height: 96px; }
-    .faixa-icone { flex-basis: 60px; width: 60px; height: 60px; }
-    .faixa-icone svg { width: 29px; height: 29px; }
+    .faixa li { gap: 12px; min-height: 82px; }
+    .faixa-icone { flex-basis: 52px; width: 52px; height: 52px; }
+    .faixa-icone svg { width: 25px; height: 25px; }
     .faixa strong { font-size: 14px; }
     .faixa small { font-size: 12px; }
 }
