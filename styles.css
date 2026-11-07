@@ -170,7 +170,7 @@ body.menu-aberto { overflow: hidden; }
 .hero-foto::before { content: ""; position: absolute; z-index: -1; width: 86%; aspect-ratio: 1; right: -9%; top: -6%; border-radius: 50%; background: var(--menta); }
 .hero-foto { isolation: isolate; }
 /* Cartão do nome: vidro fosco no alto da foto, longe do rosto (como na Nutri Anna) */
-.cartao-credencial { position: absolute; z-index: 2; left: -36px; top: 20%; display: grid; padding: 13px 20px; border: 1px solid #0F3F362B; border-radius: 14px; background: #ffffff99; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 15px 40px #0F3D3A2B; line-height: 1.25; }
+.cartao-credencial { position: absolute; z-index: 2; left: -64px; top: 20%; display: grid; padding: 13px 20px; border: 1px solid #0F3F362B; border-radius: 14px; background: #ffffff99; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 15px 40px #0F3D3A2B; line-height: 1.25; }
 .cartao-credencial strong { color: var(--tinta); font-size: 1rem; font-weight: 700; line-height: 1.25; }
 .cartao-credencial span { font-size: .8rem; }
 .hero-numeros { position: absolute; z-index: 2; right: -20px; bottom: 28px; display: grid; gap: 8px; }
@@ -179,12 +179,11 @@ body.menu-aberto { overflow: hidden; }
 @keyframes cartao-conta { 0% { transform: translateY(8px); box-shadow: 0 8px 25px #0F3D3A1F; } 35% { transform: translateY(-4px) scale(1.035); box-shadow: 0 20px 48px #0F3D3A40; } 100% { transform: none; box-shadow: var(--sombra); } }
 .hero-numeros strong { font-size: 1.45rem; font-weight: 700; color: var(--botao); line-height: 1.1; font-variant-numeric: tabular-nums; }
 .hero-numeros small { margin-top: 4px; font-size: .66rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--texto); }
-@media (hover: hover) { .hero-numeros aside:hover { transform: translateY(-3px); } }
 /* Celular: o cartão do nome fica no ombro e os números lado a lado, na base da foto. */
 @media (max-width: 599px) {
     .hero-foto { margin-bottom: 34px; }
     /* No celular o cartão fica pequeno, no canto de baixo da foto, acima dos números: não cobre o rosto nem o bráquete do fio */
-    .cartao-credencial { top: auto; bottom: 48px; left: 4px; padding: 9px 14px; border-radius: 12px; }
+    .cartao-credencial { top: auto; bottom: 48px; left: -4px; padding: 9px 14px; border-radius: 12px; }
     .cartao-credencial strong { font-size: .88rem; }
     .cartao-credencial span { font-size: .66rem; }
     .hero-numeros { left: 10px; right: 10px; bottom: -30px; grid-template-columns: 1fr 1fr; }
@@ -572,7 +571,7 @@ body.sem-pendencias #avaliacoes { display: none; }
     .hero { padding-top: 56px; }
     .hero-grade { grid-template-columns: 1.1fr .9fr; gap: 60px; }
     .hero-foto { width: min(100%, 500px); margin-right: 40px; }
-    .cartao-credencial { left: -56px; top: 20%; }
+    .cartao-credencial { left: -92px; top: 20%; }
     .hero-numeros { right: -44px; }
     .hero-numeros aside { min-width: 200px; padding: 14px 20px; }
     .hero-numeros strong { font-size: 1.6rem; }
