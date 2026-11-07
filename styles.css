@@ -140,7 +140,8 @@ body.menu-aberto { overflow: hidden; }
 /* Foto do topo no estilo da LP da Nutri Anna: arco largo, cartão do nome à
    esquerda e dois números empilhados à direita, sobre a foto. */
 .hero-foto { position: relative; width: min(100%, 470px); margin-inline: auto; }
-.hero-moldura { border-radius: 28px; overflow: hidden; aspect-ratio: 4 / 5;
+/* Moldura em arco, como na Nutri Anna: topo bem arredondado e base com cantos suaves */
+.hero-moldura { border-radius: 46% 46% 28px 28px; overflow: hidden; aspect-ratio: 4 / 5;
     background: #ECF4F1; box-shadow: 0 30px 70px -30px #0F3D3A55; }
 .hero-moldura img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; animation: respirar 9s ease-in-out infinite; }
 @keyframes respirar { 50% { transform: scale(1.025); } }
@@ -168,22 +169,27 @@ body.menu-aberto { overflow: hidden; }
 .hero-moldura { position: relative; }
 .hero-foto::before { content: ""; position: absolute; z-index: -1; width: 86%; aspect-ratio: 1; right: -9%; top: -6%; border-radius: 50%; background: var(--menta); }
 .hero-foto { isolation: isolate; }
-.cartao-credencial { position: absolute; z-index: 2; left: -10px; top: 47%; display: grid; padding: 14px 20px; border-radius: 12px; border-left: 4px solid var(--marca); background: #ffffffe8; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 18px 40px -18px #0F3D3A40; }
+/* Cartão do nome: vidro fosco no alto da foto, longe do rosto (como na Nutri Anna) */
+.cartao-credencial { position: absolute; z-index: 2; left: -36px; top: 20%; display: grid; padding: 13px 20px; border: 1px solid #0F3F362B; border-radius: 14px; background: #ffffff99; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 15px 40px #0F3D3A2B; line-height: 1.25; }
 .cartao-credencial strong { color: var(--tinta); font-size: 1rem; font-weight: 700; line-height: 1.25; }
 .cartao-credencial span { font-size: .8rem; }
-.hero-numeros { position: absolute; z-index: 2; right: -10px; bottom: 30px; display: grid; gap: 8px; }
-.hero-numeros aside { display: grid; min-width: 168px; padding: 12px 18px; border-left: 4px solid var(--marca); border-radius: 12px; background: #fffffff2; box-shadow: 0 18px 40px -18px #0F3D3A40; transition: transform .3s var(--ease); }
-.hero-numeros strong { font-size: 1.6rem; font-weight: 700; color: var(--botao); line-height: 1.1; font-variant-numeric: tabular-nums; }
-.hero-numeros small { margin-top: 4px; font-size: .64rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--texto); }
+.hero-numeros { position: absolute; z-index: 2; right: -20px; bottom: 28px; display: grid; gap: 8px; }
+.hero-numeros aside { display: grid; min-width: 190px; padding: 13px 18px; border-radius: 15px; background: #fffffff2; box-shadow: var(--sombra); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.hero-numeros aside.contando { animation: cartao-conta 1.8s ease both; }
+@keyframes cartao-conta { 0% { transform: translateY(8px); box-shadow: 0 8px 25px #0F3D3A1F; } 35% { transform: translateY(-4px) scale(1.035); box-shadow: 0 20px 48px #0F3D3A40; } 100% { transform: none; box-shadow: var(--sombra); } }
+.hero-numeros strong { font-size: 1.45rem; font-weight: 700; color: var(--botao); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.hero-numeros small { margin-top: 4px; font-size: .66rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--texto); }
 @media (hover: hover) { .hero-numeros aside:hover { transform: translateY(-3px); } }
 /* Celular: o cartão do nome fica no ombro e os números lado a lado, na base da foto. */
 @media (max-width: 599px) {
     .hero-foto { margin-bottom: 34px; }
-    .cartao-credencial { top: 40%; left: -8px; padding: 10px 14px; }
-    .cartao-credencial strong { font-size: 1rem; }
-    .cartao-credencial span { font-size: .72rem; }
+    /* No celular o cartão fica pequeno, no canto de baixo da foto, acima dos números: não cobre o rosto nem o bráquete do fio */
+    .cartao-credencial { top: auto; bottom: 48px; left: 4px; padding: 9px 14px; border-radius: 12px; }
+    .cartao-credencial strong { font-size: .88rem; }
+    .cartao-credencial span { font-size: .66rem; }
     .hero-numeros { left: 10px; right: 10px; bottom: -30px; grid-template-columns: 1fr 1fr; }
     .hero-numeros aside { min-width: 0; padding: 10px 14px; }
+    .hero-numeros aside.contando { animation: none; }
     .hero-numeros strong { font-size: 1.4rem; }
     .hero-numeros small { font-size: .58rem; letter-spacing: .06em; }
 }
@@ -566,10 +572,10 @@ body.sem-pendencias #avaliacoes { display: none; }
     .hero { padding-top: 56px; }
     .hero-grade { grid-template-columns: 1.1fr .9fr; gap: 60px; }
     .hero-foto { width: min(100%, 500px); margin-right: 40px; }
-    .cartao-credencial { left: -70px; top: 26%; }
-    .hero-numeros { right: -50px; }
+    .cartao-credencial { left: -56px; top: 20%; }
+    .hero-numeros { right: -44px; }
     .hero-numeros aside { min-width: 200px; padding: 14px 20px; }
-    .hero-numeros strong { font-size: 1.8rem; }
+    .hero-numeros strong { font-size: 1.6rem; }
     .faixa { grid-template-columns: repeat(4, 1fr); margin-top: 56px; padding: 28px 30px; }
     .faixa li + li { border-left: 1px solid #ffffff22; padding-left: 20px; }
     .secao { padding: 104px 0; }
@@ -601,3 +607,6 @@ body.sem-pendencias #avaliacoes { display: none; }
   .atend figure { flex: 0 0 78%; scroll-snap-align: center; }
   .atend::-webkit-scrollbar { display: none; }
 }
+
+/* Telas de 1024 a 1299 px: o cartão de números não pode passar da borda da tela */
+@media (min-width: 1024px) and (max-width: 1299px) { .hero-numeros { right: -8px; } .hero-numeros aside { min-width: 184px; } }
