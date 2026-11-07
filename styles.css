@@ -128,7 +128,7 @@ body.sem-pendencias .pend { display: none; }
 body.menu-aberto { overflow: hidden; }
 
 /* ---------- Topo (hero) ---------- */
-.hero { position: relative; overflow-x: clip; padding: 36px 0 0; background:
+.hero { position: relative; overflow-x: clip; padding: 36px 0 48px; background:
     radial-gradient(circle at 85% 18%, #16AD8E1F 0, transparent 38%),
     linear-gradient(180deg, #fff, var(--fundo)); }
 .hero-grade { display: grid; gap: 40px; align-items: center; }
@@ -194,13 +194,18 @@ body.menu-aberto { overflow: hidden; }
     .hero-numeros small { font-size: .58rem; letter-spacing: .06em; }
 }
 
-.faixa { list-style: none; margin: 40px 0 0; padding: 22px; display: grid; gap: 18px; border-radius: var(--raio) var(--raio) 0 0; background: var(--verde); color: #fff; position: relative; z-index: 2; }
-.faixa li { display: flex; align-items: center; gap: 14px; }
-.faixa div { display: grid; line-height: 1.35; }
-.faixa strong { font-size: .95rem; }
-.faixa small { color: #CFE5DF; font-size: .8rem; }
-.faixa-icone { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #ffffff14; color: var(--marca); }
-.faixa-icone svg { width: 22px; height: 22px; }
+/* ===== Faixa de diferenciais =====
+   Celular: um painel de vidro fosco com os 4 itens em lista. A partir de 600 px: 4 cartões de vidro fosco, com ícone
+   grande em círculo verde escuro (com um arco turquesa) e, no computador, um fio turquesa ligando os ícones. */
+.faixa { list-style: none; margin: 40px 0 0; padding: 6px 18px; display: grid; gap: 0; border: 1px solid #ffffffb3; border-radius: 26px; background: linear-gradient(180deg, #ffffffd9, #E8F6F1d9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: var(--sombra-p); position: relative; z-index: 2; }
+.faixa li { position: relative; display: flex; align-items: center; gap: 16px; padding: 16px 0; }
+.faixa li + li { border-top: 1px solid #0F3F3614; }
+.faixa div { position: relative; z-index: 1; display: grid; line-height: 1.35; }
+.faixa strong { color: var(--verde); font-size: 1rem; font-weight: 700; }
+.faixa small { color: var(--texto); font-size: .85rem; }
+.faixa-icone { position: relative; z-index: 1; flex: none; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: radial-gradient(circle at 30% 25%, #1C6B59, var(--verde) 72%); color: #fff; box-shadow: 0 10px 22px -8px #0F3F3680; }
+.faixa-icone::after { content: ""; position: absolute; inset: -5px; border: 3px solid transparent; border-top-color: var(--marca); border-left-color: var(--marca); border-radius: 50%; transform: rotate(-12deg); pointer-events: none; }
+.faixa-icone svg { width: 28px; height: 28px; }
 
 /* ---------- Seções ---------- */
 .secao { padding: 76px 0; }
@@ -524,7 +529,13 @@ body.sem-pendencias #avaliacoes { display: none; }
 @media (min-width: 600px) {
     :root { --gutter: 28px; }
     .hero-acoes .botao { width: auto; }
-    .faixa { grid-template-columns: 1fr 1fr; padding: 26px 28px; }
+    .faixa { grid-template-columns: 1fr 1fr; gap: 12px; padding: 0; border: 0; border-radius: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
+    .faixa li { flex-direction: column; gap: 14px; padding: 28px 18px 24px; text-align: center; border: 1px solid #ffffffb3; border-radius: 26px; background: linear-gradient(180deg, #ffffffd9, #E8F6F1d9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: var(--sombra-p); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+    .faixa li + li { border-top: 1px solid #ffffffb3; }
+    .faixa-icone { width: 72px; height: 72px; }
+    .faixa-icone svg { width: 34px; height: 34px; }
+    .faixa strong { font-size: 1.06rem; }
+    .faixa small { font-size: .9rem; }
     .situacoes { grid-template-columns: 1fr 1fr; }
     .credenciais { grid-template-columns: repeat(4, 1fr); }
     .sobre-texto .credenciais { grid-template-columns: 1fr 1fr; }
@@ -576,8 +587,12 @@ body.sem-pendencias #avaliacoes { display: none; }
     .hero-numeros { right: -44px; }
     .hero-numeros aside { min-width: 200px; padding: 14px 20px; }
     .hero-numeros strong { font-size: 1.6rem; }
-    .faixa { grid-template-columns: repeat(4, 1fr); margin-top: 56px; padding: 28px 30px; }
-    .faixa li + li { border-left: 1px solid #ffffff22; padding-left: 20px; }
+    .faixa { grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 56px; }
+    /* Fio turquesa ondulado: cada cartão desenha um trecho, que se emenda no cartão ao lado, passando atrás dos ícones */
+    .faixa li::before { content: ""; position: absolute; z-index: 0; left: -6px; right: -6px; top: 42px; height: 44px; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%2044%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2022C20%200%2036%2044%2052%2022S84%202%20100%2022%27%20fill%3D%27none%27%20stroke%3D%27%2316AD8E%27%20stroke-width%3D%272.2%27%20stroke-linecap%3D%27round%27%20vector-effect%3D%27non-scaling-stroke%27/%3E%3C/svg%3E") center / 100% 100% no-repeat; pointer-events: none; }
+    .faixa li:first-child::before { left: 0; }
+    .faixa li:last-child::before { right: 0; }
+    @media (hover: hover) { .faixa li:hover { transform: translateY(-4px); box-shadow: var(--sombra); } }
     .secao { padding: 104px 0; }
     .sobre { grid-template-columns: .85fr 1.15fr; gap: 80px; }
     .consultorio { grid-template-columns: .8fr 1.2fr; gap: 64px; }
