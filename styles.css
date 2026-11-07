@@ -67,6 +67,24 @@ p { margin: 0 0 1em; }
     .botao-contorno:hover { color: #fff; }
     .botao-claro:hover { background: var(--marca); border-color: var(--marca); color: var(--verde); }
 }
+/* Botão do menu com efeito de chamada (mesmo comportamento do site da Nutri Anna, no verde da Nayane):
+   degradê que desliza, pulso com halo, brilho que cruza o botão e ícone do WhatsApp balançando.
+   O degradê termina em #12856E para o texto branco manter contraste AA. Para usar em outro botão,
+   basta somar a classe .botao-destaque. */
+.botao-destaque { position: relative; isolation: isolate; overflow: hidden; border: 1px solid #ffffff24; background: linear-gradient(115deg, var(--botao-2), var(--botao) 52%, #12856E); background-size: 220% 100%; box-shadow: 0 14px 32px -12px #0F7A6499; transition: transform .25s var(--ease), box-shadow .25s var(--ease), background-position .45s var(--ease); animation: botaoAtrai 1.9s ease-in-out infinite; }
+.botao-destaque::after { content: ""; position: absolute; z-index: -1; top: -100%; left: -35%; width: 24%; height: 300%; background: linear-gradient(90deg, transparent, #ffffff42, transparent); transform: rotate(18deg); animation: botaoBrilho 3.6s ease-in-out infinite; }
+.botao-destaque svg { animation: botaoWhats 2.4s ease-in-out infinite; }
+.botao-destaque:active { transform: translateY(-1px) scale(.985); box-shadow: 0 9px 22px -10px #0F7A6499; }
+@media (hover: hover) {
+    .botao-destaque:hover { animation-play-state: paused; background: linear-gradient(115deg, var(--botao-2), var(--botao) 52%, #12856E); background-size: 220% 100%; background-position: 100% 0; border-color: #ffffff24; transform: translateY(-4px) scale(1.035); box-shadow: 0 20px 42px -14px #0F7A64B3; }
+}
+@keyframes botaoBrilho { 0%, 60% { left: -35%; } 85%, 100% { left: 125%; } }
+@keyframes botaoAtrai {
+    0%, 100% { transform: translateY(0) scale(1); background-position: 0 0; box-shadow: 0 14px 32px -12px #0F7A6499, 0 0 0 0 #16AD8E00; }
+    45% { transform: translateY(-3px) scale(1.035); background-position: 100% 0; box-shadow: 0 22px 44px -14px #0F7A64B3, 0 0 0 10px #16AD8E26; }
+    70% { transform: translateY(0) scale(1); box-shadow: 0 14px 32px -12px #0F7A6499, 0 0 0 16px #16AD8E00; }
+}
+@keyframes botaoWhats { 0%, 55%, 100% { transform: none; } 65% { transform: rotate(-8deg) scale(1.16); } 75% { transform: rotate(7deg) scale(1.16); } }
 .link-seta { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--verde); font-weight: 700; }
 .link-seta svg { transition: transform .25s var(--ease); }
 @media (hover: hover) { .link-seta:hover svg { transform: translateX(4px); } }
@@ -547,6 +565,7 @@ body.sem-pendencias #avaliacoes { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .botao-destaque, .botao-destaque::after, .botao-destaque svg { animation: none; }
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     .js .revelar { opacity: 1; transform: none; }
