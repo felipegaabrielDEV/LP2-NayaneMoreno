@@ -144,41 +144,37 @@ body.menu-aberto { overflow: hidden; }
     background: #ECF4F1; box-shadow: 0 30px 70px -30px #0F3D3A55; }
 .hero-moldura img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; animation: respirar 9s ease-in-out infinite; }
 @keyframes respirar { 50% { transform: scale(1.025); } }
-/* ===== Fio de aparelho do hero (aço polido + bráquete cromado) =====
-   Ancorado na foto (viewBox 470x588): o bráquete fica no canto da moldura em qualquer largura.
-   Ordem das camadas: fio atrás (0) < foto (1) < fio na frente, só no bráquete (2) < título (3) < cartões (4).
-   O movimento (luz que percorre o fio, aura, joia e flutuação) roda sozinho e para com prefers-reduced-motion. */
-.hf2 { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.hf2-tras { z-index: 0; }
-.hf2-frente { z-index: 2; }
-.hf2-m { display: none; }
-@media (max-width: 1023px) { .hf2-d { display: none; } .hf2-m { display: inline; } }
-.hf2 path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.hf2-sombra { stroke: #173C37; stroke-width: 7; opacity: .16; }
-.hf2-borda { stroke: #526B67; stroke-width: 5.2; }
-.hf2-aco { stroke-width: 3.6; }
-.hf2-reflexo { stroke: #fff; stroke-width: 1; opacity: .9; transform: translateY(-.7px); }
-.hf2-luz { stroke: #fff; stroke-width: 3; stroke-dasharray: 85 3000; stroke-dashoffset: 85; opacity: 0; animation: hf2-percorre 6s ease-in-out infinite; }
-.hf2-aura { transform-box: fill-box; transform-origin: center; animation: hf2-respira 3.2s ease-in-out infinite; }
-.hf2-flutua { animation: hf2-flutua 4s ease-in-out infinite; }
-.hf2-joia { transform-box: fill-box; transform-origin: center; animation: hf2-joia 2.8s ease-in-out infinite; }
-.hf2-joia-brilho { opacity: .35; animation: hf2-joia-brilho 2.8s ease-in-out infinite; }
-@keyframes hf2-percorre { 0% { stroke-dashoffset: 85; opacity: 0; } 6% { opacity: .95; } 62% { stroke-dashoffset: -1000; opacity: .95; } 68%, 100% { stroke-dashoffset: -1000; opacity: 0; } }
-@keyframes hf2-respira { 0%, 100% { opacity: .45; transform: scale(.88); } 50% { opacity: .95; transform: scale(1.12); } }
-@keyframes hf2-flutua { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
-@keyframes hf2-joia { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.16); } }
-@keyframes hf2-joia-brilho { 0%, 100% { opacity: .22; } 50% { opacity: .7; } }
-@media (prefers-reduced-motion: reduce) { .hf2 *, .hf2 { animation: none !important; } .hf2-luz { opacity: 0; } }
+.hero-fio { position: absolute; z-index: 1; left: -12%; right: -12%; top: -13%; width: 124%; height: auto; pointer-events: none; }
+/* Fio e bráquete do hero. Repouso: aura turquesa que respira devagar. Hover na foto: as duas peças
+   se afastam, o anel pulsa, a aura cresce e uma luz percorre o fio. Só com mouse (hover: hover). */
+.hero-fio path { fill: none; stroke-linecap: round; }
+.hf-halo { stroke: #16AD8E; stroke-width: 9; opacity: .12; }
+.hf-borda { stroke: #4D5E5A; stroke-width: 4.6; opacity: .9; }
+.hf-base { stroke: url(#hf-fio); stroke-width: 3.1; }
+.hf-reflexo { stroke: #fff; stroke-width: 1.1; opacity: .95; }
+.hf-liga { fill: #16AD8E1F; stroke: #16AD8E; stroke-width: 2.1; }
+.hf-luz { stroke: #fff; stroke-width: 3; stroke-dasharray: .07 1; stroke-dashoffset: .07; opacity: 0; filter: drop-shadow(0 0 3px #16AD8E); }
+.hf-aura { fill: #16AD8E; opacity: .3; transform-box: fill-box; transform-origin: center; transition: opacity .5s var(--ease), transform .5s var(--ease); animation: hf-respira 3.2s ease-in-out infinite; }
+.hf-peca { transition: transform .45s var(--ease); }
+.hf-anel { transform-box: fill-box; transform-origin: center; transition: transform .45s var(--ease), fill .45s var(--ease); }
+@keyframes hf-respira { 0%, 100% { opacity: .22; } 50% { opacity: .42; } }
+@keyframes hf-percorre { 0% { stroke-dashoffset: .07; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { stroke-dashoffset: -1; opacity: 0; } }
+@keyframes hf-anel-pulsa { 0%, 100% { transform: scale(1.35); } 50% { transform: scale(1.6); } }
+@media (hover: hover) {
+    .hero-foto:hover .hf-esq { transform: translateX(-3px); }
+    .hero-foto:hover .hf-dir { transform: translateX(3px); }
+    .hero-foto:hover .hf-aura { animation: none; opacity: .75; transform: scale(1.3); }
+    .hero-foto:hover .hf-anel { fill: #16AD8E88; animation: hf-anel-pulsa 1.1s ease-in-out infinite; }
+    .hero-foto:hover .hf-luz { animation: hf-percorre 1.6s var(--ease) infinite; }
+}
 .hero-moldura::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px #ffffff80; pointer-events: none; }
-.hero-moldura { position: relative; z-index: 1; }
+.hero-moldura { position: relative; }
 .hero-foto::before { content: ""; position: absolute; z-index: -1; width: 86%; aspect-ratio: 1; right: -9%; top: -6%; border-radius: 50%; background: var(--menta); }
-/* O contexto de empilhamento fica no .hero (e não na foto) para o fio passar atrás do título e na frente da foto. */
-.hero { isolation: isolate; }
-.hero-texto { position: relative; z-index: 3; }
-.cartao-credencial { position: absolute; z-index: 4; left: -10px; top: 47%; display: grid; padding: 14px 20px; border-radius: 12px; border-left: 4px solid var(--marca); background: #ffffffe8; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 18px 40px -18px #0F3D3A40; }
+.hero-foto { isolation: isolate; }
+.cartao-credencial { position: absolute; z-index: 2; left: -10px; top: 47%; display: grid; padding: 14px 20px; border-radius: 12px; border-left: 4px solid var(--marca); background: #ffffffe8; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 18px 40px -18px #0F3D3A40; }
 .cartao-credencial strong { color: var(--tinta); font-size: 1rem; font-weight: 700; line-height: 1.25; }
 .cartao-credencial span { font-size: .8rem; }
-.hero-numeros { position: absolute; z-index: 4; right: -10px; bottom: 30px; display: grid; gap: 8px; }
+.hero-numeros { position: absolute; z-index: 2; right: -10px; bottom: 30px; display: grid; gap: 8px; }
 .hero-numeros aside { display: grid; min-width: 168px; padding: 12px 18px; border-left: 4px solid var(--marca); border-radius: 12px; background: #fffffff2; box-shadow: 0 18px 40px -18px #0F3D3A40; transition: transform .3s var(--ease); }
 .hero-numeros strong { font-size: 1.6rem; font-weight: 700; color: var(--botao); line-height: 1.1; font-variant-numeric: tabular-nums; }
 .hero-numeros small { margin-top: 4px; font-size: .64rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--texto); }
@@ -589,6 +585,8 @@ body.sem-pendencias #avaliacoes { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .hf-aura, .hf-anel, .hf-luz { animation: none !important; }
+    .hero-foto:hover .hf-esq, .hero-foto:hover .hf-dir { transform: none; }
     .botao-destaque, .botao-destaque::after, .botao-destaque svg { animation: none; }
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
