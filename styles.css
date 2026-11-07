@@ -149,8 +149,10 @@ body.menu-aberto { overflow: hidden; }
    se afastam, o anel pulsa, a aura cresce e uma luz percorre o fio. Só com mouse (hover: hover). */
 .hero-fio path { fill: none; stroke-linecap: round; }
 .hf-halo { stroke: #16AD8E; stroke-width: 9; opacity: .12; }
-.hf-base { stroke: url(#hf-fio); stroke-width: 3.4; }
-.hf-reflexo { stroke: #fff; stroke-width: 1; opacity: .9; }
+.hf-borda { stroke: #4D5E5A; stroke-width: 4.6; opacity: .9; }
+.hf-base { stroke: url(#hf-fio); stroke-width: 3.1; }
+.hf-reflexo { stroke: #fff; stroke-width: 1.1; opacity: .95; }
+.hf-liga { fill: #16AD8E1F; stroke: #16AD8E; stroke-width: 2.1; }
 .hf-luz { stroke: #fff; stroke-width: 3; stroke-dasharray: .07 1; stroke-dashoffset: .07; opacity: 0; filter: drop-shadow(0 0 3px #16AD8E); }
 .hf-aura { fill: #16AD8E; opacity: .3; transform-box: fill-box; transform-origin: center; transition: opacity .5s var(--ease), transform .5s var(--ease); animation: hf-respira 3.2s ease-in-out infinite; }
 .hf-peca { transition: transform .45s var(--ease); }
