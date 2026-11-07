@@ -129,26 +129,33 @@
     }
 
     /* ---------- Números do topo: contagem ----------
-       Cada número vai de data-inicio (hoje 0) até data-contar. Roda quando
-       o número aparece na tela e de novo ao passar o mouse (só com mouse).
+       Cada número vai de data-inicio (hoje 0) até data-contar, com o prefixo de data-prefixo (hoje "+").
+       Roda quando o número aparece na tela e de novo ao passar o mouse (só com mouse). Durante a contagem
+       o cartão ganha a classe .contando (sobe e cresce um pouco, como no site da Nutri Anna).
        Para mudar o ponto de partida, troque data-inicio no HTML. */
     const contadores = document.querySelectorAll("[data-contar]");
     const contar = el => {
         if (reduzMovimento || el.dataset.rodando) return;
         const fim = Number(el.dataset.contar);
         const inicio = Number(el.dataset.inicio ?? 0);
-        const duracao = 1100;
-        let t0 = null;
+        const pre = el.dataset.prefixo ?? "";
+        const duracao = 1400;
+        const cartao = el.closest("aside, li");
         el.dataset.rodando = "1";
-        const passo = t => {
-            t0 ??= t;
-            const p = Math.min((t - t0) / duracao, 1);
-            const suave = 1 - Math.pow(1 - p, 3);
-            el.textContent = Math.round(inicio + (fim - inicio) * suave);
-            if (p < 1) requestAnimationFrame(passo);
-            else { el.textContent = fim; delete el.dataset.rodando; }
-        };
-        requestAnimationFrame(passo);
+        el.textContent = pre + inicio;
+        cartao?.classList.add("contando");
+        setTimeout(() => {
+            let t0 = null;
+            const passo = t => {
+                t0 ??= t;
+                const p = Math.min((t - t0) / duracao, 1);
+                const suave = 1 - Math.pow(1 - p, 3);
+                el.textContent = pre + Math.round(inicio + (fim - inicio) * suave);
+                if (p < 1) requestAnimationFrame(passo);
+                else { el.textContent = pre + fim; delete el.dataset.rodando; setTimeout(() => cartao?.classList.remove("contando"), 250); }
+            };
+            requestAnimationFrame(passo);
+        }, 450);
     };
     if ("IntersectionObserver" in window) {
         const obsNum = new IntersectionObserver(entradas => {
