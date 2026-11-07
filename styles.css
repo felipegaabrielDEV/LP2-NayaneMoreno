@@ -79,6 +79,7 @@ p { margin: 0 0 1em; }
 .pend { display: inline-block; margin: 6px 0; padding: 3px 10px; border: 1px dashed #B88A00; border-radius: 8px; background: #FFF4C2; color: #5E4700; font: 600 .74rem/1.45 var(--fonte-texto); letter-spacing: 0; text-transform: none; font-style: normal; }
 body.sem-pendencias .pend { display: none; }
 .previa-alternar { position: fixed; z-index: 850; left: 14px; bottom: 14px; padding: 9px 14px; border: 0; border-radius: 999px; background: #FFF4C2; color: #5E4700; font: 700 .75rem var(--fonte-texto); box-shadow: var(--sombra-p); cursor: pointer; }
+.previa-alternar.previa-fotos { bottom: 58px; background: #E8F6F1; color: #0F3F36; }
 
 /* ---------- Menu ---------- */
 .topo { position: sticky; top: 0; z-index: 900; background: #FFFFFFF0; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s, box-shadow .3s; }
@@ -220,14 +221,15 @@ body.sem-pendencias .previa-caso { display: none; }
 .caso-foto figcaption { position: absolute; left: 10px; bottom: 10px; padding: 4px 12px; border-radius: 999px; background: var(--verde); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .caso-foto:last-child figcaption { background: var(--botao); }
 @media (hover: hover) { .caso-foto:hover img { transform: scale(1.04); } }
-.depoimento { display: grid; gap: 22px; align-items: center; max-width: 1000px; margin: 44px auto 0; padding: 18px; border: 1px solid var(--borda); border-radius: 24px; background: linear-gradient(135deg, #F4FAF8, var(--menta)); box-shadow: var(--sombra-p); }
-.depoimento-video { aspect-ratio: 16 / 9; overflow: hidden; border-radius: 16px; background: var(--verde); }
-.depoimento-video video { width: 100%; height: 100%; object-fit: cover; }
+.depoimento { display: grid; gap: 22px; align-items: center; max-width: 900px; margin: 44px auto 0; padding: 18px; border: 1px solid var(--borda); border-radius: 24px; background: linear-gradient(135deg, #F4FAF8, var(--menta)); box-shadow: var(--sombra-p); }
+/* O vídeo da mãe é vertical (480 x 848): o player acompanha essa proporção, sem cortar. */
+.depoimento-video { width: min(100%, 290px); margin-inline: auto; aspect-ratio: 480 / 848; overflow: hidden; border-radius: 18px; background: var(--verde); box-shadow: 0 18px 40px -20px #0F3F3680; }
+.depoimento-video video { display: block; width: 100%; height: 100%; object-fit: contain; background: #0B2F29; }
 .depoimento-vazio { width: 100%; height: 100%; display: grid; place-items: center; background: radial-gradient(circle at 30% 20%, #16AD8E40, var(--verde) 70%); }
 .depoimento-play { display: grid; place-items: center; width: 68px; height: 68px; border-radius: 50%; background: #ffffffeb; color: var(--botao); box-shadow: 0 12px 28px -10px #0006; }
 .depoimento-play svg { width: 30px; height: 30px; margin-left: 3px; }
 .depoimento-texto h3 { font-size: 1.35rem; }
-@media (min-width: 768px) { .casos { grid-template-columns: repeat(3, 1fr); } .depoimento { grid-template-columns: 1.15fr 1fr; padding: 26px; gap: 36px; } }
+@media (min-width: 768px) { .casos { grid-template-columns: repeat(3, 1fr); } .depoimento { grid-template-columns: 290px 1fr; padding: 28px 36px; gap: 48px; } }
 
 /* Convênios */
 .convenios { display: grid; gap: 18px; max-width: 980px; margin-inline: auto; }
@@ -549,4 +551,16 @@ body.sem-pendencias #avaliacoes { display: none; }
     *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     .js .revelar { opacity: 1; transform: none; }
     .hero-moldura img { animation: none; }
+}
+
+/* ===== Seção Atendimento (3 fotos): grade no computador, carrossel de deslizar no celular ===== */
+.atend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+.atend figure { margin: 0; aspect-ratio: 3 / 4; border-radius: var(--raio); overflow: hidden; background: var(--menta); }
+.atend img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.atend-vazio { display: grid; place-items: center; border: 2px dashed var(--menta-2); text-align: center; padding: 16px; color: var(--verde-texto); font-size: .9rem; }
+.atend-nota { margin-top: 14px; font-size: .85rem; color: var(--verde-texto); text-align: center; }
+@media (max-width: 767px) {
+  .atend { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 12px; }
+  .atend figure { flex: 0 0 78%; scroll-snap-align: center; }
+  .atend::-webkit-scrollbar { display: none; }
 }

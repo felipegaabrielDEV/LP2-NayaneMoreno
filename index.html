@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261106-04">
+    <link rel="stylesheet" href="styles.css?v=20261106-10">
 </head>
 <body>
 
@@ -239,10 +239,9 @@
     </section>
 
     <!-- =========================== EVOLUÇÃO DO TRATAMENTO ===========================
-         Fotos reais só entram com autorização por escrito do paciente/responsável e conferência
-         da norma do CFO/CRO-SE. Enquanto isso, a seção mostra quadros vazios e fica OCULTA no
-         modo "ocultar pendências" (botão da prévia). Para ligar: troque cada .caso-vazio por
-         <img src="assets/casos/....webp" alt="...">, remova a classe `.previa-caso` e os .pend. -->
+         Fotos do caso (assets/casos/) e vídeo do depoimento já estão na página. Conferir o registro
+         da autorização por escrito do paciente/responsável e da mãe e a norma do CFO/CRO-SE antes
+         do lançamento (ver Pendências no README). A seção some no modo "ocultar pendências". -->
     <section class="secao secao-caso previa-caso" id="evolucao" aria-labelledby="evolucao-titulo">
         <div class="container">
             <header class="cabeca centro">
@@ -255,24 +254,24 @@
                 <article class="caso revelar">
                     <h3>Vista lateral</h3>
                     <div class="caso-par">
-                        <figure class="caso-foto" data-foto="lateral-antes"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Antes</figcaption></figure>
-                        <figure class="caso-foto" data-foto="lateral-atual"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Momento atual</figcaption></figure>
+                        <figure class="caso-foto"><img src="assets/casos/lateral-antes.webp" width="880" height="660" loading="lazy" alt="Foto antes do tratamento"><figcaption>Antes</figcaption></figure>
+                        <figure class="caso-foto"><img src="assets/casos/lateral-atual.webp" width="880" height="587" loading="lazy" alt="Foto momento atual do tratamento"><figcaption>Momento atual</figcaption></figure>
                     </div>
                     <p>No início, dentes da frente projetados. Hoje, o caso segue em acompanhamento com o aparelho.</p>
                 </article>
                 <article class="caso revelar">
                     <h3>Arcada de cima</h3>
                     <div class="caso-par">
-                        <figure class="caso-foto" data-foto="superior-antes"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Antes</figcaption></figure>
-                        <figure class="caso-foto" data-foto="superior-atual"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Momento atual</figcaption></figure>
+                        <figure class="caso-foto"><img src="assets/casos/superior-antes.webp" width="880" height="660" loading="lazy" alt="Foto antes do tratamento"><figcaption>Antes</figcaption></figure>
+                        <figure class="caso-foto"><img src="assets/casos/superior-atual.webp" width="880" height="587" loading="lazy" alt="Foto momento atual do tratamento"><figcaption>Momento atual</figcaption></figure>
                     </div>
                     <p>No início, dentes da frente desalinhados. Hoje, o aparelho conduz os dentes pelo arco.</p>
                 </article>
                 <article class="caso revelar">
                     <h3>Arcada de baixo</h3>
                     <div class="caso-par">
-                        <figure class="caso-foto" data-foto="inferior-antes"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Antes</figcaption></figure>
-                        <figure class="caso-foto" data-foto="inferior-atual"><div class="caso-vazio" aria-hidden="true"><svg><use href="#i-dente"/></svg></div><figcaption>Momento atual</figcaption></figure>
+                        <figure class="caso-foto"><img src="assets/casos/inferior-antes.webp" width="880" height="660" loading="lazy" alt="Foto antes do tratamento"><figcaption>Antes</figcaption></figure>
+                        <figure class="caso-foto"><img src="assets/casos/inferior-atual.webp" width="880" height="587" loading="lazy" alt="Foto momento atual do tratamento"><figcaption>Momento atual</figcaption></figure>
                     </div>
                     <p>No início, dentes encavalados. Hoje, o aparelho conduz os dentes pelo arco.</p>
                 </article>
@@ -282,7 +281,7 @@
             <!-- Depoimento em vídeo: o arquivo entra em assets/ só com a autorização da mãe. -->
             <div class="depoimento revelar">
                 <div class="depoimento-video">
-                    <div class="depoimento-vazio" aria-hidden="true"><span class="depoimento-play"><svg><use href="#i-play"/></svg></span></div>
+                    <video controls playsinline preload="metadata" poster="assets/casos/depoimento-capa.jpg" src="assets/casos/depoimento.mp4"></video>
                 </div>
                 <div class="depoimento-texto">
                     <span class="rotulo">Depoimento</span>
@@ -402,6 +401,25 @@
     </section>
 
     <!-- =========================== CONSULTÓRIO =========================== -->
+    <!-- =========================== ATENDIMENTO ===========================
+         3 fotos da Dra. atendendo (assets/atendimento/, 810x1080). Conferir a autorização por
+         escrito das pacientes e a norma do CFO/CRO-SE antes do lançamento. Ordem: janela, exame, refletor. -->
+    <section class="secao secao-clara" id="atendimento" aria-labelledby="atend-titulo">
+        <div class="container">
+            <div class="cabecalho-secao">
+                <span class="rotulo">Atendimento</span>
+                <h2 id="atend-titulo">Uma avaliação feita <em>com calma e atenção</em></h2>
+                <p>Cada consulta começa pela escuta e pelo exame, no consultório da Dra. Nayane, em Aracaju.</p>
+            </div>
+            <div class="atend revelar">
+                <figure><img src="assets/atendimento/atendimento-01.jpg" width="810" height="1080" loading="lazy" alt="Dra. Nayane Moreno atendendo uma paciente ao lado da janela do consultório"></figure>
+                <figure><img src="assets/atendimento/atendimento-02.jpg" width="810" height="1080" loading="lazy" alt="Dra. Nayane Moreno examinando uma paciente na cadeira odontológica"></figure>
+                <figure><img src="assets/atendimento/atendimento-03.jpg" width="810" height="1080" loading="lazy" alt="Dra. Nayane Moreno ajustando o refletor durante o atendimento"></figure>
+            </div>
+            <p class="atend-nota pend">[PENDENTE: autorização escrita das pacientes para publicar estas imagens]</p>
+        </div>
+    </section>
+
     <section class="secao" id="consultorio" aria-labelledby="consultorio-titulo">
         <div class="container consultorio">
             <div class="consultorio-texto">
@@ -633,6 +651,6 @@
 <!-- Só na prévia: mostra ou esconde os marcadores de pendência para apresentar à cliente. -->
 <button class="previa-alternar" type="button" aria-pressed="true">Prévia · <span>ocultar pendências</span></button>
 
-<script src="script.js?v=20261106-04" defer></script>
+<script src="script.js?v=20261106-10" defer></script>
 </body>
 </html>

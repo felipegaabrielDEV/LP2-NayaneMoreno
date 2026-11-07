@@ -27,6 +27,7 @@ Landing page da **Dra. Nayane Moreno**, Cirurgiã-Dentista (CRO-SE 2301) em Arac
 | **Convênios e particular** | Lado a lado: planos atendidos e atendimento particular |
 | **Como funciona** | Cinco etapas, do WhatsApp ao acompanhamento, e citação da Dra. Nayane |
 | **Sobre** | Formação, trajetória e história pessoal ligada à ortodontia, com cartões de credenciais |
+| **Atendimento** | Três quadros para fotos da Dra. atendendo (grade no computador, carrossel no celular). Hoje com marcadores de pendência e escondida no modo "ocultar pendências" |
 | **Consultório** | Galeria com as fotos do consultório (setas, deslize e teclado), horário e endereço |
 | **Avaliações do Google** | Bloco reservado; só vai ao ar depois da liberação |
 | **Perguntas frequentes** | Oito perguntas em acordeão acessível |
@@ -118,7 +119,7 @@ Depois acesse `http://localhost:8000`.
 **Travam o lançamento**
 - [x] Endereço (Rua Senador Rolemberg, 562, São José, CEP 49015-120), WhatsApp (79) 99945-2813, Instagram e horário
 - [ ] Grafia da rua: o Google registra "Rollemberg" (com dois L); confirmar com a Dra. Nayane
-- [ ] Fotos de atendimento: autorização por escrito das pacientes que aparecem nas fotos
+- [ ] Fotos de atendimento (seção "Atendimento", 3 fotos em `assets/atendimento/`): **já estão na página pública**; registrar a autorização por escrito das pacientes que aparecem e conferir a norma do CFO/CRO-SE
 - [ ] Confirmação dos três tipos de aparelho (metálico, porcelana, alinhador) e da marca do alinhador
 - [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia, autorização para citar os nomes e logotipos oficiais
 - [ ] Aprovação do texto "Sobre" e da citação da Dra. Nayane
@@ -128,7 +129,7 @@ Depois acesse `http://localhost:8000`.
 - [ ] Intervalo das manutenções e como termina o tratamento (contenção e retornos)
 - [ ] Idade mínima para a ortodontia e faixa média de duração do tratamento
 - [ ] Link do perfil no Google e liberação das avaliações (norma do CFO)
-- [ ] Seção "Evolução do tratamento" (caso em andamento) e vídeo da mãe: autorização escrita do paciente/responsável e da mãe, conferência da norma do CFO/CRO-SE, fotos em JPG leve (até 1 MB) e o arquivo do vídeo. A seção está montada com quadros vazios e some no modo "ocultar pendências"
+- [ ] Seção "Evolução do tratamento" (fotos em `assets/casos/` e vídeo da mãe, que mostra também o filho, menor): **já estão na página pública**; registrar a autorização escrita do paciente/responsável e da mãe e conferir a norma do CFO/CRO-SE. A seção some no modo "ocultar pendências"
 - [ ] Fotos de "depois" (o paciente ainda está com aparelho; hoje só há antes e momento atual)
 - [ ] Logotipo e cores da marca, se existirem
 - [ ] Domínio e acesso ao Google Tag Manager

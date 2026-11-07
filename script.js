@@ -119,7 +119,7 @@
     }
 
     /* ---------- Prévia: mostrar/ocultar pendências ---------- */
-    const alternar = document.querySelector(".previa-alternar");
+    const alternar = document.querySelector(".previa-alternar:not(.previa-fotos)");
     if (alternar) {
         alternar.addEventListener("click", () => {
             const ocultar = document.body.classList.toggle("sem-pendencias");
