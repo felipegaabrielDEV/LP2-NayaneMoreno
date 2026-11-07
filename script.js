@@ -160,31 +160,6 @@
         contadores.forEach(el => el.closest("aside, li").addEventListener("mouseenter", () => contar(el)));
     }
 
-    /* ---------- Prévia: mostrar/ocultar as fotos do caso ----------
-       Só existe na prévia. Por padrão as fotos NÃO aparecem (quadros vazios). Ao clicar,
-       cada figura com data-foto tenta carregar assets/casos/<data-foto>.webp; se o arquivo
-       não existir, o quadro vazio continua. Para a versão final, troque os quadros por <img>
-       e remova este bloco e o botão. */
-    const botaoFotos = document.querySelector(".previa-fotos");
-    if (botaoFotos) {
-        const figuras = document.querySelectorAll("figure[data-foto]");
-        botaoFotos.addEventListener("click", () => {
-            const mostrar = botaoFotos.getAttribute("aria-pressed") !== "true";
-            botaoFotos.setAttribute("aria-pressed", String(mostrar));
-            botaoFotos.querySelector("span").textContent = mostrar ? "ocultar" : "mostrar";
-            figuras.forEach(fig => {
-                const vazio = fig.querySelector(".caso-vazio");
-                let img = fig.querySelector("img");
-                if (!mostrar) { if (img) img.remove(); if (vazio) vazio.hidden = false; return; }
-                if (img) return;
-                img = new Image();
-                img.alt = fig.dataset.alt || "Foto do caso";
-                img.onload = () => { if (vazio) vazio.hidden = true; fig.prepend(img); };
-                img.src = `assets/casos/${fig.dataset.foto}.webp`;
-            });
-        });
-    }
-
     const ano = document.querySelector("[data-ano]");
     if (ano) ano.textContent = new Date().getFullYear();
 })();

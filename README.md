@@ -119,7 +119,7 @@ Depois acesse `http://localhost:8000`.
 **Travam o lançamento**
 - [x] Endereço (Rua Senador Rolemberg, 562, São José, CEP 49015-120), WhatsApp (79) 99945-2813, Instagram e horário
 - [ ] Grafia da rua: o Google registra "Rollemberg" (com dois L); confirmar com a Dra. Nayane
-- [ ] Fotos de atendimento (seção "Atendimento", 3 quadros): autorização por escrito das pacientes que aparecem nas fotos. Depois: salvar em `assets/atendimento/` (WebP 810x1080, ordem janela, exame, refletor) e trocar os quadros pelas imagens (passo a passo no comentário da seção em `index.html`)
+- [ ] Fotos de atendimento (seção "Atendimento", 3 fotos em `assets/atendimento/`): **já estão na página pública**; registrar a autorização por escrito das pacientes que aparecem e conferir a norma do CFO/CRO-SE
 - [ ] Confirmação dos três tipos de aparelho (metálico, porcelana, alinhador) e da marca do alinhador
 - [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia, autorização para citar os nomes e logotipos oficiais
 - [ ] Aprovação do texto "Sobre" e da citação da Dra. Nayane
@@ -129,7 +129,7 @@ Depois acesse `http://localhost:8000`.
 - [ ] Intervalo das manutenções e como termina o tratamento (contenção e retornos)
 - [ ] Idade mínima para a ortodontia e faixa média de duração do tratamento
 - [ ] Link do perfil no Google e liberação das avaliações (norma do CFO)
-- [ ] Seção "Evolução do tratamento" (caso em andamento) e vídeo da mãe: autorização escrita do paciente/responsável e da mãe, conferência da norma do CFO/CRO-SE, fotos em JPG leve (até 1 MB) e o arquivo do vídeo. A seção está montada com quadros vazios e some no modo "ocultar pendências"
+- [ ] Seção "Evolução do tratamento" (fotos em `assets/casos/` e vídeo da mãe, que mostra também o filho, menor): **já estão na página pública**; registrar a autorização escrita do paciente/responsável e da mãe e conferir a norma do CFO/CRO-SE. A seção some no modo "ocultar pendências"
 - [ ] Fotos de "depois" (o paciente ainda está com aparelho; hoje só há antes e momento atual)
 - [ ] Logotipo e cores da marca, se existirem
 - [ ] Domínio e acesso ao Google Tag Manager
