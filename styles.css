@@ -145,28 +145,25 @@ body.menu-aberto { overflow: hidden; }
 .hero-moldura img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; animation: respirar 9s ease-in-out infinite; }
 @keyframes respirar { 50% { transform: scale(1.025); } }
 .hero-fio { position: absolute; z-index: 1; left: -12%; right: -12%; top: -13%; width: 124%; height: auto; pointer-events: none; }
-/* Fio e bráquete do hero. Repouso: aura turquesa que respira devagar. Hover na foto: as duas peças
-   se afastam, o anel pulsa, a aura cresce e uma luz percorre o fio. Só com mouse (hover: hover). */
+/* Fio e bráquete do hero. Em ciclos contínuos: as duas peças se afastam e voltam, o anel pulsa, a aura
+   respira e uma luz percorre o fio. Para com prefers-reduced-motion. */
 .hero-fio path { fill: none; stroke-linecap: round; }
 .hf-halo { stroke: #16AD8E; stroke-width: 9; opacity: .12; }
 .hf-borda { stroke: #4D5E5A; stroke-width: 4.6; opacity: .9; }
 .hf-base { stroke: url(#hf-fio); stroke-width: 3.1; }
 .hf-reflexo { stroke: #fff; stroke-width: 1.1; opacity: .95; }
-.hf-liga { fill: #16AD8E1F; stroke: #16AD8E; stroke-width: 2.1; }
-.hf-luz { stroke: #fff; stroke-width: 3; stroke-dasharray: .07 1; stroke-dashoffset: .07; opacity: 0; filter: drop-shadow(0 0 3px #16AD8E); }
-.hf-aura { fill: #16AD8E; opacity: .3; transform-box: fill-box; transform-origin: center; transition: opacity .5s var(--ease), transform .5s var(--ease); animation: hf-respira 3.2s ease-in-out infinite; }
-.hf-peca { transition: transform .45s var(--ease); }
-.hf-anel { transform-box: fill-box; transform-origin: center; transition: transform .45s var(--ease), fill .45s var(--ease); }
-@keyframes hf-respira { 0%, 100% { opacity: .22; } 50% { opacity: .42; } }
-@keyframes hf-percorre { 0% { stroke-dashoffset: .07; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { stroke-dashoffset: -1; opacity: 0; } }
-@keyframes hf-anel-pulsa { 0%, 100% { transform: scale(1.35); } 50% { transform: scale(1.6); } }
-@media (hover: hover) {
-    .hero-foto:hover .hf-esq { transform: translateX(-3px); }
-    .hero-foto:hover .hf-dir { transform: translateX(3px); }
-    .hero-foto:hover .hf-aura { animation: none; opacity: .75; transform: scale(1.3); }
-    .hero-foto:hover .hf-anel { fill: #16AD8E88; animation: hf-anel-pulsa 1.1s ease-in-out infinite; }
-    .hero-foto:hover .hf-luz { animation: hf-percorre 1.6s var(--ease) infinite; }
-}
+.hf-liga { fill: none; stroke: #16AD8E; stroke-width: 1.6; }
+.hf-luz { stroke: #fff; stroke-width: 3; stroke-dasharray: .07 1; stroke-dashoffset: .07; opacity: 0; filter: drop-shadow(0 0 3px #16AD8E); animation: hf-percorre 5s var(--ease) infinite; }
+.hf-aura { fill: #16AD8E; opacity: .3; transform-box: fill-box; transform-origin: center; animation: hf-respira 3.2s ease-in-out infinite; }
+.hf-esq { animation: hf-abre-esq 3.2s ease-in-out infinite; }
+.hf-dir { animation: hf-abre-dir 3.2s ease-in-out infinite; }
+.hf-anel { transform-box: fill-box; transform-origin: center; animation: hf-anel-pulsa 3.2s ease-in-out infinite; }
+/* O efeito que antes só aparecia no hover agora roda sozinho, em ciclos de 3,2 s */
+@keyframes hf-abre-esq { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3px); } }
+@keyframes hf-abre-dir { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
+@keyframes hf-respira { 0%, 100% { opacity: .22; transform: scale(1); } 50% { opacity: .7; transform: scale(1.3); } }
+@keyframes hf-anel-pulsa { 0%, 100% { transform: scale(1.1); fill: #16AD8E55; } 50% { transform: scale(1.5); fill: #16AD8E99; } }
+@keyframes hf-percorre { 0% { stroke-dashoffset: .07; opacity: 0; } 8% { opacity: 1; } 58% { opacity: 1; } 66%, 100% { stroke-dashoffset: -1; opacity: 0; } }
 .hero-moldura::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px #ffffff80; pointer-events: none; }
 .hero-moldura { position: relative; }
 .hero-foto::before { content: ""; position: absolute; z-index: -1; width: 86%; aspect-ratio: 1; right: -9%; top: -6%; border-radius: 50%; background: var(--menta); }
@@ -585,8 +582,7 @@ body.sem-pendencias #avaliacoes { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hf-aura, .hf-anel, .hf-luz { animation: none !important; }
-    .hero-foto:hover .hf-esq, .hero-foto:hover .hf-dir { transform: none; }
+    .hf-aura, .hf-anel, .hf-luz, .hf-esq, .hf-dir { animation: none !important; }
     .botao-destaque, .botao-destaque::after, .botao-destaque svg { animation: none; }
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
