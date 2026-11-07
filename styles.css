@@ -194,18 +194,6 @@ body.menu-aberto { overflow: hidden; }
     .hero-numeros small { font-size: .58rem; letter-spacing: .06em; }
 }
 
-/* ===== Faixa de diferenciais =====
-   Celular: um painel de vidro fosco com os 4 itens em lista. A partir de 600 px: 4 cartões de vidro fosco, com ícone
-   grande em círculo verde escuro (com um arco turquesa) e, no computador, um fio turquesa ligando os ícones. */
-.faixa { list-style: none; margin: 40px 0 0; padding: 6px 18px; display: grid; gap: 0; border: 1px solid #ffffffb3; border-radius: 26px; background: linear-gradient(180deg, #ffffffd9, #E8F6F1d9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: var(--sombra-p); position: relative; z-index: 2; }
-.faixa li { position: relative; display: flex; align-items: center; gap: 16px; padding: 16px 0; }
-.faixa li + li { border-top: 1px solid #0F3F3614; }
-.faixa div { position: relative; z-index: 1; display: grid; line-height: 1.35; }
-.faixa strong { color: var(--verde); font-size: 1rem; font-weight: 700; }
-.faixa small { color: var(--texto); font-size: .85rem; }
-.faixa-icone { position: relative; z-index: 1; flex: none; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: radial-gradient(circle at 30% 25%, #1C6B59, var(--verde) 72%); color: #fff; box-shadow: 0 10px 22px -8px #0F3F3680; }
-.faixa-icone::after { content: ""; position: absolute; inset: -5px; border: 3px solid transparent; border-top-color: var(--marca); border-left-color: var(--marca); border-radius: 50%; transform: rotate(-12deg); pointer-events: none; }
-.faixa-icone svg { width: 28px; height: 28px; }
 
 /* ---------- Seções ---------- */
 .secao { padding: 76px 0; }
@@ -529,13 +517,6 @@ body.sem-pendencias #avaliacoes { display: none; }
 @media (min-width: 600px) {
     :root { --gutter: 28px; }
     .hero-acoes .botao { width: auto; }
-    .faixa { grid-template-columns: 1fr 1fr; gap: 12px; padding: 0; border: 0; border-radius: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
-    .faixa li { flex-direction: column; gap: 14px; padding: 28px 18px 24px; text-align: center; border: 1px solid #ffffffb3; border-radius: 26px; background: linear-gradient(180deg, #ffffffd9, #E8F6F1d9); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: var(--sombra-p); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
-    .faixa li + li { border-top: 1px solid #ffffffb3; }
-    .faixa-icone { width: 72px; height: 72px; }
-    .faixa-icone svg { width: 34px; height: 34px; }
-    .faixa strong { font-size: 1.06rem; }
-    .faixa small { font-size: .9rem; }
     .situacoes { grid-template-columns: 1fr 1fr; }
     .credenciais { grid-template-columns: repeat(4, 1fr); }
     .sobre-texto .credenciais { grid-template-columns: 1fr 1fr; }
@@ -587,12 +568,6 @@ body.sem-pendencias #avaliacoes { display: none; }
     .hero-numeros { right: -44px; }
     .hero-numeros aside { min-width: 200px; padding: 14px 20px; }
     .hero-numeros strong { font-size: 1.6rem; }
-    .faixa { grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 56px; }
-    /* Fio turquesa ondulado: cada cartão desenha um trecho, que se emenda no cartão ao lado, passando atrás dos ícones */
-    .faixa li::before { content: ""; position: absolute; z-index: 0; left: -6px; right: -6px; top: 42px; height: 44px; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%2044%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%2022C20%200%2036%2044%2052%2022S84%202%20100%2022%27%20fill%3D%27none%27%20stroke%3D%27%2316AD8E%27%20stroke-width%3D%272.2%27%20stroke-linecap%3D%27round%27%20vector-effect%3D%27non-scaling-stroke%27/%3E%3C/svg%3E") center / 100% 100% no-repeat; pointer-events: none; }
-    .faixa li:first-child::before { left: 0; }
-    .faixa li:last-child::before { right: 0; }
-    @media (hover: hover) { .faixa li:hover { transform: translateY(-4px); box-shadow: var(--sombra); } }
     .secao { padding: 104px 0; }
     .sobre { grid-template-columns: .85fr 1.15fr; gap: 80px; }
     .consultorio { grid-template-columns: .8fr 1.2fr; gap: 64px; }
@@ -625,3 +600,122 @@ body.sem-pendencias #avaliacoes { display: none; }
 
 /* Telas de 1024 a 1299 px: o cartão de números não pode passar da borda da tela */
 @media (min-width: 1024px) and (max-width: 1299px) { .hero-numeros { right: -8px; } .hero-numeros aside { min-width: 184px; } }
+
+/* =========================================================
+   FAIXA DE DIFERENCIAIS — VIDRO FOSCO
+   Computador (1024 px ou mais): 4 cartões com fio turquesa ondulado atrás dos ícones.
+   Tablet (600 a 1023 px): 2 colunas, sem fio.
+   Celular (até 599 px): painel único com os 4 itens em lista.
+   ========================================================= */
+
+/* ---------- CONTÊINER GERAL ---------- */
+.faixa-wrap, .faixa-wrap * { box-sizing: border-box; }
+.faixa-wrap { --faixa-verde: var(--verde, #0F3F36); position: relative; isolation: isolate; width: 100%; margin: 40px 0 0; padding: 18px 0 0; }
+
+/* ---------- FIO TURQUESA ----------
+   O SVG tem 170 px de altura e o centro dos ícones fica em y = 85 (top = 96 - 85 = 11 px). */
+.faixa-fio { position: absolute; z-index: 2; top: 11px; left: 0; width: 100%; height: 170px; overflow: visible; pointer-events: none; }
+.faixa-fio .fio-sombra { fill: none; stroke: #16AD8E; stroke-width: 12; stroke-linecap: round; opacity: .18; filter: url(#fio-brilho); }
+.faixa-fio .fio-linha { fill: none; stroke: url(#fio-gradiente); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: .95; vector-effect: non-scaling-stroke; }
+/* Luz que percorre o fio (só no hover). O caminho tem pathLength = 1000: o traço de 70 sai de antes do início e vai até o fim. */
+.faixa-fio .fio-luz { fill: none; stroke: #8FFFE0; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 70 3000; stroke-dashoffset: 70; opacity: 0; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 5px #16AD8E); }
+
+/* ---------- LISTA / GRADE ---------- */
+/* Sem z-index: o fio (2) passa por cima do vidro dos cartões (1) e por baixo dos ícones e textos (3) */
+.faixa { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; width: 100%; margin: 0; padding: 0; list-style: none; }
+
+/* ---------- CARTÕES ----------
+   O vidro fosco fica no ::before (camada 1), para o fio passar por cima dele e por baixo dos ícones (camada 3).
+   Por isso o li não pode criar contexto de empilhamento (nada de backdrop-filter, transform ou isolation nele). */
+.faixa li { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-width: 0; min-height: 276px; padding: 154px 24px 28px; text-align: center; }
+.faixa li::before { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 34px; pointer-events: none;
+    background: linear-gradient(145deg, rgba(255,255,255,.91) 0%, rgba(255,255,255,.76) 48%, rgba(218,246,237,.77) 100%);
+    border: 1px solid rgba(255,255,255,.95);
+    box-shadow: 0 14px 30px rgba(15,63,54,.10), 0 4px 10px rgba(15,63,54,.05), inset 0 1px 1px rgba(255,255,255,.95);
+    -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+    transform: translateY(var(--sobe, 0));
+    transition: transform 350ms var(--ease), box-shadow 350ms var(--ease), background 350ms var(--ease), border-color 350ms var(--ease); }
+.faixa li > div { position: relative; z-index: 3; transform: translateY(var(--sobe, 0)); transition: transform 350ms var(--ease); }
+
+/* ---------- CÍRCULO DOS ÍCONES ---------- */
+.faixa-icone { position: absolute; z-index: 3; top: 20px; left: 50%; display: flex; align-items: center; justify-content: center; width: 116px; height: 116px; color: #fff; transform: translateX(-50%) translateY(var(--sobe, 0)) scale(var(--zoom, 1)); transform-origin: center; border-radius: 50%;
+    background: radial-gradient(circle at 32% 25%, rgba(35,112,94,.95) 0%, #0F5144 38%, #07382F 100%);
+    border: 1px solid rgba(22,173,142,.38);
+    box-shadow: 0 12px 24px rgba(15,63,54,.23), 0 4px 10px rgba(15,63,54,.14), inset 0 2px 5px rgba(255,255,255,.18), inset 0 -5px 12px rgba(0,0,0,.12);
+    transition: transform 350ms var(--ease), box-shadow 350ms var(--ease); }
+/* Reflexo interno do círculo */
+.faixa-icone::before { content: ""; position: absolute; inset: 5px; border-radius: 50%; border: 1px solid rgba(255,255,255,.12); background: linear-gradient(145deg, rgba(255,255,255,.09), transparent 55%); pointer-events: none; }
+/* Arco turquesa externo */
+.faixa-icone::after { content: ""; position: absolute; inset: -5px; border-radius: 50%; border: 3px solid transparent; border-top-color: #16AD8E; border-right-color: rgba(22,173,142,.75); transform: rotate(-35deg); filter: drop-shadow(0 0 4px rgba(22,173,142,.5)); pointer-events: none; transition: filter 350ms var(--ease), border-color 350ms var(--ease); }
+.faixa-icone svg { position: relative; z-index: 1; display: block; width: 49px; height: 49px; filter: drop-shadow(0 1px 2px rgba(0,0,0,.12)); }
+
+/* ---------- TÍTULOS E DESCRIÇÕES ---------- */
+.faixa strong { display: block; max-width: 100%; margin: 0 0 8px; color: var(--faixa-verde); font-size: clamp(16px, 1.25vw, 21px); font-weight: 700; line-height: 1.3; letter-spacing: -.45px; text-wrap: balance; }
+.faixa small { display: block; max-width: 100%; color: #405B54; font-size: clamp(13px, .98vw, 16px); font-weight: 400; line-height: 1.55; letter-spacing: -.1px; text-wrap: pretty; }
+
+/* ---------- HOVER (computador com mouse) ---------- */
+@media (min-width: 1024px) {
+    .faixa-wrap { margin-top: 56px; }
+}
+@media (min-width: 1024px) and (hover: hover) {
+    /* Cartão (vidro, ícone e texto) sobe 5 px e o ícone dá um zoom discreto */
+    .faixa li:hover { --sobe: -5px; --zoom: 1.06; }
+    .faixa li:hover::before { background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(255,255,255,.88) 50%, rgba(213,246,235,.92)); border-color: rgba(22,173,142,.38); box-shadow: 0 23px 42px rgba(15,63,54,.16), 0 8px 18px rgba(15,63,54,.09), inset 0 1px 2px rgba(255,255,255,1); }
+    .faixa li:hover .faixa-icone { box-shadow: 0 16px 30px rgba(15,63,54,.30), 0 0 22px rgba(22,173,142,.23), inset 0 2px 5px rgba(255,255,255,.22); }
+    /* Arco gira devagar */
+    .faixa li:hover .faixa-icone::after { animation: arco-girando 3s linear infinite; filter: drop-shadow(0 0 8px rgba(22,173,142,.8)); }
+    /* Luz percorre o fio enquanto um cartão estiver em foco */
+    .faixa-wrap:has(.faixa li:hover) .fio-luz { opacity: 1; animation: fio-percorre 2.4s linear infinite; }
+    .faixa li:focus-within::before { border-color: rgba(22,173,142,.65); }
+}
+@keyframes arco-girando { from { transform: rotate(-35deg); } to { transform: rotate(325deg); } }
+@keyframes fio-percorre { from { stroke-dashoffset: 70; } to { stroke-dashoffset: -1000; } }
+
+/* ---------- TABLET: 600 a 1023 px (2 cartões por linha, sem fio) ---------- */
+@media (min-width: 600px) and (max-width: 1023px) {
+    .faixa-fio { display: none; }
+    .faixa { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .faixa li { min-height: 250px; padding: 120px 24px 26px; }
+    .faixa li::before { border-radius: 28px; }
+    .faixa-icone { top: 16px; width: 88px; height: 88px; }
+    .faixa-icone svg { width: 40px; height: 40px; }
+    .faixa strong { margin-bottom: 7px; font-size: 18px; }
+    .faixa small { font-size: 14px; }
+}
+
+/* ---------- CELULAR: até 599 px (painel único, itens em lista) ---------- */
+@media (max-width: 599px) {
+    .faixa-wrap { padding: 0; }
+    .faixa-fio { display: none; }
+    .faixa { display: flex; flex-direction: column; gap: 0; padding: 8px 18px; border: 1px solid rgba(255,255,255,.95); border-radius: 26px;
+        background: linear-gradient(145deg, rgba(255,255,255,.94), rgba(231,247,241,.90));
+        box-shadow: 0 12px 30px rgba(15,63,54,.09), inset 0 1px 2px rgba(255,255,255,.95);
+        -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+    .faixa li { flex-direction: row; align-items: center; justify-content: flex-start; gap: 18px; width: 100%; min-height: 104px; padding: 16px 2px; text-align: left; }
+    .faixa li::before { display: none; }
+    .faixa li > div { transform: none; }
+    .faixa li + li { border-top: 1px solid rgba(22,173,142,.19); }
+    .faixa-icone { position: relative; top: auto; left: auto; flex: 0 0 68px; width: 68px; height: 68px; transform: none; }
+    .faixa-icone svg { width: 32px; height: 32px; }
+    .faixa-icone::after { inset: -4px; border-width: 2px; }
+    .faixa li > div { flex: 1 1 auto; min-width: 0; }
+    .faixa strong { margin: 0 0 4px; font-size: 15px; line-height: 1.35; letter-spacing: -.25px; }
+    .faixa small { font-size: 13px; line-height: 1.45; overflow-wrap: break-word; }
+}
+
+/* ---------- CELULARES MUITO ESTREITOS (320 px) ---------- */
+@media (max-width: 360px) {
+    .faixa { padding-right: 13px; padding-left: 13px; }
+    .faixa li { gap: 13px; min-height: 96px; }
+    .faixa-icone { flex-basis: 60px; width: 60px; height: 60px; }
+    .faixa-icone svg { width: 29px; height: 29px; }
+    .faixa strong { font-size: 14px; }
+    .faixa small { font-size: 12px; }
+}
+
+/* ---------- MOVIMENTO REDUZIDO ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .faixa-wrap *, .faixa-wrap *::before, .faixa-wrap *::after { animation: none !important; transition: none !important; }
+    .faixa li:hover { --sobe: 0px; --zoom: 1; }
+    .faixa-fio .fio-luz { opacity: 0; }
+}

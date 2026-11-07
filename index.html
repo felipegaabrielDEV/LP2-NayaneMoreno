@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261107-14">
+    <link rel="stylesheet" href="styles.css?v=20261107-15">
 </head>
 <body>
 
@@ -179,12 +179,30 @@
         </div>
 
         <div class="container">
-            <ul class="faixa" aria-label="Por que agendar a avaliação">
+            <div class="faixa-wrap">
+                <!-- Fio turquesa contínuo, atrás dos cartões (só no computador). A onda passa pelo centro dos 4 ícones
+                     (x = 150, 450, 750 e 1050 no viewBox). Para mudar a curva, edite o atributo d dos três caminhos. -->
+                <svg class="faixa-fio" viewBox="0 0 1200 170" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <defs>
+                        <linearGradient id="fio-gradiente" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#16AD8E" stop-opacity=".35"/>
+                            <stop offset="30%" stop-color="#16AD8E" stop-opacity="1"/>
+                            <stop offset="70%" stop-color="#16AD8E" stop-opacity="1"/>
+                            <stop offset="100%" stop-color="#16AD8E" stop-opacity=".35"/>
+                        </linearGradient>
+                        <filter id="fio-brilho" x="-30%" y="-100%" width="160%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+                    </defs>
+                    <path class="fio-sombra" d="M 0 63.0 C 8.3 63.5 33.3 64.1 50 65.9 C 66.7 67.8 83.3 70.8 100 74.0 C 116.7 77.2 133.3 81.3 150 85.0 C 166.7 88.7 183.3 92.8 200 96.0 C 216.7 99.2 233.3 102.2 250 104.1 C 266.7 105.9 283.3 107.0 300 107.0 C 316.7 107.0 333.3 105.9 350 104.1 C 366.7 102.2 383.3 99.2 400 96.0 C 416.7 92.8 433.3 88.7 450 85.0 C 466.7 81.3 483.3 77.2 500 74.0 C 516.7 70.8 533.3 67.8 550 65.9 C 566.7 64.1 583.3 63.0 600 63.0 C 616.7 63.0 633.3 64.1 650 65.9 C 666.7 67.8 683.3 70.8 700 74.0 C 716.7 77.2 733.3 81.3 750 85.0 C 766.7 88.7 783.3 92.8 800 96.0 C 816.7 99.2 833.3 102.2 850 104.1 C 866.7 105.9 883.3 107.0 900 107.0 C 916.7 107.0 933.3 105.9 950 104.1 C 966.7 102.2 983.3 99.2 1000 96.0 C 1016.7 92.8 1033.3 88.7 1050 85.0 C 1066.7 81.3 1083.3 77.2 1100 74.0 C 1116.7 70.8 1133.3 67.8 1150 65.9 C 1166.7 64.1 1191.7 63.5 1200 63.0"/>
+                    <path class="fio-linha" d="M 0 63.0 C 8.3 63.5 33.3 64.1 50 65.9 C 66.7 67.8 83.3 70.8 100 74.0 C 116.7 77.2 133.3 81.3 150 85.0 C 166.7 88.7 183.3 92.8 200 96.0 C 216.7 99.2 233.3 102.2 250 104.1 C 266.7 105.9 283.3 107.0 300 107.0 C 316.7 107.0 333.3 105.9 350 104.1 C 366.7 102.2 383.3 99.2 400 96.0 C 416.7 92.8 433.3 88.7 450 85.0 C 466.7 81.3 483.3 77.2 500 74.0 C 516.7 70.8 533.3 67.8 550 65.9 C 566.7 64.1 583.3 63.0 600 63.0 C 616.7 63.0 633.3 64.1 650 65.9 C 666.7 67.8 683.3 70.8 700 74.0 C 716.7 77.2 733.3 81.3 750 85.0 C 766.7 88.7 783.3 92.8 800 96.0 C 816.7 99.2 833.3 102.2 850 104.1 C 866.7 105.9 883.3 107.0 900 107.0 C 916.7 107.0 933.3 105.9 950 104.1 C 966.7 102.2 983.3 99.2 1000 96.0 C 1016.7 92.8 1033.3 88.7 1050 85.0 C 1066.7 81.3 1083.3 77.2 1100 74.0 C 1116.7 70.8 1133.3 67.8 1150 65.9 C 1166.7 64.1 1191.7 63.5 1200 63.0"/>
+                    <path class="fio-luz" pathLength="1000" d="M 0 63.0 C 8.3 63.5 33.3 64.1 50 65.9 C 66.7 67.8 83.3 70.8 100 74.0 C 116.7 77.2 133.3 81.3 150 85.0 C 166.7 88.7 183.3 92.8 200 96.0 C 216.7 99.2 233.3 102.2 250 104.1 C 266.7 105.9 283.3 107.0 300 107.0 C 316.7 107.0 333.3 105.9 350 104.1 C 366.7 102.2 383.3 99.2 400 96.0 C 416.7 92.8 433.3 88.7 450 85.0 C 466.7 81.3 483.3 77.2 500 74.0 C 516.7 70.8 533.3 67.8 550 65.9 C 566.7 64.1 583.3 63.0 600 63.0 C 616.7 63.0 633.3 64.1 650 65.9 C 666.7 67.8 683.3 70.8 700 74.0 C 716.7 77.2 733.3 81.3 750 85.0 C 766.7 88.7 783.3 92.8 800 96.0 C 816.7 99.2 833.3 102.2 850 104.1 C 866.7 105.9 883.3 107.0 900 107.0 C 916.7 107.0 933.3 105.9 950 104.1 C 966.7 102.2 983.3 99.2 1000 96.0 C 1016.7 92.8 1033.3 88.7 1050 85.0 C 1066.7 81.3 1083.3 77.2 1100 74.0 C 1116.7 70.8 1133.3 67.8 1150 65.9 C 1166.7 64.1 1191.7 63.5 1200 63.0"/>
+                </svg>
+                <ul class="faixa" aria-label="Por que agendar a avaliação">
                 <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-prancheta"/></svg></span><div><strong>Avaliação completa</strong><small>Exame clínico, fotos e radiografias</small></div></li>
                 <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-aparelho"/></svg></span><div><strong>3 tipos de aparelho</strong><small>Metálico, porcelana e alinhador</small></div></li>
                 <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-card"/></svg></span><div><strong>Convênio ou particular</strong><small>SulAmérica, Amil e particular</small></div></li>
                 <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-chat"/></svg></span><div><strong>Acompanhamento próximo</strong><small>Dúvidas pelo WhatsApp</small></div></li>
             </ul>
+            </div>
         </div>
     </section>
 
