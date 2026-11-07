@@ -130,7 +130,7 @@
 
     /* ---------- Números do topo: contagem ----------
        Cada número vai de data-inicio (hoje 0) até data-contar, com o prefixo de data-prefixo (hoje "+").
-       Roda quando o número aparece na tela e de novo ao passar o mouse (só com mouse). Durante a contagem
+       Roda quando o número aparece na tela, uma única vez (sem hover, igual ao da Nutri Anna). Durante a contagem
        o cartão ganha a classe .contando (sobe e cresce um pouco, como no site da Nutri Anna).
        Para mudar o ponto de partida, troque data-inicio no HTML. */
     const contadores = document.querySelectorAll("[data-contar]");
@@ -158,13 +158,12 @@
         }, 450);
     };
     if ("IntersectionObserver" in window) {
+        /* Antes de aparecer, o número fica em +0 (como na Nutri Anna); com movimento reduzido ele já mostra o valor final */
+        if (!reduzMovimento) contadores.forEach(el => { el.textContent = (el.dataset.prefixo ?? "") + Number(el.dataset.inicio ?? 0); });
         const obsNum = new IntersectionObserver(entradas => {
             entradas.forEach(en => { if (en.isIntersecting) { contar(en.target); obsNum.unobserve(en.target); } });
-        }, { threshold: .6 });
+        }, { threshold: .65 });
         contadores.forEach(el => obsNum.observe(el));
-    }
-    if (window.matchMedia("(hover: hover)").matches) {
-        contadores.forEach(el => el.closest("aside, li").addEventListener("mouseenter", () => contar(el)));
     }
 
     const ano = document.querySelector("[data-ano]");
