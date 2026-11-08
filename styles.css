@@ -520,9 +520,13 @@ body.sem-pendencias #avaliacoes { display: none; }
 .rodape-legal p { margin: 0 0 6px; }
 .rodape-legal strong { color: var(--tinta); }
 
-/* Botão flutuante */
-.flutuante { position: fixed; z-index: 800; right: 16px; bottom: 16px; width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: #25D366; color: #fff; box-shadow: 0 12px 28px -8px #0006; }
-.flutuante svg { width: 30px; height: 30px; }
+/* Botão flutuante: círculo verde do WhatsApp com anel que pulsa (mesmo efeito do site de salas da Vallenci).
+   Fica no canto inferior direito, acima da área segura do celular. */
+.flutuante { position: fixed; z-index: 800; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom)); width: 60px; height: 60px; display: grid; place-items: center; border-radius: 50%; background: #25D366; color: #fff; box-shadow: 0 14px 30px -10px rgba(37, 211, 102, .65), 0 4px 12px rgba(0, 0, 0, .18); cursor: pointer; transition: transform .3s var(--ease); }
+.flutuante::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #25D366; animation: flutuante-pulsa 2.6s var(--ease) infinite; pointer-events: none; }
+.flutuante svg { width: 31px; height: 31px; }
+@keyframes flutuante-pulsa { from { transform: scale(1); opacity: .7; } to { transform: scale(1.5); opacity: 0; } }
+@media (hover: hover) { .flutuante:hover { transform: scale(1.07); } }
 
 /* Revelar ao rolar (só com JS e sem movimento reduzido) */
 .js .revelar { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -738,6 +742,7 @@ body.sem-pendencias #avaliacoes { display: none; }
 
 /* ---------- MOVIMENTO REDUZIDO ---------- */
 @media (prefers-reduced-motion: reduce) {
+    .flutuante::before { animation: none; opacity: 0; }
     .faixa-wrap *, .faixa-wrap *::before, .faixa-wrap *::after { animation: none !important; transition: none !important; }
     .faixa li:hover { --sobe: 0px; --zoom: 1; }
     .faixa-fio .fio-luz { opacity: 0; }
