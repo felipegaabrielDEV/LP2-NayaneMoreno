@@ -216,12 +216,25 @@ body.menu-aberto { overflow: hidden; }
 /* Cartões com foto no topo (referência: seção "Em qual dessas situações você mais se vê?" do site de salas da Vallenci) */
 .situacoes { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
 .situacoes li { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--borda); border-radius: 22px; background: #fff; transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s; }
-.situacao-img { aspect-ratio: 900 / 822; overflow: hidden; background: var(--menta); }
+.situacao-img { aspect-ratio: 900 / 640; overflow: hidden; background: var(--menta); }
 .situacao-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
 .situacao-texto { padding: 20px 22px 24px; }
 .situacoes h3 { font-size: 1.2rem; margin-bottom: 6px; }
 .situacoes p { margin: 0; font-size: .94rem; }
 .nota-ilustrativa { margin-top: 18px; text-align: center; }
+/* Computador: a altura da foto acompanha a altura da janela, para as duas fileiras (6 fotos) caberem juntas na tela em zoom 100%.
+   As fotos já foram recortadas em 900x640 centradas na boca e no objeto, então o corte extra é pequeno. */
+@media (min-width: 1024px) {
+    .situacoes { gap: 20px; }
+    .situacao-img { aspect-ratio: auto; height: clamp(140px, 25vh, 260px); }
+    /* Fotos 5 e 6: a boca fica no alto e o objeto embaixo, então o corte extra prioriza o alto */
+    .situacoes li:nth-child(5) .situacao-img img { object-position: center 10%; }
+    .situacoes li:nth-child(6) .situacao-img img { object-position: center 30%; }
+    .situacao-texto { padding: 14px 18px 16px; }
+    .situacoes h3 { margin-bottom: 4px; font-size: 1.05rem; }
+    .situacoes p { font-size: .88rem; line-height: 1.5; }
+}
+}
 @media (hover: hover) { .situacoes li:hover { transform: translateY(-6px); box-shadow: var(--sombra-p); border-color: var(--marca); } .situacoes li:hover .situacao-img img { transform: scale(1.04); } }
 
 /* Aparelhos */
@@ -531,7 +544,7 @@ body.sem-pendencias #avaliacoes { display: none; }
     .aparelhos { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
     .aparelho-destaque { transform: translateY(-14px); }
     .convenios { grid-template-columns: 1.1fr .9fr; }
-    .situacoes { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .situacoes { grid-template-columns: repeat(3, 1fr); gap: 20px; }
     /* computador: etapas alternando os lados da linha, com leve sobreposição */
     .passos { gap: 0; }
     .passos::before { left: 50%; margin-left: -1px; }
