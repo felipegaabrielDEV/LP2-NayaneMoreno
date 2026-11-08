@@ -213,12 +213,16 @@ body.menu-aberto { overflow: hidden; }
 .nota-pequena { margin: 28px auto 0; max-width: 620px; text-align: center; font-size: .9rem; }
 
 /* Situações */
-.situacoes { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.situacoes li { padding: 22px; border: 1px solid var(--borda); border-radius: var(--raio); background: #fff; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
-.situacoes .desenho { width: 64px; height: 42px; color: var(--verde-2); margin-bottom: 14px; }
+/* Cartões com foto no topo (referência: seção "Em qual dessas situações você mais se vê?" do site de salas da Vallenci) */
+.situacoes { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.situacoes li { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--borda); border-radius: 22px; background: #fff; transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s; }
+.situacao-img { aspect-ratio: 900 / 822; overflow: hidden; background: var(--menta); }
+.situacao-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.situacao-texto { padding: 20px 22px 24px; }
 .situacoes h3 { font-size: 1.2rem; margin-bottom: 6px; }
 .situacoes p { margin: 0; font-size: .94rem; }
-@media (hover: hover) { .situacoes li:hover { transform: translateY(-4px); box-shadow: var(--sombra-p); border-color: var(--menta-2); } }
+.nota-ilustrativa { margin-top: 18px; text-align: center; }
+@media (hover: hover) { .situacoes li:hover { transform: translateY(-6px); box-shadow: var(--sombra-p); border-color: var(--marca); } .situacoes li:hover .situacao-img img { transform: scale(1.04); } }
 
 /* Aparelhos */
 .aparelhos { display: grid; gap: 18px; }
@@ -527,7 +531,7 @@ body.sem-pendencias #avaliacoes { display: none; }
     .aparelhos { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
     .aparelho-destaque { transform: translateY(-14px); }
     .convenios { grid-template-columns: 1.1fr .9fr; }
-    .situacoes { grid-template-columns: repeat(3, 1fr); }
+    .situacoes { grid-template-columns: repeat(3, 1fr); gap: 24px; }
     /* computador: etapas alternando os lados da linha, com leve sobreposição */
     .passos { gap: 0; }
     .passos::before { left: 50%; margin-left: -1px; }

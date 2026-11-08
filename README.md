@@ -22,7 +22,7 @@ Landing page da **Dra. Nayane Moreno**, Cirurgiã-Dentista (CRO-SE 2301) em Arac
 |---|---|
 | **Menu** | Fixo, com nome e CRO sempre visíveis; menu de tela cheia no celular (fecha com `Esc` ou ao tocar num link) |
 | **Topo** | Título, foto em moldura de arco, cartão com CRO, três números de destaque e faixa com quatro diferenciais |
-| **Para quem é** | Seis situações que o visitante reconhece (dentes tortos, espaço, mordida etc.), com desenhos próprios |
+| **Para quem é** | Seis situações em cartões com foto no topo (referência: site de salas da Vallenci), título e frase. Fotos ilustrativas geradas por IA em `assets/situacoes/` (WebP 900x822 e 520x475), com a nota "Imagens ilustrativas" |
 | **Aparelhos** | Três cartões (metálico, porcelana, alinhador) com ilustração em SVG, características e botão próprio |
 | **Convênios e particular** | Lado a lado: planos atendidos e atendimento particular |
 | **Como funciona** | Cinco etapas, do WhatsApp ao acompanhamento, e citação da Dra. Nayane |
@@ -131,6 +131,7 @@ Depois acesse `http://localhost:8000`.
 - [ ] Link do perfil no Google e liberação das avaliações (norma do CFO)
 - [ ] Seção "Evolução do tratamento" (fotos em `assets/casos/` e vídeo da mãe, que mostra também o filho, menor): **já estão na página pública**; registrar a autorização escrita do paciente/responsável e da mãe e conferir a norma do CFO/CRO-SE. A seção some no modo "ocultar pendências"
 - [ ] Fotos de "depois" (o paciente ainda está com aparelho; hoje só há antes e momento atual)
+- [ ] Seção "Para quem é": as 6 fotos são **ilustrações geradas por IA** (não são pacientes). A Dra. Nayane precisa aprovar e é preciso conferir a norma do CFO/CRO-SE sobre imagens ilustrativas de condições bucais
 - [ ] Logotipo e cores da marca, se existirem
 - [ ] Domínio e acesso ao Google Tag Manager
 
