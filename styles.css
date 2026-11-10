@@ -149,6 +149,11 @@ body.menu-aberto { overflow: hidden; }
 /* Telas de 1024 a 1199 px: o cartão do nome da Dra. avança sobre a coluna do texto, então o título fica mais estreito */
 @media (min-width: 1024px) and (max-width: 1199px) { .hero h1 { max-width: 430px; font-size: 2.6rem; } }
 .lead { font-size: 1.06rem; max-width: 560px; }
+/* Realces do texto do topo, para o olho do leitor cair primeiro nos pontos principais:
+   .realce = sublinhado verde (a marca); strong = negrito escuro. Para realçar outro trecho, envolva-o com um deles. */
+.lead strong { color: var(--tinta); font-weight: 700; }
+.realce { color: var(--tinta); font-weight: 500; text-decoration: underline; text-decoration-color: var(--marca); text-decoration-thickness: 2px; text-underline-offset: 5px; text-decoration-skip-ink: none; }
+.lead strong.realce { font-weight: 700; }
 /* Botão centralizado em relação ao texto da copy, com o link logo abaixo, também centralizado */
 .hero-acoes { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 560px; /* mesma largura do parágrafo (.lead) */ margin: 26px 0 8px; }
 .hero-acoes .botao { width: 100%; }
