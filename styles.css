@@ -856,19 +856,122 @@ html.foto-aberta { overflow: hidden; }
 .avaliacoes h2 { font-size: 1.5rem; margin: 0; }
 body.sem-pendencias #avaliacoes { display: none; }
 
-/* Dúvidas */
-.duvidas { display: grid; gap: 30px; }
-.duvidas .cabeca { margin-bottom: 0; }
-.faq { display: grid; gap: 10px; }
-.faq-item { border-radius: var(--raio-p); background: #fff; border: 1px solid var(--borda); }
-.faq-item h3 { margin: 0; font-family: var(--fonte-texto); font-size: 1rem; }
-.faq-item button { width: 100%; min-height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; border: 0; background: none; color: var(--tinta); font: 700 1rem/1.4 var(--fonte-texto); text-align: left; cursor: pointer; }
-.faq-item button svg { width: 22px; height: 22px; color: var(--botao); transition: transform .35s var(--ease); }
-.faq-item button[aria-expanded="true"] svg { transform: rotate(45deg); }
-.faq-resposta { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s var(--ease); }
-.faq-resposta > div { overflow: hidden; }
-.faq-resposta p { margin: 0; padding: 0 20px 18px; }
-.faq-item.aberto .faq-resposta { grid-template-rows: 1fr; }
+/* ===== Dúvidas frequentes (código do mockup aprovado, ajustado ao nosso site) =====
+   Tudo dentro de #duvidas, sem JavaScript novo: o script existente alterna aria-expanded e a classe .aberto.
+   Numeração 1 a 8 por contador CSS; o ícone + e − é desenhado em CSS (o SVG original fica escondido).
+   A caixinha menta da resposta fica no <p> (e não na <div> interna): a técnica de abrir por grid (0fr) só fecha de verdade
+   se a <div> não tiver margem, padding nem borda. */
+
+/* 1. Fundo da seção (mesmo dos outros blocos) */
+#duvidas { position: relative; isolation: isolate; overflow-x: clip; padding-top: clamp(75px, 8vw, 110px); padding-bottom: 125px; background-color: var(--fundo);
+  background-image: radial-gradient(ellipse 52% 58% at 5% 5%, rgba(205,235,226,.75) 0%, rgba(205,235,226,.32) 45%, transparent 76%), radial-gradient(ellipse 45% 58% at 97% 70%, rgba(22,173,142,.09) 0%, rgba(22,173,142,.035) 48%, transparent 76%), radial-gradient(ellipse 55% 40% at 48% 100%, rgba(232,246,241,.85) 0%, transparent 78%); }
+#duvidas::before { content: ""; position: absolute; z-index: -1; width: 700px; height: 700px; top: -390px; left: -270px; border-radius: 50%; background: radial-gradient(circle, rgba(22,173,142,.13) 0%, rgba(22,173,142,.065) 42%, rgba(22,173,142,.025) 61%, transparent 75%); pointer-events: none; }
+#duvidas::after { content: ""; position: absolute; z-index: -1; bottom: 0; left: 0; width: 100%; height: 105px; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 105' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C180 100 320 112 490 90 C665 68 795 45 950 58 C1120 73 1265 20 1440 28' fill='none' stroke='%23CDEBE2' stroke-width='11' opacity='.72'/%3E%3Cpath d='M0 52 C180 92 320 104 490 82 C665 60 795 37 950 50 C1120 65 1265 12 1440 20' fill='none' stroke='%2316AD8E' stroke-width='2' opacity='.95'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center bottom; background-size: 100% 100%; }
+#duvidas > .container { position: relative; z-index: 1; }
+
+/* 2. Estrutura: duas colunas no computador (.8fr / 1.2fr) */
+#duvidas > .container.duvidas { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: start; gap: clamp(45px, 6vw, 85px); min-width: 0; }
+
+/* 3. Cabeçalho esquerdo (fixo ao rolar no computador) */
+#duvidas .cabeca { position: sticky; top: calc(var(--header-h) + 30px); align-self: start; display: flex; flex-direction: column; align-items: flex-start; width: 100%; max-width: 370px; min-width: 0; margin-bottom: 0; text-align: left; }
+#duvidas .cabeca h2 { position: relative; width: fit-content; max-width: 100%; margin: 19px 0 0; color: #293B37; font-family: inherit; font-size: clamp(43px, 4.2vw, 57px); font-weight: 700; line-height: 1.04; letter-spacing: -1.8px; }
+#duvidas .cabeca h2 em { display: block; color: var(--botao); font-weight: 300; font-style: normal; letter-spacing: -1.7px; }
+/* Três riscos decorativos ao lado do título */
+#duvidas .cabeca h2::after { content: ""; position: absolute; top: 39%; right: -43px; width: 35px; height: 51px; pointer-events: none; background-repeat: no-repeat; background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 58' fill='none'%3E%3Cpath d='M12 17 L22 2' stroke='%2316AD8E' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M15 31 L36 27' stroke='%2316AD8E' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M9 44 L25 54' stroke='%2316AD8E' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"); }
+#duvidas .cabeca > p { max-width: 390px; margin: 29px 0 0; color: var(--texto); font-family: inherit; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: .03px; }
+#duvidas .cabeca > .botao { display: inline-flex; align-items: center; justify-content: center; width: fit-content; max-width: 100%; margin-top: 24px; border-radius: 50px; }
+
+/* 6. Lista do acordeão: numeração automática */
+#duvidas .faq { display: flex; flex-direction: column; gap: 10px; width: 100%; min-width: 0; margin: 0; padding: 0; counter-reset: pergunta-faq; }
+#duvidas .faq-item { position: relative; width: 100%; min-width: 0; box-sizing: border-box; counter-increment: pergunta-faq; overflow: hidden; border: 1px solid rgba(15,63,54,.11); border-radius: 17px;
+  background: linear-gradient(145deg, rgba(255,255,255,.97), rgba(255,255,255,.90)); box-shadow: 0 5px 15px rgba(15,63,54,.035), 0 1px 4px rgba(15,63,54,.025);
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease), translate 320ms var(--ease), box-shadow 320ms var(--ease), border-color 320ms var(--ease), background-color 320ms var(--ease); }
+
+/* 7. Pergunta (botão) */
+#duvidas .faq-item > h3 { position: relative; display: block; margin: 0; font-family: inherit; }
+#duvidas .faq-item > h3 > button { position: relative; display: block; width: 100%; min-height: 60px; box-sizing: border-box; padding: 16px 66px 16px 65px; border: 0; border-radius: 0; background: transparent; color: #30413D; font-family: inherit; font-size: 14px; font-weight: 650; line-height: 1.5; text-align: left; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+
+/* 8. Número em círculo menta */
+#duvidas .faq-item > h3::before { content: counter(pergunta-faq); position: absolute; z-index: 2; top: 50%; left: 17px; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; transform: translateY(-50%); border-radius: 50%; background: #DDF3EC; color: #08775F; font-family: inherit; font-size: 14px; font-weight: 800; line-height: 1; pointer-events: none; transition: background-color 300ms var(--ease), color 300ms var(--ease); }
+
+/* 9. Ícone de abrir e fechar desenhado em CSS (o SVG original fica escondido) */
+#duvidas .faq-item > h3 > button > svg { position: absolute; width: 0; height: 0; opacity: 0; visibility: hidden; pointer-events: none; }
+#duvidas .faq-item > h3 > button::before { content: ""; position: absolute; z-index: 2; top: 50%; right: 16px; width: 32px; height: 32px; transform: translateY(-50%); border-radius: 50%; background-color: #E0F5EF; background-image: linear-gradient(var(--botao), var(--botao)); background-repeat: no-repeat; background-size: 14px 2px; background-position: center; pointer-events: none; transition: background-color 300ms var(--ease); }
+#duvidas .faq-item > h3 > button::after { content: ""; position: absolute; z-index: 3; top: 50%; right: 31px; width: 2px; height: 14px; transform: translateY(-50%) scaleY(1); transform-origin: center; border-radius: 2px; background: var(--botao); pointer-events: none; transition: transform 280ms var(--ease), opacity 280ms var(--ease); }
+
+/* 10. Foco de teclado */
+#duvidas .faq-item > h3 > button:focus-visible { outline: 3px solid var(--marca); outline-offset: -4px; border-radius: 13px; }
+
+/* 11. Cartão aberto: borda turquesa, brilho e fundo menta; a barra vertical some (+ vira −) */
+#duvidas .faq-item.aberto { border-color: rgba(22,173,142,.92); background: linear-gradient(145deg, #F2FCF9 0%, #E8F6F1 100%); box-shadow: 0 9px 23px rgba(15,63,54,.065), 0 3px 10px rgba(22,173,142,.08), 0 0 0 1px rgba(22,173,142,.08); }
+#duvidas .faq-item.aberto > h3::before { background: #C5EEE2; color: #075F4E; }
+#duvidas .faq-item.aberto > h3 > button::before { background-color: #BDEADB; }
+#duvidas .faq-item > h3 > button[aria-expanded="true"]::after { transform: translateY(-50%) scaleY(0); opacity: 0; }
+
+/* 12. Respostas (abrir por grid). A <div> interna NÃO tem margem, padding nem borda; a caixinha menta é o <p>. */
+#duvidas .faq-resposta { display: grid; grid-template-rows: 0fr; min-width: 0; transition: grid-template-rows 320ms var(--ease); }
+#duvidas .faq-item.aberto .faq-resposta { grid-template-rows: 1fr; }
+#duvidas .faq-resposta > div { min-height: 0; overflow: hidden; }
+#duvidas .faq-resposta > div > p { margin: 0 12px 12px; padding: 13px 17px; border: 1px solid rgba(22,173,142,.09); border-radius: 13px; background: linear-gradient(135deg, #E8F6F1, #F0FAF7); color: #40544E; font-family: inherit; font-size: 13px; font-weight: 400; line-height: 1.8; }
+#duvidas .faq-resposta .pend { max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; }
+
+/* 13. Hover (só com mouse) */
+@media (hover: hover) and (pointer: fine) {
+  #duvidas .faq-item:hover { translate: 0 -3px; border-color: rgba(22,173,142,.36); box-shadow: 0 12px 25px rgba(15,63,54,.085), 0 4px 11px rgba(22,173,142,.055); }
+  #duvidas .faq-item.aberto:hover { border-color: var(--marca); box-shadow: 0 14px 29px rgba(15,63,54,.09), 0 5px 15px rgba(22,173,142,.11), 0 0 0 1px rgba(22,173,142,.10); }
+}
+
+/* 14. Tablet (600 a 1023 px): cabeçalho em cima e perguntas abaixo */
+@media (min-width: 600px) and (max-width: 1023px) {
+  #duvidas { padding-top: 70px; padding-bottom: 105px; }
+  #duvidas > .container.duvidas { grid-template-columns: minmax(0, 1fr); gap: 34px; max-width: 760px; }
+  #duvidas .cabeca { position: static; align-items: center; max-width: 660px; margin: 0 auto; text-align: center; }
+  #duvidas .cabeca h2 { margin-top: 16px; font-size: clamp(40px, 5.5vw, 49px); text-align: center; }
+  #duvidas .cabeca h2::after { right: -32px; width: 29px; height: 42px; }
+  #duvidas .cabeca > p { max-width: 500px; margin-top: 19px; text-align: center; }
+  #duvidas .cabeca > .botao { align-self: center; margin-top: 21px; }
+  #duvidas .faq { width: 100%; max-width: 700px; margin: 0 auto; gap: 10px; }
+}
+
+/* 15. Celular (até 599 px) */
+@media (max-width: 599px) {
+  #duvidas { padding-top: 49px; padding-bottom: 83px; }
+  #duvidas > .container.duvidas { grid-template-columns: minmax(0, 1fr); gap: 29px; width: 100%; min-width: 0; }
+  #duvidas .cabeca { position: static; align-items: center; width: 100%; max-width: 100%; margin: 0 auto; text-align: center; }
+  #duvidas .cabeca h2 { width: fit-content; max-width: calc(100% - 24px); margin-top: 14px; font-size: clamp(37px, 10vw, 45px); line-height: 1.04; letter-spacing: -1.35px; text-align: center; }
+  #duvidas .cabeca h2 em { letter-spacing: -1.3px; }
+  #duvidas .cabeca h2::after { top: 34%; right: -22px; width: 24px; height: 37px; opacity: .9; }
+  #duvidas .cabeca > p { max-width: 340px; margin-top: 20px; font-size: 12px; line-height: 1.75; text-align: center; }
+  #duvidas .cabeca > .botao { align-self: center; width: 100%; max-width: 330px; margin-top: 19px; }
+  #duvidas .faq { width: 100%; min-width: 0; gap: 9px; margin: 0; }
+  #duvidas .faq-item { border-radius: 15px; }
+  #duvidas .faq-item > h3 > button { min-height: 56px; padding: 13px 54px 13px 55px; font-size: 12px; line-height: 1.45; }
+  #duvidas .faq-item > h3::before { left: 12px; width: 29px; height: 29px; font-size: 12px; }
+  #duvidas .faq-item > h3 > button::before { right: 12px; width: 28px; height: 28px; background-size: 12px 2px; }
+  #duvidas .faq-item > h3 > button::after { right: 25px; width: 2px; height: 12px; }
+  #duvidas .faq-resposta > div > p { margin: 0 9px 9px; padding: 11px 12px; border-radius: 11px; font-size: 11.5px; line-height: 1.75; }
+  #duvidas::after { height: 66px; }
+  #duvidas::before { width: 410px; height: 410px; top: -205px; left: -210px; }
+}
+
+/* 16. Celulares estreitos (até 359 px) */
+@media (max-width: 359px) {
+  #duvidas > .container.duvidas { gap: 24px; }
+  #duvidas .cabeca h2 { font-size: 36px; }
+  #duvidas .cabeca h2::after { right: -18px; width: 21px; height: 32px; }
+  #duvidas .faq { gap: 8px; }
+  #duvidas .faq-item > h3 > button { min-height: 54px; padding: 12px 49px; font-size: 11px; }
+  #duvidas .faq-item > h3::before { left: 10px; width: 27px; height: 27px; font-size: 11px; }
+  #duvidas .faq-item > h3 > button::before { right: 10px; width: 26px; height: 26px; }
+  #duvidas .faq-item > h3 > button::after { right: 22px; height: 11px; }
+  #duvidas .faq-resposta > div > p { margin: 0 7px 7px; padding: 10px; font-size: 11px; }
+}
+
+/* 17. Movimento reduzido */
+@media (prefers-reduced-motion: reduce) { #duvidas .faq-item, #duvidas .faq-item > h3::before, #duvidas .faq-item > h3 > button::before, #duvidas .faq-item > h3 > button::after, #duvidas .faq-resposta { animation: none; transition: none; } }
 
 /* Chamada final */
 .final { padding: 0 0 80px; background: linear-gradient(180deg, var(--fundo) 0 50%, #fff 50%); }
@@ -941,8 +1044,6 @@ body.sem-pendencias #avaliacoes { display: none; }
     .passo h3 { font-size: 1.15rem; }
     .citacao { grid-template-columns: 120px 1fr; padding: 26px 36px; gap: 30px; }
     .citacao-aspas { font-size: 6rem; padding-right: 30px; }
-    .duvidas { grid-template-columns: .8fr 1.2fr; gap: 60px; align-items: start; }
-    .duvidas .cabeca { position: sticky; top: calc(var(--header-h) + 30px); }
 }
 @media (min-width: 1024px) {
     :root { --header-h: 84px; }
