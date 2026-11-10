@@ -589,6 +589,10 @@ html.foto-aberta { overflow: hidden; }
 #convenios .convenio:not(.convenio-claro) > p { margin: 0; color: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 400; line-height: 1.85; letter-spacing: .02px; }
 #convenios .convenio .pend { align-self: stretch; margin: 14px 0 16px; }
 
+/* Conteúdo do cartão do convênio centralizado (etiqueta, título, logos, texto e aviso) */
+#convenios .convenio:not(.convenio-claro) { align-items: center; text-align: center; }
+#convenios .convenio:not(.convenio-claro) .planos { margin-inline: auto; }
+
 /* Cartão particular: vidro fosco */
 #convenios .convenio-claro { min-height: 380px; border: 1px solid rgba(15,122,100,.16); color: var(--texto);
   background: linear-gradient(145deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.88) 55%, rgba(232,246,241,.82) 100%);
