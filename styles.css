@@ -409,6 +409,101 @@ body.sem-pendencias .previa-caso { display: none; }
 .caso-foto figcaption { position: absolute; left: 10px; bottom: 10px; padding: 4px 12px; border-radius: 999px; background: var(--verde); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .caso-foto:last-child figcaption { background: var(--botao); }
 @media (hover: hover) { .caso-foto:hover img { transform: scale(1.04); } }
+/* ===== Evolução do tratamento (código do mockup aprovado, ajustado ao nosso site) =====
+   Tudo dentro de #evolucao. Fundo menta com manchas e uma linha turquesa ondulada (.evolucao-onda) entre as fotos e o vídeo;
+   cartões brancos; fotos empilhadas no computador e lado a lado no celular, nas proporções reais (4:3 e 3:2). */
+
+/* 1. Fundo da seção */
+#evolucao { position: relative; isolation: isolate; min-width: 0; overflow-x: clip; padding-top: clamp(65px, 7vw, 95px); padding-bottom: clamp(60px, 7vw, 100px); background-color: var(--fundo);
+  background-image: radial-gradient(ellipse 55% 48% at 5% 12%, rgba(205,235,226,.78) 0%, rgba(205,235,226,.35) 48%, transparent 78%), radial-gradient(ellipse 48% 55% at 95% 48%, rgba(22,173,142,.085) 0%, rgba(22,173,142,.025) 48%, transparent 76%), radial-gradient(ellipse 50% 40% at 45% 100%, rgba(232,246,241,.95) 0%, transparent 78%); }
+#evolucao::before { content: ""; position: absolute; z-index: -1; width: 670px; height: 670px; top: -340px; left: -230px; border-radius: 50%; background: radial-gradient(circle, rgba(22,173,142,.13) 0%, rgba(22,173,142,.055) 48%, transparent 72%); pointer-events: none; }
+#evolucao .container { position: relative; z-index: 1; min-width: 0; }
+
+/* 2. Cabeçalho (mantém .rotulo e .pend originais) */
+#evolucao .cabeca { max-width: 790px; margin-right: auto; margin-left: auto; text-align: center; }
+#evolucao .cabeca h2 { margin: 15px 0 14px; color: var(--verde); font-family: inherit; font-size: clamp(32px, 3.1vw, 43px); font-weight: 700; line-height: 1.2; letter-spacing: -1.35px; }
+#evolucao .cabeca h2 em { color: var(--botao); font-weight: 400; font-style: normal; }
+#evolucao .cabeca > p { max-width: 690px; margin: 0 auto 17px; color: var(--texto); font-family: inherit; font-size: 14px; font-weight: 400; line-height: 1.85; letter-spacing: .05px; }
+
+/* 3. Grade dos cartões (computador: 3 colunas) */
+#evolucao .casos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: clamp(13px, 1.5vw, 20px); width: 100%; min-width: 0; max-width: 1120px; margin: clamp(34px, 4vw, 49px) auto 0; }
+
+/* 4. Cartões brancos. A transição inclui a opacidade para a entrada (.js .revelar) continuar com fade. */
+#evolucao .caso { position: relative; isolation: isolate; display: flex; flex-direction: column; min-width: 0; box-sizing: border-box; padding: clamp(14px, 1.4vw, 19px); overflow: hidden; border: 1px solid rgba(15,122,100,.15); border-radius: 26px;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFFFFF 70%, #FAFFFD 100%);
+  box-shadow: 0 12px 29px rgba(15,63,54,.055), 0 3px 9px rgba(15,63,54,.035), 0 0 18px rgba(255,255,255,.9);
+  transition: opacity .7s var(--ease), transform 350ms var(--ease), box-shadow 350ms var(--ease), border-color 350ms var(--ease); }
+#evolucao .caso::before { content: ""; position: absolute; z-index: -1; top: 0; left: 10%; width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.95), transparent); pointer-events: none; }
+#evolucao .caso h3 { margin: 0 0 13px; color: var(--verde); font-family: inherit; font-size: 19px; font-weight: 700; line-height: 1.35; letter-spacing: -.35px; }
+
+/* 5. Par de fotos (computador: empilhadas), nas proporções originais */
+#evolucao .caso-par { display: grid; grid-template-columns: minmax(0, 1fr); gap: 9px; width: 100%; min-width: 0; }
+#evolucao .caso-foto { position: relative; display: block; width: 100%; min-width: 0; margin: 0; overflow: hidden; background: #DCE9E5; border: 1px solid rgba(15,63,54,.07); border-radius: 13px; box-shadow: 0 3px 9px rgba(15,63,54,.055); }
+#evolucao .caso-foto:first-child { aspect-ratio: 4 / 3; }
+#evolucao .caso-foto:nth-child(2) { aspect-ratio: 3 / 2; }
+#evolucao .caso-foto img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: inherit; transition: transform 350ms var(--ease), filter 350ms var(--ease); }
+
+/* 6. Etiquetas sobre as fotos */
+#evolucao .caso-foto figcaption { position: absolute; z-index: 2; left: 9px; bottom: 9px; display: inline-flex; align-items: center; justify-content: center; width: fit-content; max-width: calc(100% - 18px); padding: 6px 11px; overflow: hidden; border: 1px solid rgba(255,255,255,.15); border-radius: 50px; background: var(--verde); color: #FFFFFF; font-family: inherit; font-size: 9px; font-weight: 800; line-height: 1.2; letter-spacing: .85px; text-transform: uppercase; white-space: nowrap; box-shadow: 0 2px 7px rgba(0,0,0,.16); }
+#evolucao .caso-foto:nth-child(2) figcaption { background: var(--botao); color: #FFFFFF; }
+
+/* 7. Descrição de cada cartão e 8. nota de rodapé */
+#evolucao .caso > p { margin: 12px 0 0; color: #586762; font-family: inherit; font-size: 12px; font-weight: 400; line-height: 1.75; letter-spacing: .02px; }
+#evolucao .container > .nota-pequena { max-width: 660px; margin: 22px auto 0; text-align: center; }
+
+/* 9. Linha ondulada turquesa entre as fotos e o vídeo (largura da seção, sem usar 100vw para não criar rolagem horizontal) */
+#evolucao .evolucao-onda { position: relative; display: block; left: 50%; width: 100vw; max-width: none; height: 95px; margin-top: 15px; margin-bottom: 10px; transform: translateX(-50%); pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 45 C180 91 325 100 495 82 C675 63 790 45 955 57 C1120 69 1270 15 1440 22' fill='none' stroke='%23CDEBE2' stroke-width='10' opacity='.65'/%3E%3Cpath d='M0 40 C190 85 320 90 485 72 C670 51 810 37 980 49 C1140 62 1270 9 1440 17' fill='none' stroke='%2316AD8E' stroke-width='2.2' opacity='.95'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center bottom; background-size: 100% 100%; }
+
+/* 10. Hover (só com mouse) */
+@media (hover: hover) and (pointer: fine) {
+  #evolucao .caso:hover { transform: translateY(-5px); border-color: rgba(22,173,142,.35); box-shadow: 0 22px 42px rgba(15,63,54,.11), 0 7px 15px rgba(15,63,54,.055), 0 0 21px rgba(255,255,255,.95); }
+  #evolucao .caso:hover .caso-foto img { transform: scale(1.03); }
+  #evolucao .caso:hover .caso-foto { box-shadow: 0 5px 13px rgba(15,63,54,.09); }
+}
+
+/* 11. Tablet (600 a 1023 px): dois cartões por linha, o terceiro centralizado */
+@media (min-width: 600px) and (max-width: 1023px) {
+  #evolucao { padding-top: 65px; }
+  #evolucao .cabeca { max-width: 700px; }
+  #evolucao .cabeca h2 { font-size: clamp(32px, 4.5vw, 39px); }
+  #evolucao .casos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 19px; max-width: 760px; }
+  #evolucao .caso { padding: 16px; border-radius: 23px; }
+  #evolucao .caso:nth-child(3) { grid-column: 1 / -1; width: calc((100% - 19px) / 2); justify-self: center; }
+}
+
+/* 12. Celular (até 599 px): cartões empilhados e, em cada um, as duas fotos lado a lado */
+@media (max-width: 599px) {
+  #evolucao { padding-top: 48px; }
+  #evolucao .cabeca { padding-right: 4px; padding-left: 4px; }
+  #evolucao .cabeca h2 { margin-top: 12px; margin-bottom: 12px; font-size: clamp(27px, 7vw, 34px); line-height: 1.22; letter-spacing: -.9px; }
+  #evolucao .cabeca > p { margin-bottom: 15px; font-size: 12px; line-height: 1.75; }
+  #evolucao .casos { grid-template-columns: minmax(0, 1fr); gap: 17px; margin-top: 27px; }
+  #evolucao .caso { width: 100%; min-width: 0; padding: 13px; border-radius: 21px; }
+  #evolucao .caso h3 { margin-bottom: 11px; font-size: 17px; line-height: 1.3; }
+  #evolucao .caso-par { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; align-items: start; }
+  #evolucao .caso-foto { min-width: 0; border-radius: 10px; }
+  /* Etiquetas menores para não esconder os dentes (8 px é o mínimo que ainda se lê) */
+  #evolucao .caso-foto figcaption { left: 5px; bottom: 5px; max-width: calc(100% - 10px); padding: 4px 6px; font-size: 8px; letter-spacing: .3px; }
+  #evolucao .caso > p { margin-top: 11px; font-size: 11px; line-height: 1.7; }
+  #evolucao .container > .nota-pequena { max-width: 340px; margin-top: 19px; font-size: 11px; line-height: 1.65; text-align: center; }
+  #evolucao .evolucao-onda { height: 62px; margin-top: 12px; }
+  #evolucao::before { width: 390px; height: 390px; top: -200px; left: -190px; }
+}
+
+/* 13. Celulares estreitos (até 359 px) */
+@media (max-width: 359px) {
+  #evolucao .caso { padding: 10px; border-radius: 18px; }
+  #evolucao .caso-par { gap: 6px; }
+  #evolucao .caso h3 { font-size: 16px; }
+  #evolucao .caso > p { font-size: 10.5px; }
+  #evolucao .caso-foto figcaption { left: 4px; bottom: 4px; padding: 3px 5px; font-size: 7px; letter-spacing: .1px; }
+}
+
+/* 14. Movimento reduzido */
+@media (prefers-reduced-motion: reduce) { #evolucao .caso, #evolucao .caso-foto img { animation: none; transition: none; } }
+
 .depoimento { display: grid; gap: 22px; align-items: center; max-width: 900px; margin: 44px auto 0; padding: 18px; border: 1px solid var(--borda); border-radius: 24px; background: linear-gradient(135deg, #F4FAF8, var(--menta)); box-shadow: var(--sombra-p); }
 /* O vídeo da mãe é vertical (480 x 848): o player acompanha essa proporção, sem cortar. */
 .depoimento-video { width: min(100%, 290px); margin-inline: auto; aspect-ratio: 480 / 848; overflow: hidden; border-radius: 18px; background: var(--verde); box-shadow: 0 18px 40px -20px #0F3F3680; }
