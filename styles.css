@@ -266,31 +266,125 @@ body.menu-aberto { overflow: hidden; }
 .aparelho-destaque .aparelho-tag { background: var(--menta); color: var(--verde-2); } /* mesmo tom da etiqueta dos cartões brancos */
 .aparelho-destaque .lista-check svg { background: #fff; color: var(--botao); }
 
-/* ===== Bloco Aparelhos redesenhado (a partir do mockup aprovado) =====
-   Fundo menta com manchas suaves e uma linha turquesa no pé; cartões brancos com borda e brilho verde-água;
-   cartão do meio mais alto, em verde profundo, com anel turquesa e riscos de brilho no canto. */
-.secao-aparelhos { position: relative; overflow: hidden; isolation: isolate;
-    background: radial-gradient(ellipse 55% 60% at 8% 12%, #DDF3EC 0, transparent 70%), radial-gradient(ellipse 50% 55% at 95% 92%, #D3EFE5 0, transparent 70%), linear-gradient(180deg, #F1FAF7, #F7FBF9); }
-.secao-aparelhos::after { content: ""; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; height: 150px; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%201440%20160%27%20preserveAspectRatio%3D%27none%27%3E%3Cpath%20d%3D%27M0%20150%20C%20420%20160%20900%2060%201440%20120%27%20fill%3D%27none%27%20stroke%3D%27%2316AD8E%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20opacity%3D%27.55%27/%3E%3C/svg%3E") center bottom / 100% 100% no-repeat; pointer-events: none; }
-.secao-aparelhos .aparelho { position: relative; padding: 18px 18px 20px; border-radius: 28px; border: 1px solid #CFEFE6; box-shadow: 0 24px 50px -26px #0F7A6455, 0 0 0 5px #FFFFFFA6; transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
-.secao-aparelhos .aparelho-arte { margin: 0 0 18px; border-radius: 20px; }
-.secao-aparelhos .aparelho h3 { margin-bottom: 8px; color: var(--verde); font-size: 1.5rem; }
-.secao-aparelhos .aparelho p { margin: 0 0 16px; }
-.secao-aparelhos .aparelho-destaque { border: 0; background: linear-gradient(165deg, #0E5A4C 0%, #0F3F36 70%); box-shadow: 0 0 0 2px #16AD8E66, 0 0 0 7px #16AD8E1F, 0 34px 60px -26px #0F3F36CC; }
-.secao-aparelhos .aparelho-destaque h3 { color: #fff; }
-.aparelho-brilho { position: absolute; z-index: 3; top: -46px; right: 18px; width: 52px; height: 46px; pointer-events: none; }
-.aparelho-brilho path { fill: none; stroke: #16AD8E; stroke-width: 6; stroke-linecap: round; transform-box: fill-box; transform-origin: center; animation: brilho-pisca 2.8s ease-in-out infinite; }
-.aparelho-brilho path:nth-child(2) { animation-delay: .35s; }
-.aparelho-brilho path:nth-child(3) { animation-delay: .7s; }
-@keyframes brilho-pisca { 0%, 100% { opacity: .35; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.08); } }
-@media (hover: hover) { .secao-aparelhos .aparelho:hover { transform: translateY(-6px); } }
-/* Computador: o cartão do meio fica mais alto que os outros dois e sobe um pouco */
-@media (min-width: 1024px) {
-    .secao-aparelhos .aparelhos { gap: 26px; padding-top: 22px; }
-    .secao-aparelhos .aparelho-destaque { margin: -16px -4px; padding: 22px 22px 24px; }
+/* ===== Bloco "Tipos de aparelho" (código do mockup aprovado, ajustado ao nosso site) =====
+   Fundo menta com manchas e linha turquesa; cartões brancos; cartão do meio mais alto, em verde profundo, com anel turquesa
+   e três riscos de brilho. O desnível do cartão do meio usa a propriedade `translate` (e não `transform`) porque o
+   efeito de entrada do site (.js .revelar.visivel) zera o `transform`. */
+
+/* 1. Fundo da seção */
+.secao-aparelhos { position: relative; isolation: isolate; overflow: hidden; padding-top: clamp(48px, 6vw, 86px); padding-bottom: clamp(90px, 9vw, 130px); background-color: var(--fundo);
+  background-image: radial-gradient(ellipse 48% 58% at 27% 19%, rgba(205,235,226,.72) 0%, rgba(205,235,226,.35) 45%, transparent 76%), radial-gradient(ellipse 38% 55% at 86% 78%, rgba(22,173,142,.09) 0%, transparent 72%), radial-gradient(ellipse 40% 42% at 2% 90%, rgba(205,235,226,.52) 0%, transparent 75%); }
+.secao-aparelhos::before { content: ""; position: absolute; z-index: -1; width: 680px; height: 680px; top: -300px; left: -210px; border-radius: 50%; background: radial-gradient(circle, rgba(22,173,142,.11) 0%, rgba(22,173,142,.055) 48%, transparent 72%); pointer-events: none; }
+.secao-aparelhos::after { content: ""; position: absolute; z-index: -1; left: 0; bottom: 0; width: 100%; height: 115px; pointer-events: none; opacity: .9;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 115' preserveAspectRatio='none'%3E%3Cpath d='M0 75 C180 120 310 112 470 91 C650 66 760 100 930 91 C1110 81 1240 23 1440 31' fill='none' stroke='%2316AD8E' stroke-width='2' opacity='.85'/%3E%3Cpath d='M0 88 C190 130 340 120 510 103 C700 82 850 112 1040 100 C1200 90 1300 47 1440 51' fill='none' stroke='%23CDEBE2' stroke-width='9' opacity='.55'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center bottom; background-size: 100% 100%; }
+.secao-aparelhos > .container { position: relative; z-index: 1; }
+
+/* 2. Grade dos cartões */
+.secao-aparelhos .aparelhos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: clamp(14px, 1.5vw, 24px); margin-top: clamp(35px, 4vw, 55px); width: 100%; min-width: 0; }
+
+/* 3. Cartões brancos */
+.secao-aparelhos .aparelho { position: relative; isolation: isolate; display: flex; flex-direction: column; min-width: 0; min-height: 596px; padding: clamp(17px, 1.65vw, 23px); border: 1px solid rgba(15,63,54,.10); border-radius: 27px;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFFFFF 75%, #FAFFFD 100%);
+  box-shadow: 0 16px 35px rgba(15,63,54,.065), 0 4px 12px rgba(15,63,54,.035), 0 0 22px rgba(255,255,255,.95);
+  color: var(--texto); transition: transform 350ms var(--ease), translate 350ms var(--ease), box-shadow 350ms var(--ease), border-color 350ms var(--ease); }
+.secao-aparelhos .aparelho:not(.aparelho-destaque) { border-color: rgba(15,122,100,.13); }
+/* Mantém a transição do cartão acima da regra geral .js .revelar (que só anima opacidade e transform) */
+.js .secao-aparelhos .aparelho.revelar { transition: opacity .7s var(--ease), transform .7s var(--ease), translate 350ms var(--ease), box-shadow 350ms var(--ease), border-color 350ms var(--ease); }
+
+/* 4. Fotografias */
+.secao-aparelhos .aparelho-arte { position: relative; width: 100%; margin: 0; aspect-ratio: 1.55; flex-shrink: 0; overflow: hidden; border-radius: 17px; background: var(--menta); box-shadow: 0 3px 12px rgba(15,63,54,.06); }
+.secao-aparelhos .aparelho-arte img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: inherit; transition: transform 400ms var(--ease), filter 350ms var(--ease); }
+
+/* 5. Etiquetas */
+.secao-aparelhos .aparelho-tag { display: inline-flex; align-items: center; align-self: flex-start; width: fit-content; margin-top: 17px; margin-bottom: 10px; padding: 7px 13px; border-radius: 50px; background: var(--menta); color: #087C65; font-family: inherit; font-size: 10px; font-weight: 800; line-height: 1; letter-spacing: 1.15px; text-transform: uppercase; }
+
+/* 6 e 7. Títulos e descrições */
+.secao-aparelhos .aparelho h3 { margin: 0 0 12px; color: #263C38; font-family: inherit; font-size: clamp(19px, 1.55vw, 23px); font-weight: 650; line-height: 1.3; letter-spacing: -.45px; }
+.secao-aparelhos .aparelho p { margin: 0 0 17px; color: #596763; font-family: inherit; font-size: 14px; font-weight: 400; line-height: 1.9; letter-spacing: .05px; }
+
+/* 8. Listas (o SVG de check original fica intacto) */
+.secao-aparelhos .aparelho .lista-check { display: flex; flex-direction: column; gap: 13px; margin-top: 1px; margin-bottom: 23px; padding: 0; list-style: none; }
+.secao-aparelhos .aparelho .lista-check li { display: flex; align-items: center; gap: 11px; color: #52625D; font-family: inherit; font-size: 13px; font-weight: 400; line-height: 1.55; }
+
+/* 9. Botões: só o posicionamento dentro do cartão (.botao, .botao-destaque e .botao-claro não são redefinidos) */
+.secao-aparelhos .aparelho > .botao { width: 100%; max-width: 100%; margin-top: auto; box-sizing: border-box; justify-content: center; border-radius: 50px; }
+
+/* 10. Cartão do meio */
+.secao-aparelhos .aparelho-destaque { min-height: 626px; translate: 0 -12px; padding: clamp(19px, 1.8vw, 25px); border: 1px solid rgba(22,173,142,.48); border-radius: 27px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(22,173,142,.13), transparent 60%), linear-gradient(155deg, #104A3F 0%, #0F3F36 48%, #073E34 100%);
+  color: #FFFFFF; box-shadow: 0 20px 45px rgba(15,63,54,.20), 0 8px 20px rgba(15,63,54,.13), 0 0 0 4px rgba(22,173,142,.055), 0 0 27px rgba(22,173,142,.12); }
+.secao-aparelhos .aparelho-destaque::before { content: ""; position: absolute; z-index: -1; inset: -4px; border: 1px solid rgba(22,173,142,.42); border-radius: 31px; box-shadow: 0 0 0 2px rgba(22,173,142,.055), 0 0 22px rgba(22,173,142,.16); pointer-events: none; }
+.secao-aparelhos .aparelho-destaque::after { content: ""; position: absolute; z-index: -1; top: 0; left: 10%; width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent); pointer-events: none; }
+
+/* 11. Três riscos de brilho (SVG no HTML do cartão do meio) */
+.secao-aparelhos .aparelho-brilho { position: absolute; z-index: 3; width: 61px; height: 53px; top: -34px; right: -20px; overflow: visible; pointer-events: none; filter: drop-shadow(0 0 5px rgba(22,173,142,.35)); animation: brilho-aparelho 3.2s ease-in-out infinite; }
+@keyframes brilho-aparelho { 0%, 100% { opacity: .65; transform: scale(.94) rotate(-3deg); } 50% { opacity: 1; transform: scale(1.06) rotate(3deg); } }
+
+/* 12. Textos do cartão do meio */
+.secao-aparelhos .aparelho-destaque .aparelho-tag { background: #E8F6F1; color: #087C65; }
+.secao-aparelhos .aparelho-destaque h3 { color: #FFFFFF; }
+.secao-aparelhos .aparelho-destaque p { color: rgba(255,255,255,.91); }
+.secao-aparelhos .aparelho-destaque .lista-check li { color: #FFFFFF; }
+
+/* 13. Hover (só com mouse) */
+@media (hover: hover) and (pointer: fine) {
+  .secao-aparelhos .aparelho:not(.aparelho-destaque):hover { translate: 0 -5px; border-color: rgba(22,173,142,.35); box-shadow: 0 24px 48px rgba(15,63,54,.12), 0 8px 18px rgba(15,63,54,.06), 0 0 22px rgba(255,255,255,1); }
+  .secao-aparelhos .aparelho-destaque:hover { translate: 0 -5px; border-color: rgba(22,173,142,.8); box-shadow: 0 28px 55px rgba(15,63,54,.25), 0 10px 25px rgba(15,63,54,.16), 0 0 0 5px rgba(22,173,142,.08), 0 0 35px rgba(22,173,142,.23); }
+  .secao-aparelhos .aparelho:hover .aparelho-arte img { transform: scale(1.04); }
 }
-@media (max-width: 1023px) { .aparelho-brilho { top: -34px; right: 24px; width: 44px; height: 38px; } }
-@media (prefers-reduced-motion: reduce) { .aparelho-brilho path { animation: none; opacity: .8; } }
+
+/* Computador: cartões brancos com a mesma altura e o do meio maior por cima e por baixo (margem negativa; a entrada .revelar
+   não interfere). O hover continua usando `translate`. */
+@media (min-width: 1024px) {
+  .secao-aparelhos .aparelhos { align-items: stretch; padding-block: 16px; }
+  .secao-aparelhos .aparelho-destaque { translate: none; margin-block: -16px; padding-block: calc(clamp(19px, 1.8vw, 25px) + 16px); }
+  .secao-aparelhos .aparelho-destaque:hover { translate: 0 -5px; }
+}
+
+/* 14. Tablet (600 a 1023 px): dois cartões por linha, sem desnível */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .secao-aparelhos { padding-top: 55px; padding-bottom: 95px; }
+  .secao-aparelhos .aparelhos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+  .secao-aparelhos .aparelho, .secao-aparelhos .aparelho-destaque { min-height: 620px; padding: 19px; translate: none; }
+  .secao-aparelhos .aparelho h3 { font-size: 21px; }
+  .secao-aparelhos .aparelho p { font-size: 14px; }
+  .secao-aparelhos .aparelho .lista-check li { font-size: 13px; }
+  .secao-aparelhos .aparelho-brilho { right: -13px; }
+  @media (hover: hover) and (pointer: fine) { .secao-aparelhos .aparelho-destaque:hover { translate: 0 -5px; } }
+}
+
+/* 15. Celular (até 599 px): cartões empilhados, sem desnível */
+@media (max-width: 599px) {
+  .secao-aparelhos { padding-top: 38px; padding-bottom: 85px; }
+  .secao-aparelhos .aparelhos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 19px; margin-top: 28px; width: 100%; }
+  .secao-aparelhos .aparelho, .secao-aparelhos .aparelho-destaque { width: 100%; min-width: 0; min-height: 0; padding: 16px; border-radius: 23px; translate: none; }
+  .secao-aparelhos .aparelho-arte { aspect-ratio: 1.58; border-radius: 15px; }
+  .secao-aparelhos .aparelho-tag { margin-top: 14px; margin-bottom: 9px; padding: 7px 11px; font-size: 9px; }
+  .secao-aparelhos .aparelho h3 { margin-bottom: 9px; font-size: 20px; line-height: 1.3; }
+  .secao-aparelhos .aparelho p { margin-bottom: 15px; font-size: 13px; line-height: 1.75; }
+  .secao-aparelhos .aparelho .lista-check { gap: 10px; margin-bottom: 19px; }
+  .secao-aparelhos .aparelho .lista-check li { gap: 9px; font-size: 12px; line-height: 1.5; }
+  .secao-aparelhos .aparelho > .botao { width: 100%; min-width: 0; }
+  .secao-aparelhos .aparelho-destaque { margin-top: 2px; }
+  .secao-aparelhos .aparelho-brilho { width: 47px; height: 42px; top: -26px; right: -9px; }
+  .secao-aparelhos::after { height: 75px; }
+  .secao-aparelhos::before { width: 400px; height: 400px; top: -180px; left: -180px; }
+}
+
+/* 16. Celulares estreitos (320 a 359 px) */
+@media (max-width: 359px) {
+  .secao-aparelhos .aparelho, .secao-aparelhos .aparelho-destaque { padding: 13px; border-radius: 20px; }
+  .secao-aparelhos .aparelho h3 { font-size: 18px; }
+  .secao-aparelhos .aparelho p { font-size: 12px; }
+  .secao-aparelhos .aparelho .lista-check li { font-size: 11px; }
+}
+
+/* 17. Movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .secao-aparelhos .aparelho, .secao-aparelhos .aparelho-arte img, .secao-aparelhos .aparelho-brilho { animation: none; transition: none; }
+  .secao-aparelhos .aparelho-brilho { opacity: 1; transform: none; }
+}
 
 /* Evolução do tratamento. Sem autorização, a seção é ocultada no modo limpo. */
 .secao-caso { background: #fff; }
