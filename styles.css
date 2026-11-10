@@ -262,8 +262,8 @@ body.menu-aberto { overflow: hidden; }
 .aparelho h3 { font-size: 1.45rem; }
 .aparelho-destaque { background: var(--verde); border-color: var(--verde); color: #D7E8E4; }
 .aparelho-destaque h3 { color: #fff; }
-/* No cartão escuro, a etiqueta e os checks usam as cores do botão do cartão: fundo branco e verde #0F7A64 (contraste 5,3) */
-.aparelho-destaque .aparelho-tag { background: #fff; color: var(--botao); }
+/* No cartão escuro, os checks usam as cores do botão do cartão (fundo branco e verde #0F7A64, contraste 5,3) e a etiqueta usa o menta das outras etiquetas */
+.aparelho-destaque .aparelho-tag { background: var(--menta); color: var(--verde-2); } /* mesmo tom da etiqueta dos cartões brancos */
 .aparelho-destaque .lista-check svg { background: #fff; color: var(--botao); }
 
 /* Evolução do tratamento. Sem autorização, a seção é ocultada no modo limpo. */
