@@ -668,6 +668,11 @@ body.sem-pendencias #avaliacoes { display: none; }
 .faixa-icone::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2.5px solid transparent; border-top-color: #16AD8E; border-right-color: rgba(22,173,142,.75); transform: rotate(-35deg); filter: drop-shadow(0 0 4px rgba(22,173,142,.5)); pointer-events: none; transition: filter 350ms var(--ease), border-color 350ms var(--ease); }
 .faixa-icone svg { position: relative; z-index: 1; display: block; width: 36px; height: 36px; filter: drop-shadow(0 1px 2px rgba(0,0,0,.12)); }
 
+/* ---------- LINK DO CARTÃO ----------
+   Cobre o cartão inteiro (camada 4, acima do fio e do ícone) e leva ao bloco do assunto. O anel de foco acompanha o canto arredondado. */
+.faixa-link { position: absolute; inset: 0; z-index: 4; border-radius: 34px; cursor: pointer; -webkit-tap-highlight-color: rgba(22,173,142,.18); }
+.faixa-link:focus-visible { outline: 3px solid var(--marca); outline-offset: 3px; }
+
 /* ---------- TÍTULOS E DESCRIÇÕES ---------- */
 .faixa strong { display: block; max-width: 100%; margin: 0 0 6px; color: var(--faixa-verde); font-size: clamp(15px, 1.1vw, 18px); font-weight: 700; line-height: 1.3; letter-spacing: -.45px; text-wrap: balance; }
 .faixa small { display: block; max-width: 100%; color: #405B54; font-size: clamp(12.5px, .9vw, 14.5px); font-weight: 400; line-height: 1.55; letter-spacing: -.1px; text-wrap: pretty; }
@@ -704,6 +709,7 @@ body.sem-pendencias #avaliacoes { display: none; }
     .faixa { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
     .faixa li { min-height: 200px; padding: 104px 22px 22px; }
     .faixa li::before { border-radius: 28px; }
+    .faixa-link { border-radius: 28px; }
     .faixa-icone { top: 14px; width: 76px; height: 76px; }
     .faixa-icone svg { width: 34px; height: 34px; }
     .faixa strong { margin-bottom: 6px; font-size: 16px; }
@@ -720,6 +726,7 @@ body.sem-pendencias #avaliacoes { display: none; }
         -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
     .faixa li { flex-direction: row; align-items: center; justify-content: flex-start; gap: 16px; width: 100%; min-height: 88px; padding: 12px 2px; text-align: left; }
     .faixa li::before { display: none; }
+    .faixa-link { border-radius: 14px; }
     .faixa li > div { transform: none; }
     .faixa li + li { border-top: 1px solid rgba(22,173,142,.19); }
     .faixa-icone { position: relative; top: auto; left: auto; flex: 0 0 58px; width: 58px; height: 58px; transform: none; }
