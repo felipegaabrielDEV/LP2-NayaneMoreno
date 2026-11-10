@@ -239,20 +239,16 @@ body.menu-aberto { overflow: hidden; }
 .aparelhos { display: grid; gap: 18px; }
 .aparelho { display: flex; flex-direction: column; padding: 22px; border-radius: var(--raio); background: #fff; border: 1px solid var(--borda); box-shadow: var(--sombra-p); }
 .aparelho .botao { margin-top: auto; width: 100%; }
-.aparelho-arte { margin: -6px -6px 18px; padding: 16px 10px; border-radius: 16px; background: linear-gradient(180deg, var(--menta), var(--menta-2)); }
-.aparelho-arte svg { width: 100%; height: 110px; }
-.dentes rect { fill: #fff; stroke: #BFD9D1; stroke-width: 2; }
-.fio { fill: none; stroke: #8C9A99; stroke-width: 3; }
-.braquete-metal rect { fill: #9AA6A8; stroke: #6F7B7D; stroke-width: 2; }
-.braquete-porcelana rect { fill: #F3EEE7; stroke: #CFC3B8; stroke-width: 2; }
-.placa { fill: #CFE9F01F; stroke: #7FB8C4; stroke-width: 3; stroke-dasharray: 0; }
+/* Foto no topo do cartão (WebP 900x640 e 520x365), no estilo do bloco "Para quem é". As fotos são ilustrativas, geradas por IA. */
+.aparelho-arte { margin: -6px -6px 18px; border-radius: 16px; overflow: hidden; background: var(--menta); aspect-ratio: 900 / 640; }
+.aparelho-arte img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+@media (hover: hover) { .aparelho:hover .aparelho-arte img { transform: scale(1.04); } }
 .aparelho-tag { align-self: flex-start; margin-bottom: 10px; padding: 4px 12px; border-radius: 999px; background: var(--menta); color: var(--verde-2); font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .aparelho h3 { font-size: 1.45rem; }
 .aparelho-destaque { background: var(--verde); border-color: var(--verde); color: #D7E8E4; }
 .aparelho-destaque h3 { color: #fff; }
 .aparelho-destaque .aparelho-tag { background: #ffffff1a; color: var(--marca); }
 .aparelho-destaque .lista-check svg { background: #ffffff1a; color: var(--marca); }
-.aparelho-destaque .aparelho-arte { background: linear-gradient(180deg, #165A4D, #124C41); }
 
 /* Evolução do tratamento. Sem autorização, a seção é ocultada no modo limpo. */
 .secao-caso { background: #fff; }
