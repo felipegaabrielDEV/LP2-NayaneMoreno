@@ -73,20 +73,43 @@
        Clicar de novo na pergunta aberta fecha ela. Para voltar a permitir várias abertas, apague o bloco
        "fecha as outras". */
     const botoesFaq = document.querySelectorAll(".faq-item button");
+    const raiz = document.documentElement;
+    let travaFaq = null;
+    /* Fluidez no celular. Como só uma pergunta fica aberta, tocar numa pergunta ABAIXO da aberta faria o conteúdo subir
+       durante a animação e a pergunta tocada "andar" sob o dedo (o Safari do iPhone não corrige isso sozinho).
+       Solução: a pergunta aberta que está ACIMA fecha na hora (sem animar) e a rolagem é corrigida uma única vez, então a
+       pergunta tocada fica parada e só ela anima. As que estão abaixo fecham animando, sem mexer em nada acima.
+       Por ~0,5 s também pausa as animações contínuas (botões, riscos do título), que repintam sombra e brilho. */
+    const marcaMexendo = ms => { raiz.classList.add("faq-mexendo"); clearTimeout(travaFaq); travaFaq = setTimeout(() => raiz.classList.remove("faq-mexendo"), ms); };
     botoesFaq.forEach(botao => {
         botao.addEventListener("click", () => {
             const item = botao.closest(".faq-item");
             const abrir = botao.getAttribute("aria-expanded") !== "true";
+            const todos = [...botoesFaq];
+            const pos = todos.indexOf(botao);
+            if (!reduzMovimento) marcaMexendo(560);
             if (abrir) {
-                /* fecha as outras */
-                botoesFaq.forEach(outro => {
-                    if (outro === botao) return;
+                const topoAntes = botao.getBoundingClientRect().top;
+                const acima = [];
+                todos.forEach((outro, i) => {
+                    if (outro === botao || outro.getAttribute("aria-expanded") !== "true") return;
+                    const it = outro.closest(".faq-item");
+                    if (i < pos) { it.classList.add("fecha-seco"); acima.push(it); }
                     outro.setAttribute("aria-expanded", "false");
-                    outro.closest(".faq-item").classList.remove("aberto");
+                    it.classList.remove("aberto");
                 });
+                botao.setAttribute("aria-expanded", "true");
+                item.classList.add("aberto");
+                if (acima.length) {
+                    /* mede depois do fechamento instantâneo e devolve a pergunta tocada ao mesmo lugar da tela */
+                    const dif = botao.getBoundingClientRect().top - topoAntes;
+                    if (Math.abs(dif) > 0.5) window.scrollBy(0, dif);
+                    requestAnimationFrame(() => requestAnimationFrame(() => acima.forEach(it => it.classList.remove("fecha-seco"))));
+                }
+            } else {
+                botao.setAttribute("aria-expanded", "false");
+                item.classList.remove("aberto");
             }
-            botao.setAttribute("aria-expanded", String(abrir));
-            item.classList.toggle("aberto", abrir);
         });
     });
 
