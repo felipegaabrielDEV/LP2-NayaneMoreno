@@ -1008,6 +1008,17 @@ body.sem-pendencias #avaliacoes { display: none; }
 .rodape-legal { border-top: 1px solid var(--borda); padding: 22px 0 90px; text-align: center; font-size: .8rem; color: #6E7A78; }
 .rodape-legal p { margin: 0 0 6px; }
 .rodape-legal strong { color: var(--tinta); }
+/* Celular (até 599 px): rodapé todo centralizado (logo, texto, títulos, contatos, endereço e horário) */
+@media (max-width: 599px) {
+    .rodape-grade { justify-items: center; text-align: center; gap: 30px; }
+    .rodape-marca { display: grid; justify-items: center; }
+    .rodape-marca p { margin-inline: auto; }
+    .rodape-col { display: grid; justify-items: center; width: 100%; }
+    .rodape-col a, .rodape-col p { justify-content: center; align-items: center; text-align: center; }
+    .rodape-col svg { margin-top: 0; flex: none; }
+    /* Endereço e horário (várias linhas): o ícone vai em cima do texto, também no centro */
+    .rodape-col:nth-child(3) a, .rodape-col:nth-child(4) p { flex-direction: column; gap: 6px; }
+}
 
 /* Botão flutuante: círculo verde do WhatsApp com anel que pulsa (mesmo efeito do site de salas da Vallenci).
    Fica no canto inferior direito, acima da área segura do celular. */
