@@ -117,8 +117,7 @@ Depois acesse `http://localhost:8000`.
 ## ✅ Pendências de conteúdo
 
 **Travam o lançamento**
-- [x] Endereço (Rua Senador Rolemberg, 562, São José, CEP 49015-120), WhatsApp (79) 99945-2813, Instagram e horário
-- [ ] Grafia da rua: o Google registra "Rollemberg" (com dois L); confirmar com a Dra. Nayane
+- [x] Endereço (Rua Senador Rollemberg, 562, São José, CEP 49015-120), WhatsApp (79) 99945-2813, Instagram e horário
 - [ ] Fotos de atendimento (seção "Atendimento", 3 fotos em `assets/atendimento/`): **já estão na página pública**; registrar a autorização por escrito das pacientes que aparecem e conferir a norma do CFO/CRO-SE
 - [ ] Confirmação dos três tipos de aparelho (metálico, porcelana, alinhador) e da marca do alinhador
 - [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia, autorização para citar os nomes e logotipos oficiais
