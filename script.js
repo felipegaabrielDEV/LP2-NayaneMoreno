@@ -166,6 +166,71 @@
         contadores.forEach(el => obsNum.observe(el));
     }
 
+    /* ---------- Fotos do caso em tela cheia (celular e tablet) ----------
+       Em telas menores que 1024 px, tocar numa foto de "Evolução do tratamento" abre a foto ampliada, para ver o
+       detalhe clínico. Usa o <dialog> nativo (foco preso, Esc fecha) com botões de fechar, anterior e próxima.
+       No computador as fotos já são grandes e nada muda. Para desligar, apague este bloco. */
+    const fotosCaso = [...document.querySelectorAll("#evolucao .caso-foto")];
+    if (fotosCaso.length && typeof HTMLDialogElement === "function") {
+        const telaPequena = window.matchMedia("(max-width: 1023px)");
+        const dlg = document.createElement("dialog");
+        dlg.className = "foto-ampliada";
+        dlg.setAttribute("aria-label", "Foto ampliada");
+        dlg.innerHTML = '<button type="button" class="foto-fechar" aria-label="Fechar foto">&times;</button>' +
+            '<button type="button" class="foto-seta foto-ant" aria-label="Foto anterior">&#8249;</button>' +
+            '<figure><img alt=""><figcaption></figcaption></figure>' +
+            '<button type="button" class="foto-seta foto-prox" aria-label="Próxima foto">&#8250;</button>';
+        document.body.appendChild(dlg);
+        const img = dlg.querySelector("img"), legenda = dlg.querySelector("figcaption");
+        let atual = 0, origem = null;
+        const nome = i => {
+            const f = fotosCaso[i];
+            return (f.closest(".caso")?.querySelector("h3")?.textContent || "Foto do caso") + " · " + (f.querySelector("figcaption")?.textContent || "");
+        };
+        const mostrar = i => {
+            atual = (i + fotosCaso.length) % fotosCaso.length;
+            const f = fotosCaso[atual].querySelector("img");
+            img.src = f.currentSrc || f.src;
+            img.alt = f.alt + " (" + nome(atual) + ")";
+            legenda.textContent = nome(atual) + "  ·  " + (atual + 1) + " de " + fotosCaso.length;
+        };
+        const abrir = i => { origem = fotosCaso[i]; mostrar(i); if (!dlg.open) dlg.showModal(); document.documentElement.classList.add("foto-aberta"); };
+        const fechar = () => { if (dlg.open) dlg.close(); };
+        dlg.addEventListener("close", () => { document.documentElement.classList.remove("foto-aberta"); origem?.focus({ preventScroll: true }); });
+        dlg.querySelector(".foto-fechar").addEventListener("click", fechar);
+        dlg.querySelector(".foto-ant").addEventListener("click", () => mostrar(atual - 1));
+        dlg.querySelector(".foto-prox").addEventListener("click", () => mostrar(atual + 1));
+        dlg.addEventListener("click", e => { if (e.target === dlg || e.target.tagName === "FIGURE") fechar(); });
+        dlg.addEventListener("keydown", e => {
+            if (e.key === "ArrowLeft") { e.preventDefault(); mostrar(atual - 1); }
+            if (e.key === "ArrowRight") { e.preventDefault(); mostrar(atual + 1); }
+        });
+        /* Gestos: deslizar para os lados troca de foto */
+        let x0 = null;
+        dlg.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+        dlg.addEventListener("touchend", e => {
+            if (x0 === null) return;
+            const dx = e.changedTouches[0].clientX - x0; x0 = null;
+            if (Math.abs(dx) > 60) mostrar(atual + (dx < 0 ? 1 : -1));
+        }, { passive: true });
+        /* As fotos só viram botões em tela pequena (no computador nada acontece ao clicar) */
+        const preparar = () => fotosCaso.forEach((f, i) => {
+            if (telaPequena.matches) {
+                f.setAttribute("tabindex", "0"); f.setAttribute("role", "button");
+                f.setAttribute("aria-label", "Ampliar foto: " + nome(i));
+            } else {
+                f.removeAttribute("tabindex"); f.removeAttribute("role"); f.removeAttribute("aria-label");
+                if (dlg.open) dlg.close();
+            }
+        });
+        fotosCaso.forEach((f, i) => {
+            f.addEventListener("click", () => { if (telaPequena.matches) abrir(i); });
+            f.addEventListener("keydown", e => { if (telaPequena.matches && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); abrir(i); } });
+        });
+        telaPequena.addEventListener("change", preparar);
+        preparar();
+    }
+
     const ano = document.querySelector("[data-ano]");
     if (ano) ano.textContent = new Date().getFullYear();
 })();

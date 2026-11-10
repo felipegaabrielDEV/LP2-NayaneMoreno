@@ -504,6 +504,29 @@ body.sem-pendencias .previa-caso { display: none; }
 /* 14. Movimento reduzido */
 @media (prefers-reduced-motion: reduce) { #evolucao .caso, #evolucao .caso-foto img { animation: none; transition: none; } }
 
+/* ===== Foto do caso ampliada (celular e tablet) ===== */
+.foto-ampliada { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(5, 28, 24, .96); color: #fff; }
+.foto-ampliada[open] { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; justify-items: center; }
+.foto-ampliada::backdrop { background: rgba(5, 28, 24, .96); }
+.foto-ampliada figure { grid-column: 2; display: grid; gap: 14px; justify-items: center; width: 100%; max-height: 100%; margin: 0; padding: 70px 0 28px; }
+.foto-ampliada img { display: block; max-width: 100%; max-height: calc(100vh - 170px); max-height: calc(100dvh - 170px); object-fit: contain; border-radius: 12px; background: #0E2E29; }
+.foto-ampliada figcaption { font-size: .8rem; font-weight: 600; letter-spacing: .03em; text-align: center; color: #CDEBE2; }
+.foto-fechar, .foto-seta { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid #ffffff40; border-radius: 50%; background: #ffffff1a; color: #fff; font-size: 1.7rem; line-height: 1; cursor: pointer; transition: background .25s var(--ease), transform .25s var(--ease); }
+.foto-fechar { position: absolute; z-index: 2; top: 14px; right: 14px; font-size: 1.9rem; }
+.foto-ant { grid-column: 1; grid-row: 1; }
+.foto-prox { grid-column: 3; grid-row: 1; }
+.foto-fechar:focus-visible, .foto-seta:focus-visible { outline: 3px solid var(--marca); outline-offset: 3px; }
+@media (hover: hover) { .foto-fechar:hover, .foto-seta:hover { background: #ffffff33; transform: scale(1.06); } }
+html.foto-aberta { overflow: hidden; }
+@media (max-width: 599px) { .foto-ampliada[open] { grid-template-columns: 38px minmax(0, 1fr) 38px; } .foto-seta { width: 36px; height: 36px; font-size: 1.4rem; } }
+/* Sinal de que a foto abre: lupa pequena no canto (só em tela pequena) */
+@media (max-width: 1023px) {
+  #evolucao .caso-foto[role="button"] { cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
+  #evolucao .caso-foto[role="button"]::after { content: ""; position: absolute; z-index: 2; top: 6px; right: 6px; width: 24px; height: 24px; border-radius: 50%; background: #0F3F36B3 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6'/%3E%3Cpath d='m16 16 4 4M11 8.5v5M8.5 11h5'/%3E%3C/svg%3E") center / 14px no-repeat; pointer-events: none; }
+  #evolucao .caso-foto[role="button"]:focus-visible { outline: 3px solid var(--marca); outline-offset: 2px; }
+}
+@media (prefers-reduced-motion: reduce) { .foto-fechar, .foto-seta { transition: none; } }
+
 .depoimento { display: grid; gap: 22px; align-items: center; max-width: 900px; margin: 44px auto 0; padding: 18px; border: 1px solid var(--borda); border-radius: 24px; background: linear-gradient(135deg, #F4FAF8, var(--menta)); box-shadow: var(--sombra-p); }
 /* O vídeo da mãe é vertical (480 x 848): o player acompanha essa proporção, sem cortar. */
 .depoimento-video { width: min(100%, 290px); margin-inline: auto; aspect-ratio: 480 / 848; overflow: hidden; border-radius: 18px; background: var(--verde); box-shadow: 0 18px 40px -20px #0F3F3680; }
