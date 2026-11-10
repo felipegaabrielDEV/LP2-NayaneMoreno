@@ -262,8 +262,9 @@ body.menu-aberto { overflow: hidden; }
 .aparelho h3 { font-size: 1.45rem; }
 .aparelho-destaque { background: var(--verde); border-color: var(--verde); color: #D7E8E4; }
 .aparelho-destaque h3 { color: #fff; }
-.aparelho-destaque .aparelho-tag { background: #ffffff1a; color: var(--marca); }
-.aparelho-destaque .lista-check svg { background: #ffffff1a; color: var(--marca); }
+/* No cartão escuro, a etiqueta e os checks usam as cores do botão do cartão: fundo branco e verde #0F7A64 (contraste 5,3) */
+.aparelho-destaque .aparelho-tag { background: #fff; color: var(--botao); }
+.aparelho-destaque .lista-check svg { background: #fff; color: var(--botao); }
 
 /* Evolução do tratamento. Sem autorização, a seção é ocultada no modo limpo. */
 .secao-caso { background: #fff; }
