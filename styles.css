@@ -112,7 +112,11 @@ body.sem-pendencias .pend { display: none; }
 .previa-alternar.previa-fotos { bottom: 58px; background: #E8F6F1; color: #0F3F36; }
 
 /* ---------- Menu ---------- */
-.topo { position: sticky; top: 0; z-index: 900; background: #FFFFFFF0; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s, box-shadow .3s; }
+/* Cabeçalho fixo. O vidro fosco (backdrop-filter) fica numa camada de fundo (::before) e NÃO no próprio .topo:
+   com backdrop-filter no .topo, o menu do celular (position: fixed, dentro dele) passava a se medir pelo cabeçalho e
+   ficava cortado, com só ~50 px de altura. */
+.topo { position: sticky; top: 0; z-index: 900; background: transparent; border-bottom: 1px solid transparent; transition: border-color .3s, box-shadow .3s; }
+.topo::before { content: ""; position: absolute; z-index: -1; inset: 0; background: #FFFFFFF0; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); pointer-events: none; }
 .topo.rolou { border-color: var(--borda); box-shadow: 0 8px 30px -18px #0F3F3640; }
 .topo-linha { height: var(--header-h); display: flex; align-items: center; gap: 24px; }
 .marca { display: flex; align-items: center; gap: 12px; min-width: 0; }
@@ -133,7 +137,7 @@ body.sem-pendencias .pend { display: none; }
 .menu-botao[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .menu-botao[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .menu-botao[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.menu-movel { position: fixed; inset: var(--header-h) 0 0; background: var(--fundo); padding: 18px var(--gutter) 32px; overflow-y: auto; }
+.menu-movel { position: fixed; inset: var(--header-h) 0 0; z-index: 1; background: var(--fundo); padding: 18px var(--gutter) calc(32px + env(safe-area-inset-bottom)); overflow-y: auto; overscroll-behavior: contain; }
 .menu-movel nav { display: grid; margin-bottom: 22px; }
 .menu-movel nav a { padding: 16px 4px; border-bottom: 1px solid var(--borda); font-size: 1.15rem; font-weight: 600; color: var(--tinta); }
 .menu-movel .botao { width: 100%; }
