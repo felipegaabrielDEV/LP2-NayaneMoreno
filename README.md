@@ -128,7 +128,7 @@ Depois acesse `http://localhost:8000`.
 - [ ] Intervalo das manutenções e como termina o tratamento (contenção e retornos)
 - [ ] Idade mínima para a ortodontia e faixa média de duração do tratamento
 - [ ] Link do perfil no Google e liberação das avaliações (norma do CFO)
-- [ ] Seção "Evolução do tratamento" (fotos em `assets/casos/` e vídeo da mãe, que mostra também o filho, menor): **já estão na página pública**; registrar a autorização escrita do paciente/responsável e da mãe e conferir a norma do CFO/CRO-SE. A seção some no modo "ocultar pendências"
+- [ ] Seção "Evolução do tratamento": **fotos do caso** — autorização do paciente recebida em 10/11/2026 (mensagem de WhatsApp, guardada pela clínica; os dados do paciente não ficam neste repositório público); falta **conferir a norma do CFO/CRO-SE** (antes e depois) e, se possível, pedir um termo assinado e as fotos originais em JPG leve. **Vídeo da mãe** (mostra também o filho, menor): continua sem autorização escrita da mãe, e só ela, como responsável pelo menor, pode autorizar. A seção segue oculta no modo "ocultar pendências"
 - [ ] Fotos de "depois" (o paciente ainda está com aparelho; hoje só há antes e momento atual)
 - [ ] Seção "Para quem é": as 6 fotos são **ilustrações geradas por IA** (não são pacientes). A Dra. Nayane precisa aprovar e é preciso conferir a norma do CFO/CRO-SE sobre imagens ilustrativas de condições bucais
 - [ ] Copy do topo (feita pelo cunhado do Felipe): conferir com a Dra. Nayane e a norma do CFO/CRO-SE o "sorriso dos sonhos, sem passar anos usando aparelho?" (risco de ser lido como promessa de resultado ou de prazo) e o "+10 anos de experiência"
