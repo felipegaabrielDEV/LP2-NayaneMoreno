@@ -131,6 +131,7 @@ Depois acesse `http://localhost:8000`.
 - [ ] Seção "Evolução do tratamento" (fotos em `assets/casos/` e vídeo da mãe, que mostra também o filho, menor): **já estão na página pública**; registrar a autorização escrita do paciente/responsável e da mãe e conferir a norma do CFO/CRO-SE. A seção some no modo "ocultar pendências"
 - [ ] Fotos de "depois" (o paciente ainda está com aparelho; hoje só há antes e momento atual)
 - [ ] Seção "Para quem é": as 6 fotos são **ilustrações geradas por IA** (não são pacientes). A Dra. Nayane precisa aprovar e é preciso conferir a norma do CFO/CRO-SE sobre imagens ilustrativas de condições bucais
+- [ ] Copy do topo (feita pelo cunhado do Felipe): número real de "pacientes atendidos" (o trecho "+X pacientes" ficou de fora); conferir com a Dra. Nayane e a norma do CFO/CRO-SE o "sorriso dos sonhos", o "sem passar anos usando aparelho" e o "já comece sabendo quanto tempo deve levar" (risco de ser lido como promessa de resultado ou de prazo)
 - [ ] Logotipo e cores da marca, se existirem
 - [ ] Domínio e acesso ao Google Tag Manager
 
