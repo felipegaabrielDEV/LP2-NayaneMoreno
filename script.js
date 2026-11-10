@@ -68,11 +68,23 @@
         linksMenu.forEach(a => { const s = document.querySelector(a.getAttribute("href")); if (s) obs.observe(s); });
     }
 
-    /* ---------- Perguntas frequentes ---------- */
-    document.querySelectorAll(".faq-item button").forEach(botao => {
+    /* ---------- Perguntas frequentes ----------
+       Todas começam fechadas e só uma fica aberta por vez: ao abrir uma pergunta, a que estava aberta fecha.
+       Clicar de novo na pergunta aberta fecha ela. Para voltar a permitir várias abertas, apague o bloco
+       "fecha as outras". */
+    const botoesFaq = document.querySelectorAll(".faq-item button");
+    botoesFaq.forEach(botao => {
         botao.addEventListener("click", () => {
             const item = botao.closest(".faq-item");
             const abrir = botao.getAttribute("aria-expanded") !== "true";
+            if (abrir) {
+                /* fecha as outras */
+                botoesFaq.forEach(outro => {
+                    if (outro === botao) return;
+                    outro.setAttribute("aria-expanded", "false");
+                    outro.closest(".faq-item").classList.remove("aberto");
+                });
+            }
             botao.setAttribute("aria-expanded", String(abrir));
             item.classList.toggle("aberto", abrir);
         });
