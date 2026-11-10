@@ -878,9 +878,17 @@ body.sem-pendencias #avaliacoes { display: none; }
 #duvidas .cabeca { position: sticky; top: calc(var(--header-h) + 30px); align-self: start; display: flex; flex-direction: column; align-items: flex-start; width: 100%; max-width: 370px; min-width: 0; margin-bottom: 0; text-align: left; }
 #duvidas .cabeca h2 { position: relative; width: fit-content; max-width: 100%; margin: 19px 0 0; color: #293B37; font-family: inherit; font-size: clamp(43px, 4.2vw, 57px); font-weight: 700; line-height: 1.04; letter-spacing: -1.8px; }
 #duvidas .cabeca h2 em { display: block; color: var(--botao); font-weight: 300; font-style: normal; letter-spacing: -1.7px; }
-/* Três riscos decorativos ao lado do título */
-#duvidas .cabeca h2::after { content: ""; position: absolute; top: 39%; right: -43px; width: 35px; height: 51px; pointer-events: none; background-repeat: no-repeat; background-size: contain;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 58' fill='none'%3E%3Cpath d='M12 17 L22 2' stroke='%2316AD8E' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M15 31 L36 27' stroke='%2316AD8E' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M9 44 L25 54' stroke='%2316AD8E' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"); }
+/* Três riscos de brilho ao lado do título (SVG no HTML, para animar traço por traço) */
+#duvidas .duvidas-brilho { position: absolute; top: 39%; right: -43px; width: 35px; height: 51px; overflow: visible; pointer-events: none; }
+#duvidas .duvidas-brilho path { stroke: #16AD8E; stroke-width: 3; stroke-linecap: round; transform-box: fill-box; transform-origin: center; transition: transform 380ms var(--ease), stroke 380ms var(--ease), filter 380ms var(--ease); }
+/* Hover no título (só com mouse): cada traço se afasta um pouco, engrossa e brilha, em sequência */
+@media (hover: hover) and (pointer: fine) {
+  #duvidas .cabeca h2:hover .duvidas-brilho path { stroke: #0FBF9C; filter: drop-shadow(0 0 4px rgba(22,173,142,.7)); animation: duvidas-faisca 900ms var(--ease) both; }
+  #duvidas .cabeca h2:hover .duvidas-brilho path:nth-child(1) { transform: translate(2px, -3px) scale(1.12); animation-delay: 0ms; }
+  #duvidas .cabeca h2:hover .duvidas-brilho path:nth-child(2) { transform: translate(4px, -1px) scale(1.12); animation-delay: 110ms; }
+  #duvidas .cabeca h2:hover .duvidas-brilho path:nth-child(3) { transform: translate(3px, 3px) scale(1.12); animation-delay: 220ms; }
+}
+@keyframes duvidas-faisca { 0% { stroke-width: 3; } 35% { stroke-width: 5; } 100% { stroke-width: 3.6; } }
 #duvidas .cabeca > p { max-width: 390px; margin: 29px 0 0; color: var(--texto); font-family: inherit; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: .03px; }
 #duvidas .cabeca > .botao { display: inline-flex; align-items: center; justify-content: center; width: fit-content; max-width: 100%; margin-top: 24px; border-radius: 50px; }
 
@@ -930,7 +938,7 @@ body.sem-pendencias #avaliacoes { display: none; }
   #duvidas > .container.duvidas { grid-template-columns: minmax(0, 1fr); gap: 34px; max-width: 760px; }
   #duvidas .cabeca { position: static; align-items: center; max-width: 660px; margin: 0 auto; text-align: center; }
   #duvidas .cabeca h2 { margin-top: 16px; font-size: clamp(40px, 5.5vw, 49px); text-align: center; }
-  #duvidas .cabeca h2::after { right: -32px; width: 29px; height: 42px; }
+  #duvidas .duvidas-brilho { right: -32px; width: 29px; height: 42px; }
   #duvidas .cabeca > p { max-width: 500px; margin-top: 19px; text-align: center; }
   #duvidas .cabeca > .botao { align-self: center; margin-top: 21px; }
   #duvidas .faq { width: 100%; max-width: 700px; margin: 0 auto; gap: 10px; }
@@ -943,7 +951,7 @@ body.sem-pendencias #avaliacoes { display: none; }
   #duvidas .cabeca { position: static; align-items: center; width: 100%; max-width: 100%; margin: 0 auto; text-align: center; }
   #duvidas .cabeca h2 { width: fit-content; max-width: calc(100% - 24px); margin-top: 14px; font-size: clamp(37px, 10vw, 45px); line-height: 1.04; letter-spacing: -1.35px; text-align: center; }
   #duvidas .cabeca h2 em { letter-spacing: -1.3px; }
-  #duvidas .cabeca h2::after { top: 34%; right: -22px; width: 24px; height: 37px; opacity: .9; }
+  #duvidas .duvidas-brilho { top: 34%; right: -22px; width: 24px; height: 37px; opacity: .9; }
   #duvidas .cabeca > p { max-width: 340px; margin-top: 20px; font-size: 12px; line-height: 1.75; text-align: center; }
   #duvidas .cabeca > .botao { align-self: center; width: 100%; max-width: 330px; margin-top: 19px; }
   #duvidas .faq { width: 100%; min-width: 0; gap: 9px; margin: 0; }
@@ -961,7 +969,7 @@ body.sem-pendencias #avaliacoes { display: none; }
 @media (max-width: 359px) {
   #duvidas > .container.duvidas { gap: 24px; }
   #duvidas .cabeca h2 { font-size: 36px; }
-  #duvidas .cabeca h2::after { right: -18px; width: 21px; height: 32px; }
+  #duvidas .duvidas-brilho { right: -18px; width: 21px; height: 32px; }
   #duvidas .faq { gap: 8px; }
   #duvidas .faq-item > h3 > button { min-height: 54px; padding: 12px 49px; font-size: 11px; }
   #duvidas .faq-item > h3::before { left: 10px; width: 27px; height: 27px; font-size: 11px; }
@@ -971,7 +979,8 @@ body.sem-pendencias #avaliacoes { display: none; }
 }
 
 /* 17. Movimento reduzido */
-@media (prefers-reduced-motion: reduce) { #duvidas .faq-item, #duvidas .faq-item > h3::before, #duvidas .faq-item > h3 > button::before, #duvidas .faq-item > h3 > button::after, #duvidas .faq-resposta { animation: none; transition: none; } }
+@media (prefers-reduced-motion: reduce) { #duvidas .duvidas-brilho path { animation: none !important; transition: none; transform: none !important; }
+  #duvidas .faq-item, #duvidas .faq-item > h3::before, #duvidas .faq-item > h3 > button::before, #duvidas .faq-item > h3 > button::after, #duvidas .faq-resposta { animation: none; transition: none; } }
 
 /* Chamada final */
 .final { padding: 0 0 80px; background: linear-gradient(180deg, var(--fundo) 0 50%, #fff 50%); }

@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261107-49">
+    <link rel="stylesheet" href="styles.css?v=20261107-50">
 </head>
 <body>
 
@@ -638,7 +638,9 @@
         <div class="container duvidas">
             <header class="cabeca">
                 <span class="rotulo">Dúvidas frequentes</span>
-                <h2 id="duvidas-titulo">Perguntas <em>frequentes</em></h2>
+                <h2 id="duvidas-titulo">Perguntas <em>frequentes</em>
+                    <!-- Três riscos de brilho (decorativos): no hover do título cada traço dispara para fora, um depois do outro. Mexa no CSS (.duvidas-brilho). -->
+                    <svg class="duvidas-brilho" viewBox="0 0 40 58" fill="none" aria-hidden="true"><path d="M12 17 L22 2"/><path d="M15 31 L36 27"/><path d="M9 44 L25 54"/></svg></h2>
                 <p>Não encontrou a sua? Pergunte pelo WhatsApp.</p>
                 <a class="botao botao-destaque" href="#" data-wa data-wa-origin="faq"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg>Tirar dúvida pelo WhatsApp</a>
             </header>
