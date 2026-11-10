@@ -589,6 +589,10 @@ html.foto-aberta { overflow: hidden; }
 #convenios .convenio:not(.convenio-claro) > p { margin: 0; color: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 400; line-height: 1.85; letter-spacing: .02px; }
 #convenios .convenio .pend { align-self: stretch; margin: 14px 0 16px; }
 
+/* Cartão particular também centralizado: etiqueta e título no eixo; a lista vira um bloco centralizado, com os checks em coluna */
+#convenios .convenio-claro { align-items: center; text-align: center; }
+#convenios .convenio-claro .lista-check { text-align: left; }
+
 /* Conteúdo do cartão do convênio centralizado (etiqueta, título, logos, texto e aviso) */
 #convenios .convenio:not(.convenio-claro) { align-items: center; text-align: center; }
 #convenios .convenio:not(.convenio-claro) .planos { margin-inline: auto; }
@@ -599,7 +603,7 @@ html.foto-aberta { overflow: hidden; }
   -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px);
   box-shadow: 0 16px 37px rgba(15,63,54,.075), 0 4px 12px rgba(15,63,54,.035), 0 0 23px rgba(255,255,255,.85); }
 #convenios .convenio-claro::before { content: ""; position: absolute; z-index: -1; top: 0; left: 8%; width: 84%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.95), transparent); pointer-events: none; }
-#convenios .convenio-claro .lista-check { display: flex; flex-direction: column; gap: 14px; width: 100%; margin: 17px 0 24px; padding: 0; list-style: none; }
+#convenios .convenio-claro .lista-check { display: flex; flex-direction: column; gap: 14px; width: fit-content; max-width: 100%; margin: 17px auto 24px; padding: 0; list-style: none; }
 #convenios .convenio-claro .lista-check li { display: flex; align-items: flex-start; gap: 10px; min-width: 0; color: #415650; font-family: inherit; font-size: 13px; font-weight: 400; line-height: 1.7; }
 
 /* Botões na base dos cartões (.botao, .botao-destaque e .botao-claro não são redefinidos) */
