@@ -120,7 +120,7 @@ Depois acesse `http://localhost:8000`.
 - [x] Endereço (Rua Senador Rollemberg, 562, São José, CEP 49015-120), WhatsApp (79) 99945-2813, Instagram e horário
 - [ ] Fotos de atendimento (seção "Atendimento", 3 fotos em `assets/atendimento/`): **já estão na página pública**; registrar a autorização por escrito das pacientes que aparecem e conferir a norma do CFO/CRO-SE
 - [ ] Confirmação dos três tipos de aparelho (metálico, porcelana, alinhador) e da marca do alinhador. As três fotos dos cartões são ilustrações de IA e precisam da aprovação da Dra. Nayane e da conferência da norma do CFO/CRO-SE
-- [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia, autorização para citar os nomes e logotipos oficiais
+- [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia. As **logos oficiais já estão no site** (`assets/convenios/`, enviadas pela equipe; a da Amil é a "Amil Dental"); confirmar a autorização de cada operadora para o uso da marca
 - [ ] Aprovação do texto "Sobre" e da citação da Dra. Nayane
 - [ ] Foto do diploma e dos certificados (graduação 2011 e pós em Ortodontia 2014–2017)
 

@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261107-44">
+    <link rel="stylesheet" href="styles.css?v=20261107-45">
 </head>
 <body>
 
@@ -379,12 +379,14 @@
                 <article class="convenio revelar">
                     <span class="convenio-selo">Pelo convênio</span>
                     <h3>Atendemos estes planos</h3>
+                    <!-- Logos oficiais dos planos (assets/convenios/, WebP sem perda, com as margens brancas cortadas). Só entram os planos
+                         que a Dra. atende na ortodontia: SulAmérica e Amil (Porto Seguro e Petrobras são só da clínica geral). -->
                     <ul class="planos">
-                        <li>SulAmérica</li>
-                        <li>Amil</li>
+                        <li><img class="plano-logo plano-sulamerica" src="assets/convenios/sulamerica.webp" width="534" height="146" alt="SulAmérica" loading="lazy"></li>
+                        <li><img class="plano-logo plano-amil" src="assets/convenios/amil-dental.webp" width="247" height="147" alt="Amil Dental" loading="lazy"></li>
                     </ul>
                     <p>Tem um desses planos? Chame no WhatsApp para confirmar o que a sua cobertura inclui antes de agendar.</p>
-                    <span class="pend">PENDENTE: o que cada plano cobre na ortodontia, autorização e logotipos oficiais dos planos</span>
+                    <span class="pend">PENDENTE: o que cada plano cobre na ortodontia e a autorização de cada operadora para usar a logo</span>
                     <a class="botao botao-destaque botao-claro" href="#" data-wa data-wa-origin="convenios"><svg aria-hidden="true"><use href="#i-whatsapp"/></svg>Confirmar meu plano pelo WhatsApp</a>
                 </article>
                 <article class="convenio convenio-claro revelar">
