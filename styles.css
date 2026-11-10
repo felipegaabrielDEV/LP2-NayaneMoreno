@@ -144,11 +144,10 @@ body.menu-aberto { overflow: hidden; }
     radial-gradient(circle at 85% 18%, #16AD8E1F 0, transparent 38%),
     linear-gradient(180deg, #fff, var(--fundo)); }
 .hero-grade { display: grid; gap: 40px; align-items: center; }
-/* Título mais longo (copy nova): fonte um pouco menor para caber em 4 a 5 linhas sem empurrar a foto */
-.hero h1 { font-size: clamp(1.85rem, 6.4vw, 3.05rem); }
-@media (min-width: 1024px) { .hero h1 { max-width: 520px; } } /* não encosta no cartão do nome da Dra. */
-@media (min-width: 1024px) and (max-width: 1199px) { .hero h1 { max-width: 430px; font-size: 2.45rem; } .hero .lead { max-width: 430px; } .hero-acoes { max-width: 430px; } }
+.hero h1 { font-size: clamp(2.1rem, 7vw, 3.7rem); }
 .hero h1 em { display: block; }
+/* Telas de 1024 a 1199 px: o cartão do nome da Dra. avança sobre a coluna do texto, então o título fica mais estreito */
+@media (min-width: 1024px) and (max-width: 1199px) { .hero h1 { max-width: 430px; font-size: 2.6rem; } }
 .lead { font-size: 1.06rem; max-width: 560px; }
 /* Botão centralizado em relação ao texto da copy, com o link logo abaixo, também centralizado */
 .hero-acoes { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 560px; /* mesma largura do parágrafo (.lead) */ margin: 26px 0 8px; }
