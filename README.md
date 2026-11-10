@@ -23,7 +23,7 @@ Landing page da **Dra. Nayane Moreno**, Cirurgiã-Dentista (CRO-SE 2301) em Arac
 | **Menu** | Fixo, com nome e CRO sempre visíveis; menu de tela cheia no celular (fecha com `Esc` ou ao tocar num link) |
 | **Topo** | Título, foto em moldura de arco, cartão com CRO, três números de destaque e faixa com quatro diferenciais |
 | **Para quem é** | Seis situações em cartões com foto no topo (referência: site de salas da Vallenci), título e frase. Fotos ilustrativas geradas por IA em `assets/situacoes/` (WebP 900x822 e 520x475), com a nota "Imagens ilustrativas" |
-| **Aparelhos** | Três cartões (metálico, porcelana, alinhador) com ilustração em SVG, características e botão próprio |
+| **Aparelhos** | Três cartões (metálico, porcelana, alinhador) com foto no topo (`assets/aparelhos/`, WebP 900x640 e 520x365, ilustrativas, geradas por IA), características e botão próprio |
 | **Convênios e particular** | Lado a lado: planos atendidos e atendimento particular |
 | **Como funciona** | Cinco etapas, do WhatsApp ao acompanhamento, e citação da Dra. Nayane |
 | **Sobre** | Formação, trajetória e história pessoal ligada à ortodontia, com cartões de credenciais |
@@ -119,7 +119,7 @@ Depois acesse `http://localhost:8000`.
 **Travam o lançamento**
 - [x] Endereço (Rua Senador Rollemberg, 562, São José, CEP 49015-120), WhatsApp (79) 99945-2813, Instagram e horário
 - [ ] Fotos de atendimento (seção "Atendimento", 3 fotos em `assets/atendimento/`): **já estão na página pública**; registrar a autorização por escrito das pacientes que aparecem e conferir a norma do CFO/CRO-SE
-- [ ] Confirmação dos três tipos de aparelho (metálico, porcelana, alinhador) e da marca do alinhador
+- [ ] Confirmação dos três tipos de aparelho (metálico, porcelana, alinhador) e da marca do alinhador. As três fotos dos cartões são ilustrações de IA e precisam da aprovação da Dra. Nayane e da conferência da norma do CFO/CRO-SE
 - [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia, autorização para citar os nomes e logotipos oficiais
 - [ ] Aprovação do texto "Sobre" e da citação da Dra. Nayane
 - [ ] Foto do diploma e dos certificados (graduação 2011 e pós em Ortodontia 2014–2017)
