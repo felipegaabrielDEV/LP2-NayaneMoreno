@@ -916,8 +916,8 @@ body.sem-pendencias #avaliacoes { display: none; }
 /* 10. Foco de teclado */
 #duvidas .faq-item > h3 > button:focus-visible { outline: 3px solid var(--marca); outline-offset: -4px; border-radius: 13px; }
 
-/* 11. Cartão aberto: borda turquesa, brilho e fundo menta; a barra vertical some (+ vira −) */
-#duvidas .faq-item.aberto { border-color: rgba(22,173,142,.92); background: linear-gradient(145deg, #F2FCF9 0%, #E8F6F1 100%); box-shadow: 0 9px 23px rgba(15,63,54,.065), 0 3px 10px rgba(22,173,142,.08), 0 0 0 1px rgba(22,173,142,.08); }
+/* 11. Cartão aberto: borda turquesa, brilho e fundo branco; só a caixinha da resposta fica em menta. A barra vertical some (+ vira −) */
+#duvidas .faq-item.aberto { border-color: rgba(22,173,142,.92); background: #FFFFFF; box-shadow: 0 9px 23px rgba(15,63,54,.065), 0 3px 10px rgba(22,173,142,.08), 0 0 0 1px rgba(22,173,142,.08); }
 #duvidas .faq-item.aberto > h3::before { background: #C5EEE2; color: #075F4E; }
 #duvidas .faq-item.aberto > h3 > button::before { background-color: #BDEADB; }
 #duvidas .faq-item > h3 > button[aria-expanded="true"]::after { transform: translateY(-50%) scaleY(0); opacity: 0; }
