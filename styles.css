@@ -84,6 +84,18 @@ p { margin: 0 0 1em; }
     45% { transform: translateY(-3px) scale(1.035); background-position: 100% 0; box-shadow: 0 22px 44px -14px #0F7A64B3, 0 0 0 10px #16AD8E26; }
     70% { transform: translateY(0) scale(1); box-shadow: 0 14px 32px -12px #0F7A6499, 0 0 0 16px #16AD8E00; }
 }
+/* Versão clara do efeito, para o botão branco dos cartões escuros (aparelho de porcelana, convênios e chamada final):
+   o fundo continua branco; pulsa com halo claro, o brilho cruza o botão e o ícone balança. */
+.botao-destaque.botao-claro { background: #fff; border: 2px solid #fff; color: var(--botao); box-shadow: 0 14px 30px -14px #0008; animation-name: botaoAtraiClaro; }
+.botao-destaque.botao-claro::after { background: linear-gradient(90deg, transparent, #16AD8E40, transparent); }
+@media (hover: hover) {
+    .botao-destaque.botao-claro:hover { background: var(--menta); border-color: var(--menta); color: var(--verde); box-shadow: 0 20px 40px -14px #0009; }
+}
+@keyframes botaoAtraiClaro {
+    0%, 100% { transform: translateY(0) scale(1); box-shadow: 0 14px 30px -14px #0008, 0 0 0 0 #FFFFFF00; }
+    45% { transform: translateY(-3px) scale(1.035); box-shadow: 0 22px 44px -14px #000A, 0 0 0 10px #FFFFFF40; }
+    70% { transform: translateY(0) scale(1); box-shadow: 0 14px 30px -14px #0008, 0 0 0 16px #FFFFFF00; }
+}
 @keyframes botaoWhats { 0%, 55%, 100% { transform: none; } 65% { transform: rotate(-8deg) scale(1.16); } 75% { transform: rotate(7deg) scale(1.16); } }
 .link-seta { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--verde); font-weight: 700; }
 .link-seta svg { transition: transform .25s var(--ease); }
@@ -597,7 +609,7 @@ body.sem-pendencias #avaliacoes { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
     .hf-aura, .hf-anel, .hf-luz, .hf-esq, .hf-dir { animation: none !important; }
-    .botao-destaque, .botao-destaque::after, .botao-destaque svg { animation: none; }
+    .botao-destaque, .botao-destaque.botao-claro, .botao-destaque::after, .botao-destaque svg { animation: none; }
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     .js .revelar { opacity: 1; transform: none; }
