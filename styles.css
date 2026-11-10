@@ -880,15 +880,18 @@ body.sem-pendencias #avaliacoes { display: none; }
 #duvidas .cabeca h2 em { display: block; color: var(--botao); font-weight: 300; font-style: normal; letter-spacing: -1.7px; }
 /* Três riscos de brilho ao lado do título (SVG no HTML, para animar traço por traço) */
 #duvidas .duvidas-brilho { position: absolute; top: 39%; right: -43px; width: 35px; height: 51px; overflow: visible; pointer-events: none; }
-#duvidas .duvidas-brilho path { stroke: #16AD8E; stroke-width: 3; stroke-linecap: round; transform-box: fill-box; transform-origin: center; transition: transform 380ms var(--ease), stroke 380ms var(--ease), filter 380ms var(--ease); }
-/* Hover no título (só com mouse): cada traço se afasta um pouco, engrossa e brilha, em sequência */
-@media (hover: hover) and (pointer: fine) {
-  #duvidas .cabeca h2:hover .duvidas-brilho path { stroke: #0FBF9C; filter: drop-shadow(0 0 4px rgba(22,173,142,.7)); animation: duvidas-faisca 900ms var(--ease) both; }
-  #duvidas .cabeca h2:hover .duvidas-brilho path:nth-child(1) { transform: translate(2px, -3px) scale(1.12); animation-delay: 0ms; }
-  #duvidas .cabeca h2:hover .duvidas-brilho path:nth-child(2) { transform: translate(4px, -1px) scale(1.12); animation-delay: 110ms; }
-  #duvidas .cabeca h2:hover .duvidas-brilho path:nth-child(3) { transform: translate(3px, 3px) scale(1.12); animation-delay: 220ms; }
+#duvidas .duvidas-brilho path { stroke: #16AD8E; stroke-width: 3; stroke-linecap: round; transform-box: fill-box; transform-origin: center;}
+/* Movimento contínuo, sem precisar do mouse: a cada ciclo (3 s) cada traço se afasta, engrossa e brilha, um depois do outro,
+   e volta ao repouso. Funciona também no celular. Para mudar a velocidade, mexa na duração (3s) e nos atrasos. */
+#duvidas .duvidas-brilho path { animation: duvidas-faisca 3s var(--ease) infinite; }
+#duvidas .duvidas-brilho path:nth-child(1) { --dx: 2px; --dy: -3px; animation-delay: 0s; }
+#duvidas .duvidas-brilho path:nth-child(2) { --dx: 4px; --dy: -1px; animation-delay: .18s; }
+#duvidas .duvidas-brilho path:nth-child(3) { --dx: 3px; --dy: 3px; animation-delay: .36s; }
+@keyframes duvidas-faisca {
+  0%, 60%, 100% { transform: none; stroke: #16AD8E; stroke-width: 3; filter: none; }
+  14% { transform: translate(var(--dx), var(--dy)) scale(1.12); stroke: #0FBF9C; stroke-width: 5; filter: drop-shadow(0 0 4px rgba(22,173,142,.7)); }
+  34% { transform: translate(var(--dx), var(--dy)) scale(1.06); stroke: #0FBF9C; stroke-width: 3.8; filter: drop-shadow(0 0 3px rgba(22,173,142,.5)); }
 }
-@keyframes duvidas-faisca { 0% { stroke-width: 3; } 35% { stroke-width: 5; } 100% { stroke-width: 3.6; } }
 #duvidas .cabeca > p { max-width: 390px; margin: 29px 0 0; color: var(--texto); font-family: inherit; font-size: 14px; font-weight: 400; line-height: 1.8; letter-spacing: .03px; }
 #duvidas .cabeca > .botao { display: inline-flex; align-items: center; justify-content: center; width: fit-content; max-width: 100%; margin-top: 24px; border-radius: 50px; }
 
