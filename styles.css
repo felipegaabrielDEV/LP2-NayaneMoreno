@@ -216,6 +216,13 @@ body.menu-aberto { overflow: hidden; }
     .cc-chip { display: inline-flex; align-items: center; justify-content: center; height: 32px; padding: 0 8px; border-radius: 9px; background: #fff; box-shadow: 0 0 0 1px #0F3F3626; }
     .cc-chip img { height: 17px; width: auto; max-width: 66px; object-fit: contain; }
     .cc-chip:focus-visible { outline: 3px solid var(--botao); outline-offset: 2px; }
+    /* A partir de 360px o cartão de convênios fica ao lado do cartão do nome (compacto); abaixo disso não cabe e fica empilhado acima dele. */
+    @media (min-width: 360px) {
+        .hero-foto .cartao-convenios { left: auto; right: -4px; bottom: 48px; gap: 4px; padding: 7px 9px 8px; }
+        .cartao-convenios-titulo { font-size: .5rem; letter-spacing: .06em; width: 0; min-width: 100%; line-height: 1.2; }
+        .cc-chip { height: 28px; padding: 0 6px; }
+        .cc-chip img { height: 14px; max-width: 56px; }
+    }
     .hero-numeros { left: 10px; right: 10px; bottom: -30px; grid-template-columns: 1fr 1fr; }
     .hero-numeros aside { min-width: 0; padding: 10px 14px; }
     .hero-numeros aside.contando { animation: none; }
