@@ -1043,7 +1043,7 @@ html.faq-mexendo .duvidas-brilho path, html.faq-mexendo .flutuante::before { ani
 /* 15. Celular (até 599 px) */
 @media (max-width: 599px) {
   #duvidas { padding-top: 49px; padding-bottom: 83px; }
-  #duvidas > .container.duvidas { grid-template-columns: minmax(0, 1fr); gap: 29px; width: 100%; min-width: 0; }
+  #duvidas > .container.duvidas { grid-template-columns: minmax(0, 1fr); gap: 29px; width: min(100% - 2 * var(--gutter), var(--largura)); min-width: 0; } /* respeita a margem lateral do site (20 px) */
   #duvidas .cabeca { position: static; align-items: center; width: 100%; max-width: 100%; margin: 0 auto; text-align: center; }
   #duvidas .cabeca h2 { width: fit-content; max-width: calc(100% - 24px); margin-top: 14px; font-size: clamp(37px, 10vw, 45px); line-height: 1.04; letter-spacing: -1.35px; text-align: center; }
   #duvidas .cabeca h2 em { letter-spacing: -1.3px; }
