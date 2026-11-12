@@ -9,9 +9,6 @@
     "use strict";
     document.documentElement.classList.add("js");
 
-    /* Ativa o estado :active (toque) no iOS Safari, usado nos efeitos de toque dos cartões */
-    document.addEventListener("touchstart", () => {}, { passive: true });
-
     const reduzMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     /* ---------- WhatsApp ----------
@@ -202,6 +199,19 @@
             entradas.forEach(en => { if (en.isIntersecting) { contar(en.target); obsNum.unobserve(en.target); } });
         }, { threshold: .65 });
         contadores.forEach(el => obsNum.observe(el));
+    }
+
+    /* ---------- Passo a passo no celular: a etapa no meio da tela "acende" ----------
+       Faz o papel do hover do desktop: conforme a pessoa rola, o cartão que passa pela faixa central da tela ganha a classe
+       .em-foco (o visual está no CSS, só no celular). Com movimento reduzido o cartão não se mexe (só o brilho). */
+    {
+        const etapas = [...document.querySelectorAll("#como-funciona .passo")];
+        if (etapas.length && "IntersectionObserver" in window) {
+            const obsFoco = new IntersectionObserver(entradas => {
+                entradas.forEach(en => en.target.classList.toggle("em-foco", en.isIntersecting));
+            }, { rootMargin: "-49% 0px -49% 0px", threshold: 0 });
+            etapas.forEach(e => obsFoco.observe(e));
+        }
     }
 
     /* ---------- Evolução do tratamento no celular: abas ligadas ao carrossel de vistas ----------
