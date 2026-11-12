@@ -1009,6 +1009,8 @@ body.sem-pendencias #avaliacoes { display: none; }
    da página que repintam sombra e brilho (botões de WhatsApp, riscos do título, anel do botão flutuante), e desliga a rolagem
    suave, que brigaria com o ajuste que mantém a pergunta tocada no lugar. Cada cartão isola o seu layout e o seu desenho. */
 html.faq-mexendo { scroll-behavior: auto; }
+/* Seções fora da tela (classe posta pelo script.js): animações pausadas, para o navegador não recalcular estilo à toa */
+.parada, .parada *, .parada *::before, .parada *::after { animation-play-state: paused !important; }
 html.faq-mexendo .botao-destaque, html.faq-mexendo .botao-destaque::after, html.faq-mexendo .botao-destaque svg,
 html.faq-mexendo .duvidas-brilho path, html.faq-mexendo .flutuante::before { animation-play-state: paused; }
 #duvidas .faq-item { contain: layout paint; }
