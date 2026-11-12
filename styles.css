@@ -1014,11 +1014,10 @@ html.faq-mexendo { scroll-behavior: auto; }
 html.faq-mexendo .botao-destaque, html.faq-mexendo .botao-destaque::after, html.faq-mexendo .botao-destaque svg,
 html.faq-mexendo .duvidas-brilho path, html.faq-mexendo .flutuante::before { animation-play-state: paused; }
 #duvidas .faq-item { contain: layout paint; }
-/* Pergunta aberta que está acima da tocada: fecha na hora (o script corrige a rolagem uma vez), sem animar */
-#duvidas .faq-item.fecha-seco .faq-resposta { transition: none; }
 
 /* 12. Respostas (abrir por grid). A <div> interna NÃO tem margem, padding nem borda; a caixinha menta é o <p>. */
-#duvidas .faq-resposta { display: grid; grid-template-rows: 0fr; min-width: 0; transition: grid-template-rows 320ms var(--ease); }
+/* Sem transição de altura: o script.js anima por transform (FLIP), que não repinta o cartão a cada quadro */
+#duvidas .faq-resposta { display: grid; grid-template-rows: 0fr; min-width: 0; }
 #duvidas .faq-item.aberto .faq-resposta { grid-template-rows: 1fr; }
 #duvidas .faq-resposta > div { min-height: 0; overflow: hidden; }
 #duvidas .faq-resposta > div > p { margin: 0 12px 12px; padding: 13px 17px; border: 1px solid rgba(22,173,142,.09); border-radius: 13px; background: linear-gradient(135deg, #E8F6F1, #F0FAF7); color: #40544E; font-family: inherit; font-size: 13px; font-weight: 400; line-height: 1.8; }
