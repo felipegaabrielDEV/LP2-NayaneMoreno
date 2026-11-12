@@ -232,12 +232,11 @@
 
     /* ---------- Fotos ampliadas em tela cheia ----------
        Três grupos de fotos abrem em um <dialog> nativo (foco preso, Esc fecha), com botões de fechar, anterior e próxima:
-       - Evolução do tratamento: só em tela menor que 1024 px (no computador as fotos já são grandes);
-       - Atendimento e Consultório: em qualquer tela, para ver os detalhes das imagens.
+       - Evolução do tratamento, Atendimento e Consultório: em qualquer tela, para ver os detalhes das imagens.
        As setas e o deslize navegam só dentro do grupo da foto aberta. Para desligar um grupo, apague a linha dele. */
     const telaPequena = window.matchMedia("(max-width: 1023px)");
     const grupos = [
-        { itens: [...document.querySelectorAll("#evolucao .caso-foto")], sempre: false,
+        { itens: [...document.querySelectorAll("#evolucao .caso-foto")], sempre: true,
           nome: f => (f.closest(".caso")?.querySelector("h3")?.textContent || "Foto do caso") + " · " + (f.querySelector("figcaption")?.textContent || "") },
         { itens: [...document.querySelectorAll("#atendimento .atend figure")], sempre: true,
           nome: (f, i) => "Atendimento · foto " + (i + 1) },

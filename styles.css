@@ -556,11 +556,9 @@ html.foto-aberta { overflow: hidden; }
 }
 @media (max-width: 599px) { .foto-ampliada[open] { grid-template-columns: 38px minmax(0, 1fr) 38px; } .foto-seta { width: 36px; height: 36px; font-size: 1.4rem; } }
 /* Sinal de que a foto abre: o cursor vira lupa (sem ícone sobre a foto) */
-@media (max-width: 1023px) {
-  #evolucao .caso-foto[role="button"] { cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
-  /* Contorno de foco só para mouse/teclado (no toque ele aparecia sobre a foto tocada) */
-  @media (pointer: fine) { #evolucao .caso-foto[role="button"]:focus-visible { outline: 3px solid var(--marca); outline-offset: 2px; } }
-}
+#evolucao .caso-foto[role="button"] { cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
+/* Contorno de foco só para mouse/teclado (no toque ele aparecia sobre a foto tocada) */
+@media (pointer: fine) { #evolucao .caso-foto[role="button"]:focus-visible { outline: 3px solid var(--marca); outline-offset: 2px; } }
 /* Atendimento e Consultório: as fotos abrem ampliadas em qualquer tela (o cursor vira lupa no computador). */
 .atend figure[role="button"], .galeria-trilho figure[role="button"] { position: relative; cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
 @media (pointer: fine) { .atend figure[role="button"]:focus-visible, .galeria-trilho figure[role="button"]:focus-visible { outline: 3px solid var(--marca); outline-offset: 3px; } }
