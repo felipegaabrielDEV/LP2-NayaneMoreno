@@ -791,12 +791,20 @@ html.foto-aberta { overflow: hidden; }
     .passo:nth-child(even).em-foco .passo-icone { background: var(--botao); color: #fff; border-color: var(--marca); }
     @media (prefers-reduced-motion: reduce) { .passo.em-foco .passo-cartao { transform: none; } .passo.em-foco .passo-icone { scale: 1; } .passo.em-foco .passo-icone svg { animation: none; } }
 }
-.citacao { margin: 40px auto 0; max-width: 1080px; display: grid; grid-template-columns: 56px 1fr; align-items: center; gap: 16px; padding: 22px 20px; border: 1px solid #16AD8E33; border-radius: 22px;
-    background: linear-gradient(135deg, #F4FAF8, var(--menta)); box-shadow: var(--sombra-p); }
-.citacao-aspas { align-self: stretch; display: grid; place-items: center; padding-right: 16px; border-right: 1px solid #0F3F3626; color: var(--verde-2); font-size: 4rem; font-weight: 800; line-height: .6; padding-top: 18px; }
+/* Citação da Dra.: foto à esquerda (cola nas bordas do cartão) e a frase ao lado, com o trecho principal em destaque.
+   Foto: Foto 04 do Drive da cliente, recortada em assets/profissional/dra-nayane-citacao.webp. As aspas são só visuais (::before). */
+.citacao { margin: 40px auto 0; max-width: 1000px; display: grid; grid-template-columns: 104px 1fr; align-items: stretch; gap: 0; padding: 0; overflow: hidden; border: 1px solid #16AD8E33; border-radius: 22px;
+    background: linear-gradient(145deg, #FFFFFF, var(--menta)); box-shadow: var(--sombra-p); }
+.citacao-foto { display: block; width: 100%; height: 100%; min-height: 150px; object-fit: cover; object-position: center 14%; }
+.citacao-corpo { display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 18px 16px 16px; min-width: 0; }
 .citacao blockquote { margin: 0; }
-.citacao p { margin: 0 0 8px; color: var(--tinta); font-size: clamp(1.05rem, 2.6vw, 1.4rem); font-weight: 500; line-height: 1.4; }
-.citacao figcaption { color: var(--verde-2); font-size: .92rem; font-weight: 600; }
+.citacao p { margin: 0; color: var(--tinta); font-size: clamp(.98rem, 3.6vw, 1.5rem); font-weight: 500; line-height: 1.45; }
+.citacao p::before { content: "\201C"; display: block; margin-bottom: 4px; color: var(--marca); font-size: 2.6rem; font-weight: 800; line-height: .7; }
+.citacao p em { color: var(--verde-2); font-style: normal; font-weight: 700; }
+.citacao figcaption { display: grid; gap: 2px; justify-items: start; }
+.citacao figcaption strong { color: var(--verde); font-size: .92rem; font-weight: 700; }
+.citacao figcaption small { color: var(--texto); font-size: .76rem; font-weight: 500; }
+.citacao figcaption .pend { margin-top: 6px; }
 
 /* Sobre */
 .sobre { display: grid; gap: 40px; align-items: center; }
@@ -1150,8 +1158,11 @@ html.faq-mexendo .duvidas-brilho path, html.faq-mexendo .flutuante::before { ani
     .passo-num { min-width: 62px; font-size: 2.7rem; }
     .passo-texto { padding-left: 22px; }
     .passo h3 { font-size: 1.15rem; }
-    .citacao { grid-template-columns: 120px 1fr; padding: 26px 36px; gap: 30px; }
-    .citacao-aspas { font-size: 6rem; padding-right: 30px; }
+    .citacao { grid-template-columns: 200px 1fr; }
+    .citacao-corpo { padding: 30px 34px 26px; gap: 16px; }
+    .citacao p::before { font-size: 4rem; margin-bottom: 6px; }
+    .citacao figcaption strong { font-size: .95rem; }
+    .citacao figcaption small { font-size: .8rem; }
 }
 @media (min-width: 1024px) {
     :root { --header-h: 84px; }
