@@ -762,6 +762,24 @@ html.foto-aberta { overflow: hidden; }
     .passo-num { min-width: 0; font-size: 1.6rem; }
     .passo-texto { padding: 10px 0 0; border-left: 0; border-top: 1px solid #FFFFFF26; width: 100%; }
 }
+/* Passo a passo no celular: cartões claros de largura inteira, número em círculo, ícone suave no canto e uma setinha entre as etapas.
+   (Sem a linha lateral: ela estreitava os cartões.) Do tablet para cima o desenho com a linha do tempo continua. */
+@media (max-width: 599px) {
+    .passos { gap: 26px; }
+    .passos::before, .passos::after, .passo::after, .passo-cartao::before { display: none; }
+    .passo { display: block; }
+    .passo-cartao { flex-direction: row; align-items: center; gap: 14px; padding: 16px 62px 16px 16px; border-color: #16AD8E33; color: var(--verde);
+        background: #fff; box-shadow: 0 8px 22px #0F3D3A14, 0 0 0 1px #16AD8E14; }
+    .passo-num { display: grid; place-items: center; flex: 0 0 42px; width: 42px; height: 42px; min-width: 0; border-radius: 50%; background: var(--verde); color: #fff; font-size: .95rem; font-weight: 600; }
+    .passo-texto { flex: 1 1 auto; min-width: 0; padding: 0; border: 0; }
+    .passo h3 { margin-bottom: 3px; color: var(--verde); font-size: 1.02rem; line-height: 1.3; }
+    .passo p { color: #52625D; font-size: .88rem; line-height: 1.55; }
+    .passo-icone { position: absolute; top: 14px; right: 14px; grid-column: auto; width: 40px; height: 40px; border: 0; background: var(--menta); color: var(--botao); box-shadow: none; }
+    .passo-icone svg { width: 20px; height: 20px; }
+    .passo:hover .passo-icone { color: #fff; }
+    /* Setinha para baixo entre uma etapa e a seguinte */
+    .passo + .passo::before { content: ""; position: absolute; left: 50%; top: -19px; width: 9px; height: 9px; border-right: 2.5px solid var(--marca); border-bottom: 2.5px solid var(--marca); transform: translateX(-50%) rotate(45deg); opacity: .9; }
+}
 .citacao { margin: 40px auto 0; max-width: 1080px; display: grid; grid-template-columns: 56px 1fr; align-items: center; gap: 16px; padding: 22px 20px; border: 1px solid #16AD8E33; border-radius: 22px;
     background: linear-gradient(135deg, #F4FAF8, var(--menta)); box-shadow: var(--sombra-p); }
 .citacao-aspas { align-self: stretch; display: grid; place-items: center; padding-right: 16px; border-right: 1px solid #0F3F3626; color: var(--verde-2); font-size: 4rem; font-weight: 800; line-height: .6; padding-top: 18px; }
