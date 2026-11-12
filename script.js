@@ -201,6 +201,35 @@
         contadores.forEach(el => obsNum.observe(el));
     }
 
+    /* ---------- Evolução do tratamento no celular: abas ligadas ao carrossel de vistas ----------
+       No celular os 3 cartões ficam lado a lado com deslize (CSS). As abas rolam até a vista escolhida
+       e acompanham o deslize do dedo. No tablet/desktop as abas ficam escondidas e nada disso roda. */
+    {
+        const trilho = document.querySelector("#evolucao .casos");
+        const abas = [...document.querySelectorAll("#evolucao .caso-aba")];
+        const vistas = trilho ? [...trilho.querySelectorAll(".caso")] : [];
+        if (trilho && abas.length === vistas.length && abas.length) {
+            const mobile = window.matchMedia("(max-width: 599px)");
+            const marcar = i => abas.forEach((a, n) => a.setAttribute("aria-pressed", n === i ? "true" : "false"));
+            abas.forEach((aba, i) => aba.addEventListener("click", () => {
+                const folga = parseFloat(getComputedStyle(trilho).paddingLeft) || 0;
+                trilho.scrollTo({ left: vistas[i].offsetLeft - folga, behavior: reduzMovimento ? "auto" : "smooth" });
+                marcar(i);
+            }));
+            let quadro = 0;
+            trilho.addEventListener("scroll", () => {
+                if (!mobile.matches || quadro) return;
+                quadro = requestAnimationFrame(() => {
+                    quadro = 0;
+                    const folga = parseFloat(getComputedStyle(trilho).paddingLeft) || 0;
+                    let melhor = 0, dist = Infinity;
+                    vistas.forEach((v, i) => { const d = Math.abs(v.offsetLeft - folga - trilho.scrollLeft); if (d < dist) { dist = d; melhor = i; } });
+                    marcar(melhor);
+                });
+            }, { passive: true });
+        }
+    }
+
     /* ---------- Fotos do caso em tela cheia (celular e tablet) ----------
        Em telas menores que 1024 px, tocar numa foto de "Evolução do tratamento" abre a foto ampliada, para ver o
        detalhe clínico. Usa o <dialog> nativo (foco preso, Esc fecha) com botões de fechar, anterior e próxima.

@@ -496,6 +496,30 @@ body.sem-pendencias .previa-caso { display: none; }
   #evolucao::before { width: 390px; height: 390px; top: -200px; left: -190px; }
 }
 
+/* 12b. Celular (até 599 px): as 3 vistas viram um carrossel com deslize (uma vista por vez, com uma espiadinha da próxima).
+   Abas com nome no topo; seta de evolução entre as fotos; etiquetas abaixo das fotos, sem cobrir os dentes. */
+.caso-abas { display: none; }
+@media (max-width: 599px) {
+  .caso-abas { display: flex; gap: 4px; width: fit-content; max-width: 100%; margin: 24px auto 0; padding: 4px; border-radius: 999px; background: #ffffffcc; box-shadow: 0 0 0 1px rgba(22,173,142,.22), 0 6px 16px rgba(15,63,54,.07); }
+  .caso-aba { min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: transparent; color: var(--verde); font: inherit; font-size: 13.5px; font-weight: 600; letter-spacing: -.1px; cursor: pointer; transition: background .3s var(--ease), color .3s var(--ease); -webkit-tap-highlight-color: transparent; }
+  .caso-aba[aria-pressed="true"] { background: var(--botao); color: #fff; }
+  .caso-aba:focus-visible { outline: 3px solid var(--marca); outline-offset: 2px; }
+
+  #evolucao .casos { position: relative; display: flex; gap: 12px; width: calc(100% + 2 * var(--gutter)); max-width: none; margin: 14px calc(-1 * var(--gutter)) 0; padding: 8px var(--gutter) 22px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  #evolucao .casos::-webkit-scrollbar { display: none; }
+  /* A entrada .revelar espera o cartão aparecer na tela; fora da vista horizontal ele nunca "aparece", então fica sempre visível */
+  .js #evolucao .caso.revelar { opacity: 1; transform: none; }
+  #evolucao .caso { flex: 0 0 86%; width: auto; scroll-snap-align: start; }
+  #evolucao .caso-par { position: relative; }
+  /* Seta verde no meio: do antes para o momento atual */
+  #evolucao .caso-par::after { content: ""; position: absolute; z-index: 3; left: 50%; top: calc((100% - 28px) / 2); width: 30px; height: 30px; border-radius: 50%; background: var(--botao) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 15px no-repeat; box-shadow: 0 0 0 3px #fff, 0 6px 14px rgba(15,63,54,.22); transform: translate(-50%, -50%); pointer-events: none; }
+  #evolucao .caso-foto { overflow: visible; background: none; border: 0; box-shadow: none; }
+  #evolucao .caso-foto:first-child, #evolucao .caso-foto:nth-child(2) { aspect-ratio: auto; }
+  #evolucao .caso-foto img { height: auto; aspect-ratio: 4 / 3; border-radius: 12px; border: 1px solid rgba(15,63,54,.12); }
+  #evolucao .caso-foto figcaption, #evolucao .caso-foto:nth-child(2) figcaption { position: static; display: inline-flex; margin-top: 8px; max-width: none; padding: 5px 9px; font-size: 9.5px; letter-spacing: .35px; }
+  #evolucao .caso > p { font-size: 12px; }
+}
+
 /* 13. Celulares estreitos (até 359 px) */
 @media (max-width: 359px) {
   #evolucao .caso { padding: 10px; border-radius: 18px; }

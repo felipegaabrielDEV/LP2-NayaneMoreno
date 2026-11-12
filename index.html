@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261112-4">
+    <link rel="stylesheet" href="styles.css?v=20261112-5">
 </head>
 <body>
 
@@ -338,6 +338,12 @@
                 <p>Fotos de um paciente da Dra. Nayane, do início do tratamento até o momento atual. O tratamento ainda está em curso, e cada caso evolui de um jeito.</p>
                 <span class="pend">PENDENTE: autorização do paciente recebida em 10/11/2026 (guardada pela clínica); falta conferir a norma do CFO/CRO-SE e, se possível, pedir as fotos originais em JPG leve (até 1 MB cada)</span>
             </header>
+            <!-- Abas das vistas: só aparecem no celular, onde as 3 vistas viram um carrossel (script.js liga as abas ao deslize) -->
+            <div class="caso-abas" role="group" aria-label="Escolher a vista">
+                <button type="button" class="caso-aba" aria-pressed="true">Lateral</button>
+                <button type="button" class="caso-aba" aria-pressed="false">Cima</button>
+                <button type="button" class="caso-aba" aria-pressed="false">Baixo</button>
+            </div>
             <div class="casos">
                 <article class="caso revelar">
                     <h3>Vista lateral</h3>
@@ -747,6 +753,6 @@
 <!-- Só na prévia: mostra ou esconde os marcadores de pendência para apresentar à cliente. -->
 <button class="previa-alternar" type="button" aria-pressed="true">Prévia · <span>ocultar pendências</span></button>
 
-<script src="script.js?v=20261107-5" defer></script>
+<script src="script.js?v=20261112-1" defer></script>
 </body>
 </html>
