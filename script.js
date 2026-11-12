@@ -99,7 +99,7 @@
         botao.addEventListener("click", () => {
             const item = botao.closest(".faq-item");
             const abrir = botao.getAttribute("aria-expanded") !== "true";
-            if (!reduzMovimento) marcaMexendo(560);
+            /* (sem a classe .faq-mexendo no <html>: ligar e desligar uma classe na raiz recalcula o estilo da página toda e travava o toque no iPhone) */
             const topoAntes = botao.getBoundingClientRect().top;
             const antes = itensFaq.map(it => it.getBoundingClientRect().top);
             if (abrir) {
@@ -113,7 +113,15 @@
             item.classList.toggle("aberto", abrir);
             /* mantém a pergunta tocada no mesmo lugar da tela (as de cima podem ter fechado e mudado a altura da página) */
             const dif = botao.getBoundingClientRect().top - topoAntes;
-            if (Math.abs(dif) > 0.5) window.scrollBy(0, dif);
+            if (Math.abs(dif) > 0.5) {
+                /* a correção tem que ser INSTANTÂNEA: o site usa rolagem suave (scroll-behavior: smooth) e, se a correção também
+                   fosse suave, o cartão tocado andaria na tela enquanto a rolagem anima (a "tremida"). O estilo inline vale na hora,
+                   em qualquer navegador, e é desfeito logo em seguida. */
+                const antigo = raiz.style.scrollBehavior;
+                raiz.style.scrollBehavior = "auto";
+                window.scrollBy({ top: dif, left: 0, behavior: "auto" });
+                raiz.style.scrollBehavior = antigo;
+            }
             if (reduzMovimento || !item.animate) return;
             const alturaTela = window.innerHeight;
             itensFaq.forEach((it, i) => {
