@@ -115,9 +115,13 @@
             const dif = botao.getBoundingClientRect().top - topoAntes;
             if (Math.abs(dif) > 0.5) window.scrollBy(0, dif);
             if (reduzMovimento || !item.animate) return;
+            const alturaTela = window.innerHeight;
             itensFaq.forEach((it, i) => {
-                const d = antes[i] - it.getBoundingClientRect().top;
-                if (Math.abs(d) > 0.5) it.animate([{ transform: "translateY(" + d + "px)" }, { transform: "translateY(0)" }], { duration: 340, easing: suave });
+                const topo = it.getBoundingClientRect().top;
+                const d = antes[i] - topo;
+                /* só anima o que aparece na tela (antes ou depois): fora dela não adianta e cria camadas à toa no iPhone */
+                const aparece = (topo > -120 && topo < alturaTela + 120) || (antes[i] > -120 && antes[i] < alturaTela + 120);
+                if (aparece && Math.abs(d) > 0.5) it.animate([{ transform: "translateY(" + d + "px)" }, { transform: "translateY(0)" }], { duration: 340, easing: suave });
             });
             if (abrir) {
                 const resp = item.querySelector(".faq-resposta > div > p");
