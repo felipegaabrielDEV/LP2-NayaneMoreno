@@ -1291,7 +1291,21 @@ html.faq-mexendo .duvidas-brilho path, html.faq-mexendo .flutuante::before { ani
 
 /* ---------- LISTA / GRADE ---------- */
 /* Sem z-index: o fio (2) passa por cima do vidro dos cartões (1) e por baixo dos ícones e textos (3) */
-.faixa { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; width: 100%; margin: 0; padding: 0; list-style: none; }
+/* Fios da faixa: com 6 cartões (3 por linha) vale um fio por linha (.fio-6 e .fio-6b); no modo "ocultar pendências" sobram 4 cartões
+   (os 2 que levam a Evolução e ao Depoimento somem) e vale o fio original de 4 ícones, com 4 colunas. */
+/* Bráquetes sobre o fio (só no computador, com 6 cartões): detalhe da marca, na junção entre as colunas */
+.fio-braquete { display: none; position: absolute; z-index: 3; left: var(--x); top: var(--y); width: 22px; height: 16px; transform: translate(-50%, -50%); border: 1.8px solid #16AD8E; border-radius: 5px;
+    background: linear-gradient(180deg, #FFFFFF, #D9E7E4); box-shadow: 0 3px 8px rgba(15,63,54,.20), 0 0 10px rgba(22,173,142,.35); pointer-events: none; }
+.fio-braquete::before { content: ""; position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; transform: translate(-50%, -50%); border-radius: 50%; background: #16AD8E; }
+@media (min-width: 1024px) { .fio-braquete { display: block; } body.sem-pendencias .fio-braquete { display: none; } }
+.faixa-fio.fio-4 { display: none; }
+.faixa-fio.fio-6b { top: 219px; } /* altura do cartão (214 px) + espaço entre as linhas (14 px) - 9 px do fio */
+@media (min-width: 1024px) {
+    body.sem-pendencias .faixa { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    body.sem-pendencias .faixa-fio.fio-4 { display: block; }
+    body.sem-pendencias .faixa-fio.fio-6 { display: none; }
+}
+.faixa { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: 100%; margin: 0; padding: 0; list-style: none; }
 
 /* ---------- CARTÕES ----------
    O vidro fosco fica no ::before (camada 1), para o fio passar por cima dele e por baixo dos ícones (camada 3).
@@ -1335,6 +1349,8 @@ html.faq-mexendo .duvidas-brilho path, html.faq-mexendo .flutuante::before { ani
 .faixa li:nth-child(2) .faixa-icone { animation-delay: .45s; }
 .faixa li:nth-child(3) .faixa-icone { animation-delay: .9s; }
 .faixa li:nth-child(4) .faixa-icone { animation-delay: 1.35s; }
+.faixa li:nth-child(5) .faixa-icone { animation-delay: 1.8s; }
+.faixa li:nth-child(6) .faixa-icone { animation-delay: 2.25s; }
 @keyframes fio-passeia { 0% { stroke-dashoffset: 70; opacity: 0; } 8% { opacity: 1; } 68% { stroke-dashoffset: -1000; opacity: 1; } 74%, 100% { stroke-dashoffset: -1000; opacity: 0; } }
 @keyframes icone-respira { 0%, 100% { scale: 1; } 50% { scale: 1.05; } }
 
