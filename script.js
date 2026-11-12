@@ -68,6 +68,17 @@
         linksMenu.forEach(a => { const s = document.querySelector(a.getAttribute("href")); if (s) obs.observe(s); });
     }
 
+    /* ---------- Animações só onde a pessoa está vendo ----------
+       O site tem dezenas de animações infinitas (brilho dos botões, ícones, fio, bráquete). Mesmo fora da tela elas obrigam o
+       navegador a recalcular estilos a cada quadro, o que "tremia" a abertura das perguntas no celular. Aqui cada seção
+       que sai da tela ganha a classe .parada (o CSS pausa as animações dela); ao voltar para a tela, a classe sai. */
+    if ("IntersectionObserver" in window && !reduzMovimento) {
+        const obsParada = new IntersectionObserver(entradas => {
+            entradas.forEach(en => en.target.classList.toggle("parada", !en.isIntersecting));
+        }, { rootMargin: "120px 0px 120px 0px" });
+        document.querySelectorAll("main > section, .rodape").forEach(el => obsParada.observe(el));
+    }
+
     /* ---------- Perguntas frequentes ----------
        Todas começam fechadas e só uma fica aberta por vez: ao abrir uma pergunta, a que estava aberta fecha.
        Clicar de novo na pergunta aberta fecha ela. Para voltar a permitir várias abertas, apague o bloco
