@@ -230,13 +230,21 @@
         }
     }
 
-    /* ---------- Fotos do caso em tela cheia (celular e tablet) ----------
-       Em telas menores que 1024 px, tocar numa foto de "Evolução do tratamento" abre a foto ampliada, para ver o
-       detalhe clínico. Usa o <dialog> nativo (foco preso, Esc fecha) com botões de fechar, anterior e próxima.
-       No computador as fotos já são grandes e nada muda. Para desligar, apague este bloco. */
-    const fotosCaso = [...document.querySelectorAll("#evolucao .caso-foto")];
-    if (fotosCaso.length && typeof HTMLDialogElement === "function") {
-        const telaPequena = window.matchMedia("(max-width: 1023px)");
+    /* ---------- Fotos ampliadas em tela cheia ----------
+       Três grupos de fotos abrem em um <dialog> nativo (foco preso, Esc fecha), com botões de fechar, anterior e próxima:
+       - Evolução do tratamento: só em tela menor que 1024 px (no computador as fotos já são grandes);
+       - Atendimento e Consultório: em qualquer tela, para ver os detalhes das imagens.
+       As setas e o deslize navegam só dentro do grupo da foto aberta. Para desligar um grupo, apague a linha dele. */
+    const telaPequena = window.matchMedia("(max-width: 1023px)");
+    const grupos = [
+        { itens: [...document.querySelectorAll("#evolucao .caso-foto")], sempre: false,
+          nome: f => (f.closest(".caso")?.querySelector("h3")?.textContent || "Foto do caso") + " · " + (f.querySelector("figcaption")?.textContent || "") },
+        { itens: [...document.querySelectorAll("#atendimento .atend figure")], sempre: true,
+          nome: (f, i) => "Atendimento · foto " + (i + 1) },
+        { itens: [...document.querySelectorAll("#consultorio .galeria-trilho figure")], sempre: true,
+          nome: (f, i) => "Consultório · foto " + (i + 1) }
+    ].filter(g => g.itens.length);
+    if (grupos.length && typeof HTMLDialogElement === "function") {
         const dlg = document.createElement("dialog");
         dlg.className = "foto-ampliada";
         dlg.setAttribute("aria-label", "Foto ampliada");
@@ -246,19 +254,17 @@
             '<button type="button" class="foto-seta foto-prox" aria-label="Próxima foto">&#8250;</button>';
         document.body.appendChild(dlg);
         const img = dlg.querySelector("img"), legenda = dlg.querySelector("figcaption");
-        let atual = 0, origem = null;
-        const nome = i => {
-            const f = fotosCaso[i];
-            return (f.closest(".caso")?.querySelector("h3")?.textContent || "Foto do caso") + " · " + (f.querySelector("figcaption")?.textContent || "");
-        };
+        let grupo = grupos[0], atual = 0, origem = null;
         const mostrar = i => {
-            atual = (i + fotosCaso.length) % fotosCaso.length;
-            const f = fotosCaso[atual].querySelector("img");
-            img.src = f.currentSrc || f.src;
-            img.alt = f.alt + " (" + nome(atual) + ")";
-            legenda.textContent = nome(atual) + "  ·  " + (atual + 1) + " de " + fotosCaso.length;
+            const total = grupo.itens.length;
+            atual = (i + total) % total;
+            const f = grupo.itens[atual], foto = f.querySelector("img");
+            const nome = grupo.nome(f, atual);
+            img.src = foto.currentSrc || foto.src;
+            img.alt = foto.alt + (grupo.sempre ? "" : " (" + nome + ")");
+            legenda.textContent = nome + "  ·  " + (atual + 1) + " de " + total;
         };
-        const abrir = i => { origem = fotosCaso[i]; mostrar(i); if (!dlg.open) dlg.showModal(); document.documentElement.classList.add("foto-aberta"); };
+        const abrir = (g, i) => { grupo = g; origem = g.itens[i]; mostrar(i); if (!dlg.open) dlg.showModal(); document.documentElement.classList.add("foto-aberta"); };
         const fechar = () => { if (dlg.open) dlg.close(); };
         dlg.addEventListener("close", () => { document.documentElement.classList.remove("foto-aberta"); origem?.focus({ preventScroll: true }); });
         dlg.querySelector(".foto-fechar").addEventListener("click", fechar);
@@ -277,21 +283,21 @@
             const dx = e.changedTouches[0].clientX - x0; x0 = null;
             if (Math.abs(dx) > 60) mostrar(atual + (dx < 0 ? 1 : -1));
         }, { passive: true });
-        /* As fotos só viram botões em tela pequena (no computador nada acontece ao clicar) */
-        const preparar = () => fotosCaso.forEach((f, i) => {
-            if (telaPequena.matches) {
+        /* As fotos viram botões só quando o grupo está ativo na tela atual */
+        const ativo = g => g.sempre || telaPequena.matches;
+        const preparar = () => grupos.forEach(g => g.itens.forEach((f, i) => {
+            if (ativo(g)) {
                 f.setAttribute("tabindex", "0"); f.setAttribute("role", "button");
-                f.setAttribute("aria-label", "Ampliar foto: " + nome(i));
+                f.setAttribute("aria-label", "Ampliar foto: " + g.nome(f, i));
             } else {
                 f.removeAttribute("tabindex"); f.removeAttribute("role"); f.removeAttribute("aria-label");
-                if (dlg.open) dlg.close();
             }
-        });
-        fotosCaso.forEach((f, i) => {
-            f.addEventListener("click", () => { if (telaPequena.matches) abrir(i); });
-            f.addEventListener("keydown", e => { if (telaPequena.matches && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); abrir(i); } });
-        });
-        telaPequena.addEventListener("change", preparar);
+        }));
+        grupos.forEach(g => g.itens.forEach((f, i) => {
+            f.addEventListener("click", () => { if (ativo(g)) abrir(g, i); });
+            f.addEventListener("keydown", e => { if (ativo(g) && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); abrir(g, i); } });
+        }));
+        telaPequena.addEventListener("change", () => { preparar(); if (dlg.open && !ativo(grupo)) dlg.close(); });
         preparar();
     }
 
