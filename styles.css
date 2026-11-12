@@ -1254,35 +1254,31 @@ html.faq-mexendo .duvidas-brilho path, html.faq-mexendo .flutuante::before { ani
     .faixa small { font-size: 13.5px; }
 }
 
-/* ---------- CELULAR: até 599 px (painel único, itens em lista) ---------- */
+/* ---------- CELULAR: até 599 px (lista compacta: um cartão baixo por item, com seta de toque) ---------- */
 @media (max-width: 599px) {
     .faixa-wrap { padding: 0; }
     .faixa-fio { display: none; }
-    .faixa { display: flex; flex-direction: column; gap: 0; padding: 8px 18px; border: 1px solid rgba(255,255,255,.95); border-radius: 26px;
-        background: linear-gradient(145deg, rgba(255,255,255,.94), rgba(231,247,241,.90));
-        box-shadow: 0 12px 30px rgba(15,63,54,.09), inset 0 1px 2px rgba(255,255,255,.95);
-        -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
-    .faixa li { flex-direction: row; align-items: center; justify-content: flex-start; gap: 16px; width: 100%; min-height: 88px; padding: 12px 2px; text-align: left; }
+    .faixa { display: flex; flex-direction: column; gap: 8px; padding: 0; }
+    .faixa li { flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; width: 100%; min-height: 60px; padding: 9px 34px 9px 11px; text-align: left; border: 1px solid rgba(255,255,255,.95); border-radius: 18px;
+        background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(231,247,241,.90));
+        box-shadow: 0 8px 20px rgba(15,63,54,.08), 0 0 0 1px rgba(22,173,142,.10); }
     .faixa li::before { display: none; }
-    .faixa-link { border-radius: 14px; }
-    .faixa li > div { transform: none; }
-    .faixa li + li { border-top: 1px solid rgba(22,173,142,.19); }
-    .faixa-icone { position: relative; top: auto; left: auto; flex: 0 0 58px; width: 58px; height: 58px; transform: none; }
-    .faixa-icone svg { width: 28px; height: 28px; }
-    .faixa-icone::after { inset: -3px; border-width: 2px; }
-    .faixa li > div { flex: 1 1 auto; min-width: 0; }
-    .faixa strong { margin: 0 0 3px; font-size: 14.5px; line-height: 1.35; letter-spacing: -.25px; }
-    .faixa small { font-size: 12.5px; line-height: 1.4; overflow-wrap: break-word; }
+    /* Seta à direita: avisa que o cartão é um link */
+    .faixa li::after { content: ""; position: absolute; right: 15px; top: 50%; z-index: 3; width: 8px; height: 8px; border-top: 2.5px solid var(--marca); border-right: 2.5px solid var(--marca); border-radius: 1px; transform: translateY(-50%) rotate(45deg); pointer-events: none; }
+    .faixa-link { border-radius: 18px; }
+    .faixa li > div { transform: none; flex: 1 1 auto; min-width: 0; }
+    .faixa-icone { position: relative; top: auto; left: auto; flex: 0 0 42px; width: 42px; height: 42px; transform: none; }
+    .faixa-icone svg { width: 20px; height: 20px; }
+    .faixa-icone::after { inset: -2px; border-width: 2px; }
+    .faixa strong { margin: 0 0 1px; font-size: 14px; line-height: 1.3; letter-spacing: -.25px; }
+    .faixa small { font-size: 12px; line-height: 1.35; overflow-wrap: break-word; }
 }
 
 /* ---------- CELULARES MUITO ESTREITOS (320 px) ---------- */
 @media (max-width: 360px) {
-    .faixa { padding-right: 13px; padding-left: 13px; }
-    .faixa li { gap: 12px; min-height: 82px; }
-    .faixa-icone { flex-basis: 52px; width: 52px; height: 52px; }
-    .faixa-icone svg { width: 25px; height: 25px; }
-    .faixa strong { font-size: 14px; }
-    .faixa small { font-size: 12px; }
+    .faixa li { gap: 10px; padding-left: 9px; }
+    .faixa strong { font-size: 13.5px; }
+    .faixa small { font-size: 11.5px; }
 }
 
 /* ---------- MOVIMENTO REDUZIDO ---------- */
