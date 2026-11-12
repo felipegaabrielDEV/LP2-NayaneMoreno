@@ -9,6 +9,9 @@
     "use strict";
     document.documentElement.classList.add("js");
 
+    /* Ativa o estado :active (toque) no iOS Safari, usado nos efeitos de toque dos cartões */
+    document.addEventListener("touchstart", () => {}, { passive: true });
+
     const reduzMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     /* ---------- WhatsApp ----------
