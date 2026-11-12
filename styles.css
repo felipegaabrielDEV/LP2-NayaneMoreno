@@ -1202,7 +1202,8 @@ html.faq-mexendo .duvidas-brilho path, html.faq-mexendo .flutuante::before { ani
     .final-caixa h2 { margin: 0 0 14px; max-width: none; font-size: clamp(1.9rem, 3.2vw, 2.7rem); }
     .final-caixa p { margin-bottom: 24px; }
     .final-info { justify-content: flex-start; }
-    .final-texto .botao { display: flex; width: fit-content; margin-inline: auto; } /* botão do WhatsApp centralizado na coluna do texto */
+    .final-acao { display: flex; flex-direction: column; align-items: center; width: fit-content; max-width: 100%; } /* botão centralizado em relação às etiquetas */
+    .final-acao .final-info { margin-top: 22px; justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
