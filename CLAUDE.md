@@ -10,7 +10,7 @@ Não comece pelo código. A ordem é: **entender → decidir → escrever → co
 
 - **Cliente:** Dra. Nayane Moreno, cirurgiã-dentista em Aracaju/SE, CRO-SE 2301.
 - **Posicionamento (definição final do Felipe, 2/11/2026):** "Dra. Nayane Moreno — Ortodontia em Aracaju". O site é **SÓ de Ortodontia**: landing page para captar quem quer colocar aparelho. A Miofuncional **não entra** ("Miofuncional tá errado. É só para ortodontia"). Esta definição prevalece sobre as mensagens anteriores do Felipe que a mantinham como área complementar.
-- **O que a Ortodontia entrega (segundo o Felipe; a Nayane ainda valida):** aparelho metálico convencional, aparelho de porcelana (estético) e alinhadores transparentes (tipo Invisalign). Para vários públicos e idades, por **convênio (SulAmérica e Amil)** e **particular**.
+- **O que a Ortodontia entrega (segundo o Felipe; a Nayane ainda valida):** aparelho metálico convencional e aparelho de porcelana (estético). **Alinhador transparente: NÃO entra** (resposta da Dra. Nayane em 12/11/2026: "eu não trabalho com alinhadores"; ela vale mais que a lista anterior do Felipe). Para vários públicos e idades, por **convênio (SulAmérica e Amil)** e **particular**.
 - **Fora do site:** Miofuncional, mentoria, Myobrace, bruxismo/ronco/sono, odontopediatria como serviço. **Clínica geral:** fora por padrão (o Felipe disse "só ortodontia"); só volta se ele pedir.
 - **Autoridade que entra:** 15 anos de profissão, formação (São Leopoldo Mandic, 2011), pós-graduação em Ortodontia (2014–2017), CRO-SE 2301. Informações de outras áreas não entram.
 - **Antes e depois:** fora até as autorizações e a norma serem conferidas.
