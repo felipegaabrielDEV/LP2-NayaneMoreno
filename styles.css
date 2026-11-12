@@ -548,6 +548,10 @@ body.sem-pendencias .previa-caso { display: none; }
 .foto-fechar:focus-visible, .foto-seta:focus-visible { outline: 3px solid var(--marca); outline-offset: 3px; }
 @media (hover: hover) { .foto-fechar:hover, .foto-seta:hover { background: #ffffff33; transform: scale(1.06); } }
 html.foto-aberta { overflow: hidden; }
+/* Evita o tom azul de "seleção" sobre a foto (clique duplo ou arrastar): fotos e tela ampliada não são selecionáveis */
+.foto-ampliada, .foto-ampliada * , #evolucao .caso-foto, .atend figure, .galeria-trilho figure { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.foto-ampliada img, #evolucao .caso-foto img, .atend img, .galeria-trilho img { -webkit-user-drag: none; user-drag: none; }
+.foto-ampliada ::selection, .foto-ampliada::selection, #evolucao .caso-foto ::selection, .atend ::selection, .galeria-trilho ::selection { background: transparent; }
 /* No toque (celular/tablet) não mostramos o contorno verde de foco: ele aparecia sobre a foto tocada e sobre o "X" ao abrir a foto.
    No computador com teclado o contorno continua, para quem navega com Tab. */
 @media (pointer: coarse) {

@@ -263,12 +263,14 @@
             img.alt = foto.alt + (grupo.sempre ? "" : " (" + nome + ")");
             legenda.textContent = nome + "  ·  " + (atual + 1) + " de " + total;
         };
-        const abrir = (g, i) => { grupo = g; origem = g.itens[i]; mostrar(i); if (!dlg.open) dlg.showModal(); document.documentElement.classList.add("foto-aberta"); };
+        const abrir = (g, i) => { getSelection()?.removeAllRanges(); grupo = g; origem = g.itens[i]; mostrar(i); if (!dlg.open) dlg.showModal(); document.documentElement.classList.add("foto-aberta"); };
         const fechar = () => { if (dlg.open) dlg.close(); };
         dlg.addEventListener("close", () => { document.documentElement.classList.remove("foto-aberta"); origem?.focus({ preventScroll: true }); });
         dlg.querySelector(".foto-fechar").addEventListener("click", fechar);
         dlg.querySelector(".foto-ant").addEventListener("click", () => mostrar(atual - 1));
         dlg.querySelector(".foto-prox").addEventListener("click", () => mostrar(atual + 1));
+        dlg.addEventListener("mousedown", e => { if (e.detail > 1) e.preventDefault(); }); /* clique duplo não seleciona a foto */
+        dlg.addEventListener("dblclick", () => getSelection()?.removeAllRanges());
         dlg.addEventListener("click", e => { if (e.target === dlg || e.target.tagName === "FIGURE") fechar(); });
         dlg.addEventListener("keydown", e => {
             if (e.key === "ArrowLeft") { e.preventDefault(); mostrar(atual - 1); }
