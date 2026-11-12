@@ -368,7 +368,7 @@ body.menu-aberto { overflow: hidden; }
 /* 15. Celular (até 599 px): cartões empilhados, sem desnível */
 @media (max-width: 599px) {
   .secao-aparelhos { padding-top: 38px; padding-bottom: 85px; }
-  .secao-aparelhos .aparelhos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 19px; margin-top: 28px; width: 100%; }
+  .secao-aparelhos .aparelhos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 28px; width: 100%; }
   .secao-aparelhos .aparelho, .secao-aparelhos .aparelho-destaque { width: 100%; min-width: 0; min-height: 0; padding: 16px; border-radius: 23px; translate: none; }
   .secao-aparelhos .aparelho-arte { aspect-ratio: 1.58; border-radius: 15px; }
   .secao-aparelhos .aparelho-tag { margin-top: 14px; margin-bottom: 9px; padding: 7px 11px; font-size: 9px; }
