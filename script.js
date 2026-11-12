@@ -86,40 +86,42 @@
     const botoesFaq = document.querySelectorAll(".faq-item button");
     const raiz = document.documentElement;
     let travaFaq = null;
-    /* Fluidez no celular. Como só uma pergunta fica aberta, tocar numa pergunta ABAIXO da aberta faria o conteúdo subir
-       durante a animação e a pergunta tocada "andar" sob o dedo (o Safari do iPhone não corrige isso sozinho).
-       Solução: a pergunta aberta que está ACIMA fecha na hora (sem animar) e a rolagem é corrigida uma única vez, então a
-       pergunta tocada fica parada e só ela anima. As que estão abaixo fecham animando, sem mexer em nada acima.
-       Por ~0,5 s também pausa as animações contínuas (botões, riscos do título), que repintam sombra e brilho. */
+    /* Fluidez no celular (técnica FLIP): a pergunta abre/fecha NA HORA no layout e, para parecer animado, as perguntas que
+       mudaram de lugar deslizam do lugar antigo para o novo só com `transform` (a placa de vídeo faz isso sem repintar nada),
+       e a resposta aparece com um fade. Antes animávamos a altura do cartão, o que repintava tudo abaixo a cada quadro e
+       "tremia" no iPhone. Como só uma pergunta fica aberta, a que estava aberta fecha junto, e a rolagem é corrigida uma
+       vez para a pergunta tocada ficar parada sob o dedo (o Safari do iPhone não faz isso sozinho).
+       Por ~0,5 s também pausa as animações contínuas do site (classe .faq-mexendo). */
+    const itensFaq = [...document.querySelectorAll("#duvidas .faq-item")];
     const marcaMexendo = ms => { raiz.classList.add("faq-mexendo"); clearTimeout(travaFaq); travaFaq = setTimeout(() => raiz.classList.remove("faq-mexendo"), ms); };
+    const suave = "cubic-bezier(.22, .61, .36, 1)";
     botoesFaq.forEach(botao => {
         botao.addEventListener("click", () => {
             const item = botao.closest(".faq-item");
             const abrir = botao.getAttribute("aria-expanded") !== "true";
-            const todos = [...botoesFaq];
-            const pos = todos.indexOf(botao);
             if (!reduzMovimento) marcaMexendo(560);
+            const topoAntes = botao.getBoundingClientRect().top;
+            const antes = itensFaq.map(it => it.getBoundingClientRect().top);
             if (abrir) {
-                const topoAntes = botao.getBoundingClientRect().top;
-                const acima = [];
-                todos.forEach((outro, i) => {
+                botoesFaq.forEach(outro => {
                     if (outro === botao || outro.getAttribute("aria-expanded") !== "true") return;
-                    const it = outro.closest(".faq-item");
-                    if (i < pos) { it.classList.add("fecha-seco"); acima.push(it); }
                     outro.setAttribute("aria-expanded", "false");
-                    it.classList.remove("aberto");
+                    outro.closest(".faq-item").classList.remove("aberto");
                 });
-                botao.setAttribute("aria-expanded", "true");
-                item.classList.add("aberto");
-                if (acima.length) {
-                    /* mede depois do fechamento instantâneo e devolve a pergunta tocada ao mesmo lugar da tela */
-                    const dif = botao.getBoundingClientRect().top - topoAntes;
-                    if (Math.abs(dif) > 0.5) window.scrollBy(0, dif);
-                    requestAnimationFrame(() => requestAnimationFrame(() => acima.forEach(it => it.classList.remove("fecha-seco"))));
-                }
-            } else {
-                botao.setAttribute("aria-expanded", "false");
-                item.classList.remove("aberto");
+            }
+            botao.setAttribute("aria-expanded", abrir ? "true" : "false");
+            item.classList.toggle("aberto", abrir);
+            /* mantém a pergunta tocada no mesmo lugar da tela (as de cima podem ter fechado e mudado a altura da página) */
+            const dif = botao.getBoundingClientRect().top - topoAntes;
+            if (Math.abs(dif) > 0.5) window.scrollBy(0, dif);
+            if (reduzMovimento || !item.animate) return;
+            itensFaq.forEach((it, i) => {
+                const d = antes[i] - it.getBoundingClientRect().top;
+                if (Math.abs(d) > 0.5) it.animate([{ transform: "translateY(" + d + "px)" }, { transform: "translateY(0)" }], { duration: 340, easing: suave });
+            });
+            if (abrir) {
+                const resp = item.querySelector(".faq-resposta > div > p");
+                if (resp) resp.animate([{ opacity: 0, transform: "translateY(-8px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 300, delay: 60, easing: suave, fill: "backwards" });
             }
         });
     });
