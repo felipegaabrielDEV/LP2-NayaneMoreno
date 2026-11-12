@@ -559,7 +559,8 @@ html.foto-aberta { overflow: hidden; }
 @media (max-width: 1023px) {
   #evolucao .caso-foto[role="button"] { cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
   #evolucao .caso-foto[role="button"]::after { content: ""; position: absolute; z-index: 2; top: 6px; right: 6px; width: 24px; height: 24px; border-radius: 50%; background: #0F3F36B3 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6'/%3E%3Cpath d='m16 16 4 4M11 8.5v5M8.5 11h5'/%3E%3C/svg%3E") center / 14px no-repeat; pointer-events: none; }
-  #evolucao .caso-foto[role="button"]:focus-visible { outline: 3px solid var(--marca); outline-offset: 2px; }
+  /* Contorno de foco só para mouse/teclado (no toque ele aparecia sobre a foto tocada) */
+  @media (pointer: fine) { #evolucao .caso-foto[role="button"]:focus-visible { outline: 3px solid var(--marca); outline-offset: 2px; } }
 }
 @media (prefers-reduced-motion: reduce) { .foto-fechar, .foto-seta { transition: none; } }
 
