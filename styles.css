@@ -781,6 +781,14 @@ html.foto-aberta { overflow: hidden; }
     .passo.em-foco .passo-cartao { transform: translateY(-4px); border-color: #16AD8E99; box-shadow: 0 0 0 1px #16AD8E40, 0 0 26px #16AD8E59, 0 22px 40px -20px #0F3F36CC, inset 0 1px 0 #FFFFFF1F; }
     .passo.em-foco .passo-icone { scale: 1.1; background: var(--botao); border-color: var(--marca); box-shadow: 0 12px 22px -10px #0F3F36B3; }
     .passo.em-foco .passo-icone svg { animation: icone-pulo .55s var(--ease); }
+    /* Alterna escuro e claro (só cores do site) para a seção não ficar uma pilha de blocos verdes iguais: etapas pares ficam claras */
+    .passo:nth-child(even) .passo-cartao { background: linear-gradient(145deg, #FFFFFF, var(--menta)); border-color: #16AD8E55; box-shadow: 0 8px 22px #0F3D3A14; }
+    .passo:nth-child(even) h3 { color: var(--verde); }
+    .passo:nth-child(even) p { color: var(--texto); }
+    .passo:nth-child(even) .passo-num { background: var(--verde); color: #fff; box-shadow: none; }
+    .passo:nth-child(even) .passo-icone { background: #16AD8E26; border-color: #16AD8E55; color: var(--botao); }
+    .passo:nth-child(even).em-foco .passo-cartao { border-color: #16AD8E99; box-shadow: 0 0 0 1px #16AD8E40, 0 0 24px #16AD8E40, 0 20px 36px -20px #0F3F3680; }
+    .passo:nth-child(even).em-foco .passo-icone { background: var(--botao); color: #fff; border-color: var(--marca); }
     @media (prefers-reduced-motion: reduce) { .passo.em-foco .passo-cartao { transform: none; } .passo.em-foco .passo-icone { scale: 1; } .passo.em-foco .passo-icone svg { animation: none; } }
 }
 .citacao { margin: 40px auto 0; max-width: 1080px; display: grid; grid-template-columns: 56px 1fr; align-items: center; gap: 16px; padding: 22px 20px; border: 1px solid #16AD8E33; border-radius: 22px;
