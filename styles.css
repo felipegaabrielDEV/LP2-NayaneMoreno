@@ -348,7 +348,7 @@ body.menu-aberto { overflow: hidden; }
 /* Computador: cartões brancos com a mesma altura e o do meio maior por cima e por baixo (margem negativa; a entrada .revelar
    não interfere). O hover continua usando `translate`. */
 @media (min-width: 1024px) {
-  .secao-aparelhos .aparelhos { align-items: stretch; padding-block: 16px; }
+  .secao-aparelhos .aparelhos { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 860px; margin-inline: auto; align-items: stretch; padding-block: 16px; } /* dois cartões (metálico e porcelana): a Dra. não trabalha com alinhador */
   .secao-aparelhos .aparelho-destaque { translate: none; margin-block: -16px; padding-block: calc(clamp(19px, 1.8vw, 25px) + 16px); }
   .secao-aparelhos .aparelho-destaque:hover { translate: 0 -5px; }
 }

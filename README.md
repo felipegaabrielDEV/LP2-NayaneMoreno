@@ -9,7 +9,7 @@ Landing page da **Dra. Nayane Moreno**, Cirurgiã-Dentista (CRO-SE 2301) em Arac
 ## 📋 Sobre o projeto
 
 - **Posicionamento:** "Dra. Nayane Moreno — Ortodontia em Aracaju".
-- **Tratamentos:** aparelho metálico, aparelho de porcelana e alinhador transparente.
+- **Tratamentos:** aparelho metálico e aparelho de porcelana. **Alinhador: a Dra. informou em 12/11/2026 que não trabalha com alinhadores** (removido do site).
 - **Formas de atendimento:** convênio (SulAmérica e Amil) e particular.
 - **Conversão:** todos os botões levam ao WhatsApp, com mensagem pronta por origem.
 - **Referências internas:** a estrutura e a engenharia seguem as LPs da Nutri Anna Waleska e da VALLENCI Salas; identidade, textos e imagens são próprios.
@@ -23,7 +23,7 @@ Landing page da **Dra. Nayane Moreno**, Cirurgiã-Dentista (CRO-SE 2301) em Arac
 | **Menu** | Fixo, com nome e CRO sempre visíveis; menu de tela cheia no celular (fecha com `Esc` ou ao tocar num link) |
 | **Topo** | Título, foto em moldura de arco, cartão com CRO, três números de destaque e faixa com quatro diferenciais |
 | **Para quem é** | Seis situações em cartões com foto no topo (referência: site de salas da Vallenci), título e frase. Fotos ilustrativas geradas por IA, com pessoas diferentes em cada cartão (gênero, idade e tom de pele variados, aparência brasileira), em `assets/situacoes/` (WebP 900x822 e 520x475), com a nota "Imagens ilustrativas" |
-| **Aparelhos** | Três cartões (metálico, porcelana, alinhador) com foto no topo (`assets/aparelhos/`, WebP 900x640 e 520x365, ilustrativas, geradas por IA), características e botão próprio |
+| **Aparelhos** | Dois cartões (metálico e porcelana) com foto no topo (`assets/aparelhos/`, WebP 900x640 e 520x365, ilustrativas, geradas por IA), características e botão próprio |
 | **Convênios e particular** | Lado a lado: planos atendidos e atendimento particular |
 | **Como funciona** | Cinco etapas, do WhatsApp ao acompanhamento, e citação da Dra. Nayane |
 | **Sobre** | Formação, trajetória e história pessoal ligada à ortodontia, com cartões de credenciais |
@@ -119,7 +119,7 @@ Depois acesse `http://localhost:8000`.
 **Travam o lançamento**
 - [x] Endereço (Rua Senador Rollemberg, 562, São José, CEP 49015-120), WhatsApp (79) 99945-2813, Instagram e horário
 - [ ] Fotos de atendimento (seção "Atendimento", 3 fotos em `assets/atendimento/`): **já estão na página pública**; registrar a autorização por escrito das pacientes que aparecem e conferir a norma do CFO/CRO-SE
-- [ ] Confirmação dos três tipos de aparelho (metálico, porcelana, alinhador) e da marca do alinhador. As três fotos dos cartões são ilustrações de IA e precisam da aprovação da Dra. Nayane e da conferência da norma do CFO/CRO-SE
+- [ ] Confirmação dos dois tipos de aparelho (metálico e porcelana; a Dra. informou que **não trabalha com alinhador**). As duas fotos dos cartões (e a do card "aparelho discreto", que reaproveita a de porcelana) são ilustrações de IA e precisam da aprovação da Dra. Nayane e da conferência da norma do CFO/CRO-SE
 - [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia. As **logos oficiais já estão no site** (`assets/convenios/`, enviadas pela equipe; a da Amil é a "Amil Dental"); confirmar a autorização de cada operadora para o uso da marca. As logos também aparecem no cartão "Particular ou convênio" sobre a foto do topo (desktop), com link para a seção de convênios
 - [ ] Aprovação do texto "Sobre" e da citação da Dra. Nayane
 - [ ] Foto do diploma e dos certificados (graduação 2011 e pós em Ortodontia 2014–2017)
