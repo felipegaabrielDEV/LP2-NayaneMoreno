@@ -119,6 +119,7 @@ Depois acesse `http://localhost:8000`.
 **Travam o lançamento**
 - [x] Endereço (Rua Senador Rollemberg, 562, São José, CEP 49015-120), WhatsApp (79) 99945-2813, Instagram e horário
 - [ ] Fotos de atendimento (seção "Atendimento", 3 fotos em `assets/atendimento/`): **já estão na página pública**; registrar a autorização por escrito das pacientes que aparecem e conferir a norma do CFO/CRO-SE
+- [ ] Faixa do topo com 6 cartões (nov/2026, pedido da Dra.): os cartões "Veja a evolução de um caso" e "Ouça um relato" levam à Evolução e ao Depoimento, que ainda esperam a norma do CFO/CRO-SE e as autorizações; eles somem junto com as seções no modo "ocultar pendências". Títulos dos cartões 1, 2 e 6 conforme sugestão da Dra., faltando só a aprovação dela da prévia
 - [ ] Confirmação dos dois tipos de aparelho (metálico e porcelana; a Dra. informou que **não trabalha com alinhador**). As duas fotos dos cartões (e a do card "aparelho discreto", que reaproveita a de porcelana) são ilustrações de IA e precisam da aprovação da Dra. Nayane e da conferência da norma do CFO/CRO-SE
 - [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia. As **logos oficiais já estão no site** (`assets/convenios/`, enviadas pela equipe; a da Amil é a "Amil Dental"); confirmar a autorização de cada operadora para o uso da marca. As logos também aparecem no cartão "Particular ou convênio" sobre a foto do topo (desktop), com link para a seção de convênios
 - [ ] Aprovação do texto "Sobre" e da citação da Dra. Nayane

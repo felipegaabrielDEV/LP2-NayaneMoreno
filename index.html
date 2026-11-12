@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/profissional/dra-nayane-topo-900.webp" imagesrcset="assets/profissional/dra-nayane-topo-560.webp 560w, assets/profissional/dra-nayane-topo-900.webp 900w" imagesizes="(min-width: 1024px) 460px, 86vw">
-    <link rel="stylesheet" href="styles.css?v=20261112-32">
+    <link rel="stylesheet" href="styles.css?v=20261114-2">
 </head>
 <body>
 
@@ -55,6 +55,8 @@
     <symbol id="i-aparelho" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="6.5" height="8" rx="1.8"/><rect x="14" y="8" width="6.5" height="8" rx="1.8"/><path d="M1.5 12h21"/></g></symbol>
     <symbol id="i-chat-pontos" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3.5c4.7 0 8.5 3.3 8.5 7.5S16.7 18.5 12 18.5c-1 0-2-.1-2.9-.4L4.5 20l1.2-3.6C4.3 15 3.5 13.1 3.5 11c0-4.2 3.8-7.5 8.5-7.5Z"/></g><g fill="currentColor"><circle cx="8.3" cy="11" r="1.1"/><circle cx="12" cy="11" r="1.1"/><circle cx="15.7" cy="11" r="1.1"/></g></symbol>
     <symbol id="i-dente" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M7 4c-2.2 0-3.5 1.6-3.5 4 0 3 1.4 4.2 1.8 7 .3 2 .6 4 1.9 4s1.4-2.2 1.9-3.6c.3-.9.6-1.4 1.4-1.4s1.1.5 1.4 1.4c.5 1.4.6 3.6 1.9 3.6s1.6-2 1.9-4c.4-2.8 1.8-4 1.8-7 0-2.4-1.3-4-3.5-4-1.7 0-2.5.8-4 .8S8.7 4 7 4Z"/></symbol>
+    <symbol id="i-fotos" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="3"/><circle cx="8.5" cy="9.5" r="1.7"/><path d="m3.5 17 5-4.2 3.6 3 3-2.4 5.4 4.2"/></g></symbol>
+    <symbol id="i-aspas" viewBox="0 0 24 24"><path fill="currentColor" d="M7.3 6C4.8 7 3.5 9.2 3.5 12v5.5h6V12h-3c0-1.6.8-2.8 2.3-3.5L7.3 6zm9.4 0c-2.5 1-3.8 3.2-3.8 6v5.5h6V12h-3c0-1.6.8-2.8 2.3-3.5L16.7 6z"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5-11-6.5Z"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></symbol>
@@ -193,9 +195,10 @@
 
         <div class="container">
             <div class="faixa-wrap">
-                <!-- Fio turquesa contínuo, atrás dos cartões (só no computador). A onda passa pelo centro dos 4 ícones
-                     (x = 150, 450, 750 e 1050 no viewBox). Para mudar a curva, edite o atributo d dos três caminhos. -->
-                <svg class="faixa-fio" viewBox="0 0 1200 170" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <!-- Fio turquesa contínuo, atrás dos cartões (só no computador). Com 6 cartões (3 por linha) valem os fios .fio-6, um por linha,
+                     com a onda passando pelo centro dos 3 ícones (x = 200, 600 e 1000 no viewBox); no modo "ocultar pendências" sobram 4 cartões e
+                     vale o .fio-4 (x = 150, 450, 750 e 1050). Para mudar a curva, edite o atributo d dos caminhos. -->
+                <svg class="faixa-fio-defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
                     <defs>
                         <linearGradient id="fio-gradiente" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stop-color="#16AD8E" stop-opacity=".35"/>
@@ -205,16 +208,32 @@
                         </linearGradient>
                         <filter id="fio-brilho" x="-30%" y="-100%" width="160%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
                     </defs>
+                </svg>
+                <svg class="faixa-fio fio-4" viewBox="0 0 1200 170" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                     <path class="fio-sombra" d="M 0 63.0 C 8.3 63.5 33.3 64.1 50 65.9 C 66.7 67.8 83.3 70.8 100 74.0 C 116.7 77.2 133.3 81.3 150 85.0 C 166.7 88.7 183.3 92.8 200 96.0 C 216.7 99.2 233.3 102.2 250 104.1 C 266.7 105.9 283.3 107.0 300 107.0 C 316.7 107.0 333.3 105.9 350 104.1 C 366.7 102.2 383.3 99.2 400 96.0 C 416.7 92.8 433.3 88.7 450 85.0 C 466.7 81.3 483.3 77.2 500 74.0 C 516.7 70.8 533.3 67.8 550 65.9 C 566.7 64.1 583.3 63.0 600 63.0 C 616.7 63.0 633.3 64.1 650 65.9 C 666.7 67.8 683.3 70.8 700 74.0 C 716.7 77.2 733.3 81.3 750 85.0 C 766.7 88.7 783.3 92.8 800 96.0 C 816.7 99.2 833.3 102.2 850 104.1 C 866.7 105.9 883.3 107.0 900 107.0 C 916.7 107.0 933.3 105.9 950 104.1 C 966.7 102.2 983.3 99.2 1000 96.0 C 1016.7 92.8 1033.3 88.7 1050 85.0 C 1066.7 81.3 1083.3 77.2 1100 74.0 C 1116.7 70.8 1133.3 67.8 1150 65.9 C 1166.7 64.1 1191.7 63.5 1200 63.0"/>
                     <path class="fio-linha" d="M 0 63.0 C 8.3 63.5 33.3 64.1 50 65.9 C 66.7 67.8 83.3 70.8 100 74.0 C 116.7 77.2 133.3 81.3 150 85.0 C 166.7 88.7 183.3 92.8 200 96.0 C 216.7 99.2 233.3 102.2 250 104.1 C 266.7 105.9 283.3 107.0 300 107.0 C 316.7 107.0 333.3 105.9 350 104.1 C 366.7 102.2 383.3 99.2 400 96.0 C 416.7 92.8 433.3 88.7 450 85.0 C 466.7 81.3 483.3 77.2 500 74.0 C 516.7 70.8 533.3 67.8 550 65.9 C 566.7 64.1 583.3 63.0 600 63.0 C 616.7 63.0 633.3 64.1 650 65.9 C 666.7 67.8 683.3 70.8 700 74.0 C 716.7 77.2 733.3 81.3 750 85.0 C 766.7 88.7 783.3 92.8 800 96.0 C 816.7 99.2 833.3 102.2 850 104.1 C 866.7 105.9 883.3 107.0 900 107.0 C 916.7 107.0 933.3 105.9 950 104.1 C 966.7 102.2 983.3 99.2 1000 96.0 C 1016.7 92.8 1033.3 88.7 1050 85.0 C 1066.7 81.3 1083.3 77.2 1100 74.0 C 1116.7 70.8 1133.3 67.8 1150 65.9 C 1166.7 64.1 1191.7 63.5 1200 63.0"/>
                     <path class="fio-luz" pathLength="1000" d="M 0 63.0 C 8.3 63.5 33.3 64.1 50 65.9 C 66.7 67.8 83.3 70.8 100 74.0 C 116.7 77.2 133.3 81.3 150 85.0 C 166.7 88.7 183.3 92.8 200 96.0 C 216.7 99.2 233.3 102.2 250 104.1 C 266.7 105.9 283.3 107.0 300 107.0 C 316.7 107.0 333.3 105.9 350 104.1 C 366.7 102.2 383.3 99.2 400 96.0 C 416.7 92.8 433.3 88.7 450 85.0 C 466.7 81.3 483.3 77.2 500 74.0 C 516.7 70.8 533.3 67.8 550 65.9 C 566.7 64.1 583.3 63.0 600 63.0 C 616.7 63.0 633.3 64.1 650 65.9 C 666.7 67.8 683.3 70.8 700 74.0 C 716.7 77.2 733.3 81.3 750 85.0 C 766.7 88.7 783.3 92.8 800 96.0 C 816.7 99.2 833.3 102.2 850 104.1 C 866.7 105.9 883.3 107.0 900 107.0 C 916.7 107.0 933.3 105.9 950 104.1 C 966.7 102.2 983.3 99.2 1000 96.0 C 1016.7 92.8 1033.3 88.7 1050 85.0 C 1066.7 81.3 1083.3 77.2 1100 74.0 C 1116.7 70.8 1133.3 67.8 1150 65.9 C 1166.7 64.1 1191.7 63.5 1200 63.0"/>
                 </svg>
+                <svg class="faixa-fio fio-6" viewBox="0 0 1200 170" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <path class="fio-sombra" d="M 0 63 C 33.3 66.7 133.3 77.8 200 85 C 266.7 92.2 333.3 106.0 400 106 C 466.7 106.0 533.3 92.0 600 85 C 666.7 78.0 733.3 64.0 800 64 C 866.7 64.0 933.3 78.0 1000 85 C 1066.7 92.0 1166.7 102.5 1200 106"/>
+                    <path class="fio-linha" d="M 0 63 C 33.3 66.7 133.3 77.8 200 85 C 266.7 92.2 333.3 106.0 400 106 C 466.7 106.0 533.3 92.0 600 85 C 666.7 78.0 733.3 64.0 800 64 C 866.7 64.0 933.3 78.0 1000 85 C 1066.7 92.0 1166.7 102.5 1200 106"/>
+                    <path class="fio-luz" pathLength="1000" d="M 0 63 C 33.3 66.7 133.3 77.8 200 85 C 266.7 92.2 333.3 106.0 400 106 C 466.7 106.0 533.3 92.0 600 85 C 666.7 78.0 733.3 64.0 800 64 C 866.7 64.0 933.3 78.0 1000 85 C 1066.7 92.0 1166.7 102.5 1200 106"/>
+                </svg>
+                <svg class="faixa-fio fio-6 fio-6b" viewBox="0 0 1200 170" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <path class="fio-sombra" d="M 0 63 C 33.3 66.7 133.3 77.8 200 85 C 266.7 92.2 333.3 106.0 400 106 C 466.7 106.0 533.3 92.0 600 85 C 666.7 78.0 733.3 64.0 800 64 C 866.7 64.0 933.3 78.0 1000 85 C 1066.7 92.0 1166.7 102.5 1200 106"/>
+                    <path class="fio-linha" d="M 0 63 C 33.3 66.7 133.3 77.8 200 85 C 266.7 92.2 333.3 106.0 400 106 C 466.7 106.0 533.3 92.0 600 85 C 666.7 78.0 733.3 64.0 800 64 C 866.7 64.0 933.3 78.0 1000 85 C 1066.7 92.0 1166.7 102.5 1200 106"/>
+                    <path class="fio-luz" pathLength="1000" d="M 0 63 C 33.3 66.7 133.3 77.8 200 85 C 266.7 92.2 333.3 106.0 400 106 C 466.7 106.0 533.3 92.0 600 85 C 666.7 78.0 733.3 64.0 800 64 C 866.7 64.0 933.3 78.0 1000 85 C 1066.7 92.0 1166.7 102.5 1200 106"/>
+                </svg>
                 <!-- Cada cartão é um atalho: o .faixa-link cobre o cartão inteiro e leva ao bloco do assunto. Para mudar o destino, troque o href. -->
                 <ul class="faixa" aria-label="Por que agendar a avaliação">
-                <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-prancheta"/></svg></span><div><strong>Primeira consulta</strong><small>Exame clínico, fotos e radiografias</small></div><a class="faixa-link" href="#como-funciona" aria-label="Ver como funciona a primeira consulta"></a></li>
-                <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-aparelho"/></svg></span><div><strong>Opções de aparelho</strong><small>Metálico e porcelana</small></div><a class="faixa-link" href="#aparelhos" aria-label="Ver as opções de aparelho"></a></li>
+                <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-prancheta"/></svg></span><div><strong>Seu sorriso, nosso ponto de partida</strong><small>Exame clínico, fotos e radiografias</small></div><a class="faixa-link" href="#como-funciona" aria-label="Ver como funciona a primeira consulta"></a></li>
+                <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-aparelho"/></svg></span><div><strong>Qual opção faz sentido para você</strong><small>Metálico e porcelana</small></div><a class="faixa-link" href="#aparelhos" aria-label="Ver as opções de aparelho"></a></li>
                 <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-card"/></svg></span><div><strong>Seu plano ou particular</strong><small>SulAmérica, Amil, Petrobras, Porto Seguro e particular</small></div><a class="faixa-link" href="#convenios" aria-label="Ver convênios e atendimento particular"></a></li>
-                <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-chat"/></svg></span><div><strong>Acompanhamento de perto</strong><small>Dúvidas pelo WhatsApp</small></div><a class="faixa-link" href="#duvidas" aria-label="Ver as dúvidas frequentes"></a></li>
+                <!-- Os dois cartões abaixo levam a seções que ainda esperam a norma do CFO/CRO-SE e as autorizações: ficam com a classe
+                     previa-caso (somem junto com elas no modo "ocultar pendências"). Ao liberar as seções, tire a classe dos dois. -->
+                <li class="previa-caso"><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-fotos"/></svg></span><div><strong>Veja a evolução de um caso</strong><small>Fotos de um tratamento em andamento</small></div><a class="faixa-link" href="#evolucao" aria-label="Ver a evolução de um caso clínico"></a></li>
+                <li class="previa-caso"><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-aspas"/></svg></span><div><strong>Ouça um relato</strong><small>A mãe de um paciente conta o acompanhamento</small></div><a class="faixa-link" href="#depoimento" aria-label="Ver o depoimento em vídeo"></a></li>
+                <li><span class="faixa-icone"><svg aria-hidden="true"><use href="#i-chat"/></svg></span><div><strong>Conte com a gente</strong><small>Dúvidas pelo WhatsApp</small></div><a class="faixa-link" href="#duvidas" aria-label="Ver as dúvidas frequentes"></a></li>
             </ul>
             </div>
         </div>
@@ -362,7 +381,7 @@
             <span class="evolucao-onda" aria-hidden="true"></span>
 
             <!-- Depoimento em vídeo: o arquivo entra em assets/ só com a autorização da mãe. -->
-            <div class="depoimento revelar">
+            <div class="depoimento revelar" id="depoimento">
                 <div class="depoimento-video">
                     <video controls playsinline preload="metadata" poster="assets/casos/depoimento-capa.jpg" src="assets/casos/depoimento.mp4"></video>
                 </div>
