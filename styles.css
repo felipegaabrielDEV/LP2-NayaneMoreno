@@ -497,7 +497,7 @@ body.sem-pendencias .previa-caso { display: none; }
 }
 
 /* 12b. Celular (até 599 px): as 3 vistas viram um carrossel com deslize (uma vista por vez, com uma espiadinha da próxima).
-   Abas com nome no topo; seta de evolução entre as fotos; etiquetas abaixo das fotos, sem cobrir os dentes. */
+   Abas com nome no topo; em cada vista, as duas fotos empilhadas e inteiras, como no computador. */
 .caso-abas { display: none; }
 @media (max-width: 599px) {
   .caso-abas { display: flex; gap: 4px; width: fit-content; max-width: 100%; margin: 24px auto 0; padding: 4px; border-radius: 999px; background: #ffffffcc; box-shadow: 0 0 0 1px rgba(22,173,142,.22), 0 6px 16px rgba(15,63,54,.07); }
@@ -512,12 +512,13 @@ body.sem-pendencias .previa-caso { display: none; }
   #evolucao .caso { flex: 0 0 88%; width: auto; padding: 16px; scroll-snap-align: start; }
   #evolucao .caso h3 { margin-bottom: 13px; font-size: 19px; }
   #evolucao .caso-par { position: relative; }
-  /* Seta verde no meio: do antes para o momento atual */
-  #evolucao .caso-par::after { content: ""; position: absolute; z-index: 3; left: 50%; top: calc((100% - 28px) / 2); width: 30px; height: 30px; border-radius: 50%; background: var(--botao) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 15px no-repeat; box-shadow: 0 0 0 3px #fff, 0 6px 14px rgba(15,63,54,.22); transform: translate(-50%, -50%); pointer-events: none; }
-  #evolucao .caso-foto { overflow: visible; background: none; border: 0; box-shadow: none; }
-  #evolucao .caso-foto:first-child, #evolucao .caso-foto:nth-child(2) { aspect-ratio: auto; }
-  #evolucao .caso-foto img { height: auto; aspect-ratio: 1 / 1; border-radius: 13px; border: 1px solid rgba(15,63,54,.12); }
-  #evolucao .caso-foto figcaption, #evolucao .caso-foto:nth-child(2) figcaption { position: static; display: inline-flex; margin-top: 9px; max-width: none; padding: 6px 11px; font-size: 10.5px; letter-spacing: .35px; }
+  /* Dentro de cada vista, as duas fotos ficam uma em cima da outra, inteiras (sem corte), como no computador */
+  #evolucao .caso-par { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  #evolucao .caso-foto { overflow: hidden; border-radius: 13px; }
+  #evolucao .caso-foto:first-child { aspect-ratio: 4 / 3; }
+  #evolucao .caso-foto:nth-child(2) { aspect-ratio: 3 / 2; }
+  #evolucao .caso-foto img { height: 100%; aspect-ratio: auto; border: 0; border-radius: inherit; }
+  #evolucao .caso-foto figcaption, #evolucao .caso-foto:nth-child(2) figcaption { position: absolute; left: 10px; bottom: 10px; display: inline-flex; margin: 0; max-width: calc(100% - 20px); padding: 6px 11px; font-size: 10px; letter-spacing: .4px; }
   #evolucao .caso > p { margin-top: 13px; font-size: 13px; line-height: 1.7; }
 }
 
