@@ -555,17 +555,14 @@ html.foto-aberta { overflow: hidden; }
   #evolucao .caso-foto[role="button"]:focus, #evolucao .caso-foto[role="button"]:focus-visible { outline: none; }
 }
 @media (max-width: 599px) { .foto-ampliada[open] { grid-template-columns: 38px minmax(0, 1fr) 38px; } .foto-seta { width: 36px; height: 36px; font-size: 1.4rem; } }
-/* Sinal de que a foto abre: lupa pequena no canto (só em tela pequena) */
+/* Sinal de que a foto abre: o cursor vira lupa (sem ícone sobre a foto) */
 @media (max-width: 1023px) {
   #evolucao .caso-foto[role="button"] { cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
-  #evolucao .caso-foto[role="button"]::after { content: ""; position: absolute; z-index: 2; top: 6px; right: 6px; width: 24px; height: 24px; border-radius: 50%; background: #0F3F36B3 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6'/%3E%3Cpath d='m16 16 4 4M11 8.5v5M8.5 11h5'/%3E%3C/svg%3E") center / 14px no-repeat; pointer-events: none; }
   /* Contorno de foco só para mouse/teclado (no toque ele aparecia sobre a foto tocada) */
   @media (pointer: fine) { #evolucao .caso-foto[role="button"]:focus-visible { outline: 3px solid var(--marca); outline-offset: 2px; } }
 }
-/* Atendimento e Consultório: as fotos abrem ampliadas em qualquer tela. Lupa no canto avisa que dá para tocar/clicar. */
+/* Atendimento e Consultório: as fotos abrem ampliadas em qualquer tela (o cursor vira lupa no computador). */
 .atend figure[role="button"], .galeria-trilho figure[role="button"] { position: relative; cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
-.atend figure[role="button"]::after, .galeria-trilho figure[role="button"]::after { content: ""; position: absolute; z-index: 2; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 50%; background: #0F3F36B3 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6'/%3E%3Cpath d='m16 16 4 4M11 8.5v5M8.5 11h5'/%3E%3C/svg%3E") center / 17px no-repeat; pointer-events: none; transition: background-color .25s var(--ease), transform .25s var(--ease); }
-@media (hover: hover) { .atend figure[role="button"]:hover::after, .galeria-trilho figure[role="button"]:hover::after { background-color: var(--botao); transform: scale(1.08); } }
 @media (pointer: fine) { .atend figure[role="button"]:focus-visible, .galeria-trilho figure[role="button"]:focus-visible { outline: 3px solid var(--marca); outline-offset: 3px; } }
 @media (pointer: coarse) { .atend figure[role="button"]:focus, .galeria-trilho figure[role="button"]:focus { outline: none; } }
 @media (prefers-reduced-motion: reduce) { .foto-fechar, .foto-seta { transition: none; } }
