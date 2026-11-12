@@ -763,7 +763,7 @@ html.foto-aberta { overflow: hidden; }
     .passo-texto { padding: 10px 0 0; border-left: 0; border-top: 1px solid #FFFFFF26; width: 100%; }
 }
 /* Passo a passo no celular: cartões verde-escuros de largura inteira (mesmo tom do desktop), número em círculo, ícone no canto e uma
-   setinha entre as etapas. Sem a linha lateral (ela estreitava os cartões). No toque, o efeito do hover do desktop acontece ao tocar (:active). */
+   setinha entre as etapas. Sem a linha lateral (ela estreitava os cartões). No celular, o efeito do hover do desktop acompanha a rolagem (etapa no meio da tela). */
 @media (max-width: 599px) {
     .passos { gap: 26px; }
     .passos::before, .passos::after, .passo::after, .passo-cartao::before { display: none; }
@@ -777,10 +777,11 @@ html.foto-aberta { overflow: hidden; }
     .passo-icone svg { width: 20px; height: 20px; }
     /* Setinha para baixo entre uma etapa e a seguinte */
     .passo + .passo::before { content: ""; position: absolute; left: 50%; top: -19px; width: 9px; height: 9px; border-right: 2.5px solid var(--marca); border-bottom: 2.5px solid var(--marca); transform: translateX(-50%) rotate(45deg); opacity: .9; }
-    /* Mesmo efeito do hover do desktop, ao tocar: o cartão sobe e brilha, o ícone cresce e acende */
-    .passo:active .passo-cartao { transform: translateY(-4px); border-color: #16AD8E99; box-shadow: 0 0 0 1px #16AD8E40, 0 0 26px #16AD8E59, 0 22px 40px -20px #0F3F36CC, inset 0 1px 0 #FFFFFF1F; }
-    .passo:active .passo-icone { scale: 1.1; background: var(--botao); border-color: var(--marca); box-shadow: 0 12px 22px -10px #0F3F36B3; }
-    .passo:active .passo-icone svg { animation: icone-pulo .55s var(--ease); }
+    /* Mesmo efeito do hover do desktop, mas guiado pela rolagem: a etapa que está no meio da tela acende (classe .em-foco, via script.js) */
+    .passo.em-foco .passo-cartao { transform: translateY(-4px); border-color: #16AD8E99; box-shadow: 0 0 0 1px #16AD8E40, 0 0 26px #16AD8E59, 0 22px 40px -20px #0F3F36CC, inset 0 1px 0 #FFFFFF1F; }
+    .passo.em-foco .passo-icone { scale: 1.1; background: var(--botao); border-color: var(--marca); box-shadow: 0 12px 22px -10px #0F3F36B3; }
+    .passo.em-foco .passo-icone svg { animation: icone-pulo .55s var(--ease); }
+    @media (prefers-reduced-motion: reduce) { .passo.em-foco .passo-cartao { transform: none; } .passo.em-foco .passo-icone { scale: 1; } .passo.em-foco .passo-icone svg { animation: none; } }
 }
 .citacao { margin: 40px auto 0; max-width: 1080px; display: grid; grid-template-columns: 56px 1fr; align-items: center; gap: 16px; padding: 22px 20px; border: 1px solid #16AD8E33; border-radius: 22px;
     background: linear-gradient(135deg, #F4FAF8, var(--menta)); box-shadow: var(--sombra-p); }
