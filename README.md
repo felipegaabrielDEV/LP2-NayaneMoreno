@@ -119,30 +119,21 @@ Depois acesse `http://localhost:8000`.
 Conferência feita em 13/11/2026 contra os quatro documentos da cliente no Drive (Profissional, Persona, Mercado e Concorrentes), já respondidos pela Dra. Nayane. Cada item resolvido traz o documento e a pergunta de origem.
 
 **Resolvidas pelas respostas da Dra.**
-- [x] Tipos de aparelho: **metálico e porcelana**; alinhador não entra (Mercado, P02 e P09)
-- [x] Manutenções: **uma vez por mês** (Mercado, P02)
-- [x] Duração: **cerca de um ano e meio**, dependendo da avaliação de cada caso (Mercado, P02)
-- [x] Fim do tratamento: **contenção móvel por um ano e fixa depois, com ajuste a cada três meses** (Mercado, P11)
-- [x] Citação "Eu avalio e somente indico tratamento em casos que realmente o paciente necessite": é resposta escrita da própria Dra. (Profissional, P13)
-- [x] Endereço, horário (seg a sex, 8h–12h e 14h–17h) e equipe (Mercado, P27)
-- [x] Formação e números do topo: 15 anos de Odontologia, 10 de Ortodontia, São Leopoldo Mandic 2011, pós 2014–2017 (Profissional, P01 e P02)
+- [x] Tipos de aparelho (metálico e porcelana; sem alinhador), manutenções mensais, duração média de um ano e meio e fim do tratamento (Mercado, P02, P09 e P11)
+- [x] Citação, endereço, horário, equipe, formação e números do topo (Profissional P01, P02, P13; Mercado P27)
+- [x] Convênios: 4 logos mantidas por decisão da Dra., que tem parceria com as empresas (Petrobras e Porto Seguro são só de clínica geral, Mercado P19; o texto pede para confirmar a cobertura no WhatsApp)
+- [x] **Autorizações de imagem** (fotos de atendimento, caso clínico e vídeo da mãe): a Dra. informou em nov/2026 que estão todas feitas; os documentos ficam com a clínica, fora deste repositório
+- [x] **Antes e depois e depoimentos:** a Dra. respondeu que pode publicar; só preço é proibido (Mercado, P30)
+- [x] Texto "Quem cuida do seu sorriso" e fotos ilustrativas dos aparelhos e de "Para quem é": aprovados pela Dra.
+- [x] Faixa do topo com 6 cartões, aprovada em 12/11/2026; Evolução e Depoimento agora aparecem também no modo "ocultar pendências"
 
-**Travam o lançamento**
-- [x] Convênios: a Dra. decidiu manter as **4 logos** (SulAmérica, Amil, Petrobras e Porto Seguro), por ter parceria com as empresas. Pelo Mercado P19, Petrobras e Porto Seguro são só de clínica geral; o texto "Tem um desses planos? Chame no WhatsApp para confirmar o que a sua cobertura inclui antes de agendar" evita prometer cobertura de aparelho
-- [ ] **Idade mínima da ortodontia:** os documentos divergem — "a partir de 11 anos" (Profissional, P10) e "acima de 12 anos até 50" (Persona, P02). Confirmar com a Dra. qual vale
-- [ ] **Autorização das operadoras** para usar as logos: a Dra. tem parceria com as empresas, mas falta a liberação de uso da marca (pedir a ela ou às empresas)
-- [ ] **Norma do CFO/CRO-SE:** a Dra. declarou por escrito que "não é permitido publicar PREÇO" e que "antes e depois, depoimentos, pode publicar" (Mercado, P30). Como responsável técnica, a palavra é dela; decidir se isso basta para destravar as seções de caso e depoimento ou se o CRO-SE será consultado formalmente
-- [ ] Fotos de atendimento (3 fotos em `assets/atendimento/`): **já estão na página pública**; registrar a autorização por escrito das pacientes que aparecem
-- [ ] Foto do diploma e dos certificados: a Dra. perguntou o que é preciso para comprovar (Profissional, P02) e ainda não enviou
-- [ ] Aprovação do texto "Sobre"
-
-**Melhoram o site**
-- [ ] Seção "Evolução do tratamento": autorização do paciente recebida em 10/11/2026 e autorização da mãe informada na mesma data (documentos guardados pela clínica; dados de paciente não ficam neste repositório). **Confirmar que a autorização cobre o nome do paciente que aparece na legenda do vídeo** (dado de saúde de um menor; se não cobrir, a legenda sai). Os casos citados pela Dra. no documento (Profissional, P21) são outros, de outubro — confirmar que o caso publicado é um dos autorizados
-- [ ] Fotos de "depois" (o paciente ainda está com aparelho; hoje só há antes e momento atual)
-- [ ] Seção "Para quem é" e cartões de aparelho: as fotos são **ilustrações geradas por IA** (não são pacientes) e precisam da aprovação da Dra.
-- [ ] Copy do topo: conferir com a Dra. o "sorriso dos sonhos, sem passar anos usando aparelho?" (risco de ser lido como promessa de resultado ou de prazo)
-- [ ] Link do perfil no Google e liberação das avaliações: a Dra. envia link de avaliação a todos os pacientes novos (Concorrentes, P11), mas o perfil não foi informado
-- [ ] Faixa do topo com 6 cartões: títulos e atalhos aprovados pela Dra. em 12/11/2026
+**Ainda abertas**
+- [ ] **Avaliações do Google** (bloco continua oculto): link do perfil e liberação do uso das avaliações (norma do CFO)
+- [ ] Idade mínima da ortodontia: o site diz 11 anos (Profissional, P10), mas o Persona diz "acima de 12" (P02). Confirmar com a Dra.
+- [ ] Foto do diploma e dos certificados (a Dra. perguntou o que é preciso e ainda não enviou)
+- [ ] Autorização escrita das operadoras para as logos, se a Dra. tiver
+- [ ] Conferir a norma do CRO-SE por escrito, se o Felipe preferir não depender só da resposta da Dra.
+- [ ] Copy do topo: "sorriso dos sonhos, sem passar anos usando aparelho?" (risco de ser lido como promessa)
 - [ ] Domínio e acesso ao Google Tag Manager
 
 **Fora do site, por decisão registrada**
