@@ -629,7 +629,7 @@ html.foto-aberta { overflow: hidden; }
 .plano-porto { max-height: 60px; }
 
 /* Texto do cartão do convênio e aviso provisório */
-#convenios .convenio:not(.convenio-claro) > p { margin: 0; color: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 400; line-height: 1.85; letter-spacing: .02px; }
+#convenios .convenio:not(.convenio-claro) > p { margin: 0 0 22px; color: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 400; line-height: 1.85; letter-spacing: .02px; }
 #convenios .convenio .pend { align-self: stretch; margin: 14px 0 16px; }
 
 /* Cartão particular também centralizado: etiqueta e título no eixo; a lista vira um bloco centralizado, com os checks em coluna */
@@ -689,7 +689,7 @@ html.foto-aberta { overflow: hidden; }
   .plano-petrobras { max-height: 24px; }
   .plano-porto { max-height: 52px; }
   .plano-amil { max-height: 46px; }
-  #convenios .convenio:not(.convenio-claro) > p { font-size: 12px; line-height: 1.8; }
+  #convenios .convenio:not(.convenio-claro) > p { margin-bottom: 0; font-size: 12px; line-height: 1.8; }
   #convenios .convenio-claro .lista-check { gap: 12px; margin-top: 16px; margin-bottom: 22px; }
   #convenios .convenio-claro .lista-check li { gap: 9px; font-size: 12px; line-height: 1.65; }
   #convenios .convenio > .botao { margin-top: 22px; }
