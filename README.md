@@ -128,9 +128,9 @@ Conferência feita em 13/11/2026 contra os quatro documentos da cliente no Drive
 - [x] Formação e números do topo: 15 anos de Odontologia, 10 de Ortodontia, São Leopoldo Mandic 2011, pós 2014–2017 (Profissional, P01 e P02)
 
 **Travam o lançamento**
-- [ ] **Convênios na ortodontia:** a Dra. respondeu que atende **SulAmérica e Amil em clínica geral e ortodontia, e Petrobras e Porto Seguro só em clínica geral** (Mercado, P19). O site é só de ortodontia e hoje mostra as quatro logos em "Atendemos estes planos" — decidir se as duas de clínica geral saem, ganham um aviso, ou se o escopo do site muda (Mercado, P20: ela quer atrair o público de Petrobras e Porto Seguro pelo clínico)
+- [x] Convênios: a Dra. decidiu manter as **4 logos** (SulAmérica, Amil, Petrobras e Porto Seguro), por ter parceria com as empresas. Pelo Mercado P19, Petrobras e Porto Seguro são só de clínica geral; o texto "Tem um desses planos? Chame no WhatsApp para confirmar o que a sua cobertura inclui antes de agendar" evita prometer cobertura de aparelho
 - [ ] **Idade mínima da ortodontia:** os documentos divergem — "a partir de 11 anos" (Profissional, P10) e "acima de 12 anos até 50" (Persona, P02). Confirmar com a Dra. qual vale
-- [ ] **Autorização das operadoras** para usar as logos dos planos (a Dra. pediu que apareçam por logo, Mercado P20, mas isso é a preferência dela, não a liberação das marcas)
+- [ ] **Autorização das operadoras** para usar as logos: a Dra. tem parceria com as empresas, mas falta a liberação de uso da marca (pedir a ela ou às empresas)
 - [ ] **Norma do CFO/CRO-SE:** a Dra. declarou por escrito que "não é permitido publicar PREÇO" e que "antes e depois, depoimentos, pode publicar" (Mercado, P30). Como responsável técnica, a palavra é dela; decidir se isso basta para destravar as seções de caso e depoimento ou se o CRO-SE será consultado formalmente
 - [ ] Fotos de atendimento (3 fotos em `assets/atendimento/`): **já estão na página pública**; registrar a autorização por escrito das pacientes que aparecem
 - [ ] Foto do diploma e dos certificados: a Dra. perguntou o que é preciso para comprovar (Profissional, P02) e ainda não enviou
