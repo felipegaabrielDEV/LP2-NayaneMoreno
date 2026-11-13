@@ -116,25 +116,31 @@ Depois acesse `http://localhost:8000`.
 
 ## ✅ Pendências de conteúdo
 
-**Travam o lançamento**
-- [x] Endereço (Rua Senador Rollemberg, 562, São José, CEP 49015-120), WhatsApp (79) 99945-2813, Instagram e horário
-- [ ] Fotos de atendimento (seção "Atendimento", 3 fotos em `assets/atendimento/`): **já estão na página pública**; registrar a autorização por escrito das pacientes que aparecem e conferir a norma do CFO/CRO-SE
-- [ ] Faixa do topo com 6 cartões (nov/2026, pedido da Dra.): os cartões "Veja a evolução de um caso" e "Ouça um relato" levam à Evolução e ao Depoimento, que ainda esperam a norma do CFO/CRO-SE e as autorizações; eles somem junto com as seções no modo "ocultar pendências". Títulos dos cartões 1, 2 e 6 conforme sugestão da Dra., faltando só a aprovação dela da prévia
-- [ ] Confirmação dos dois tipos de aparelho (metálico e porcelana; a Dra. informou que **não trabalha com alinhador**). As duas fotos dos cartões (e a do card "aparelho discreto", que reaproveita a de porcelana) são ilustrações de IA e precisam da aprovação da Dra. Nayane e da conferência da norma do CFO/CRO-SE
-- [ ] Convênios: o que SulAmérica e Amil cobrem na ortodontia. As **logos oficiais já estão no site** (`assets/convenios/`, enviadas pela equipe; a da Amil é a "Amil Dental"); confirmar a autorização de cada operadora para o uso da marca. As logos também aparecem no cartão "Particular ou convênio" sobre a foto do topo (desktop), com link para a seção de convênios
-- [ ] Aprovação do texto "Sobre" e da citação da Dra. Nayane
-- [ ] Foto do diploma e dos certificados (graduação 2011 e pós em Ortodontia 2014–2017)
+Conferência feita em 13/11/2026 contra os quatro documentos da cliente no Drive (Profissional, Persona, Mercado e Concorrentes), já respondidos pela Dra. Nayane. Cada item resolvido traz o documento e a pergunta de origem.
 
-**Melhoram o site**
-- [ ] Intervalo das manutenções e como termina o tratamento (contenção e retornos)
-- [ ] Idade mínima para a ortodontia e faixa média de duração do tratamento
-- [ ] Link do perfil no Google e liberação das avaliações (norma do CFO)
-- [ ] Seção "Evolução do tratamento": **fotos do caso** — autorização do paciente recebida em 10/11/2026 (guardada pela clínica; os dados do paciente não ficam neste repositório público). **Vídeo da mãe** — autorização da mãe informada pela equipe em 10/11/2026; guardar o documento e **confirmar que cobre o nome do paciente que aparece na legenda do vídeo** (dado de saúde de um menor; se não cobrir, a legenda precisa ser tirada ou coberta). Falta **conferir a norma do CFO/CRO-SE** (antes e depois e depoimento) e, se possível, termo assinado e fotos originais em JPG leve. A seção segue oculta no modo "ocultar pendências" até a norma ser conferida
-- [ ] Fotos de "depois" (o paciente ainda está com aparelho; hoje só há antes e momento atual)
-- [ ] Seção "Para quem é": as 6 fotos são **ilustrações geradas por IA** (não são pacientes). A Dra. Nayane precisa aprovar e é preciso conferir a norma do CFO/CRO-SE sobre imagens ilustrativas de condições bucais
-- [ ] Copy do topo (feita pelo cunhado do Felipe): conferir com a Dra. Nayane e a norma do CFO/CRO-SE o "sorriso dos sonhos, sem passar anos usando aparelho?" (risco de ser lido como promessa de resultado ou de prazo) e o "+10 anos de experiência"
-- [ ] Logotipo e cores da marca, se existirem
+**Resolvidas pelas respostas da Dra.**
+- [x] Tipos de aparelho (metálico e porcelana; sem alinhador), manutenções mensais, duração média de um ano e meio e fim do tratamento (Mercado, P02, P09 e P11)
+- [x] Citação, endereço, horário, equipe, formação e números do topo (Profissional P01, P02, P13; Mercado P27)
+- [x] Convênios: 4 logos mantidas por decisão da Dra., que tem parceria com as empresas (Petrobras e Porto Seguro são só de clínica geral, Mercado P19; o texto pede para confirmar a cobertura no WhatsApp)
+- [x] **Autorizações de imagem** (fotos de atendimento, caso clínico e vídeo da mãe): a Dra. informou em nov/2026 que estão todas feitas; os documentos ficam com a clínica, fora deste repositório
+- [x] **Antes e depois e depoimentos:** a Dra. respondeu que pode publicar; só preço é proibido (Mercado, P30)
+- [x] Texto "Quem cuida do seu sorriso" e fotos ilustrativas dos aparelhos e de "Para quem é": aprovados pela Dra.
+- [x] Faixa do topo com 6 cartões, aprovada em 12/11/2026; Evolução e Depoimento agora aparecem também no modo "ocultar pendências"
+
+**Ainda abertas**
+- [ ] **Avaliações do Google** (bloco continua oculto): link do perfil e liberação do uso das avaliações (norma do CFO)
+- [ ] Idade mínima da ortodontia: o site diz 11 anos (Profissional, P10), mas o Persona diz "acima de 12" (P02). Confirmar com a Dra.
+- [ ] Foto do diploma e dos certificados (a Dra. perguntou o que é preciso e ainda não enviou)
+- [ ] Autorização escrita das operadoras para as logos, se a Dra. tiver
+- [ ] Conferir a norma do CRO-SE por escrito, se o Felipe preferir não depender só da resposta da Dra.
+- [ ] Copy do topo: "sorriso dos sonhos, sem passar anos usando aparelho?" (risco de ser lido como promessa)
 - [ ] Domínio e acesso ao Google Tag Manager
+
+**Fora do site, por decisão registrada**
+- Alinhador transparente: a Dra. não trabalha com ele (Mercado, P09)
+- Mentoria: tem site próprio e não entra (Profissional, P25; Persona, P26)
+- Preços, bônus de aparelho e condições de pagamento: informação interna, não vai ao site (Mercado, P15 e P30; Persona, P15 e P18)
+- Estacionamento: a reclamação mais comum dos pacientes é não ter onde estacionar (Persona, P24), então o site não promete vaga
 
 ---
 

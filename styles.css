@@ -397,9 +397,8 @@ body.menu-aberto { overflow: hidden; }
   .secao-aparelhos .aparelho-brilho { opacity: 1; transform: none; }
 }
 
-/* Evolução do tratamento. Sem autorização, a seção é ocultada no modo limpo. */
+/* Evolução do tratamento (autorizações de imagem confirmadas pela Dra. em nov/2026). */
 .secao-caso { background: #fff; }
-body.sem-pendencias .previa-caso { display: none; }
 .casos { display: grid; gap: 18px; }
 .caso { padding: 14px; border: 1px solid var(--borda); border-radius: var(--raio); background: #fff; box-shadow: var(--sombra-p); }
 .caso h3 { margin: 6px 6px 12px; font-size: 1.1rem; }
@@ -1291,15 +1290,10 @@ html.faq-mexendo .duvidas-brilho path, html.faq-mexendo .flutuante::before { ani
 
 /* ---------- LISTA / GRADE ---------- */
 /* Sem z-index: o fio (2) passa por cima do vidro dos cartões (1) e por baixo dos ícones e textos (3) */
-/* Fios da faixa: com 6 cartões (3 por linha) vale um fio por linha (.fio-6 e .fio-6b); no modo "ocultar pendências" sobram 4 cartões
-   (os 2 que levam a Evolução e ao Depoimento somem) e vale o fio original de 4 ícones, com 4 colunas. */
+/* Fios da faixa: com 6 cartões (3 por linha) vale um fio por linha (.fio-6 e .fio-6b). O fio de 4 ícones (.fio-4) ficou sem uso:
+   só volta se a faixa voltar a ter 4 cartões em 4 colunas. */
 .faixa-fio.fio-4 { display: none; }
 .faixa-fio.fio-6b { top: 219px; } /* altura do cartão (214 px) + espaço entre as linhas (14 px) - 9 px do fio */
-@media (min-width: 1024px) {
-    body.sem-pendencias .faixa { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    body.sem-pendencias .faixa-fio.fio-4 { display: block; }
-    body.sem-pendencias .faixa-fio.fio-6 { display: none; }
-}
 .faixa { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: 100%; margin: 0; padding: 0; list-style: none; }
 
 /* ---------- CARTÕES ----------
